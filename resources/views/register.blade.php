@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon.ico">
 
-	<title>Material Bootstrap Wizard by Creative Tim</title>
+	<title>REGISTER</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -28,7 +28,7 @@
 <body>
 	<div class="image-container set-full-height" style="background-image: url('assets/img/wizard-profile.jpg')">
 	    <!--   Creative Tim Branding   -->
-	    <a href="#">
+	    <!--<a href="#">
 	         <div class="logo-container">
 	            <div class="logo">
 	                <img src="assets/img/new_logo.png">
@@ -38,7 +38,7 @@
 	            </div>
 	        </div>
 	    </a>
-
+-->
 	    <!--   Big container   -->
 	    <div class="container">
 	        <div class="row">
@@ -51,7 +51,7 @@
 								@csrf
 		                    	<div class="wizard-header">
 		                        	<h3 class="wizard-title">
-		                        	   Build Your Profile
+		                        	   Créer Votre Profile
 		                        	</h3>
 									<!-- <h5>This information will let us know more about you.</h5> -->
 		                    	</div>
@@ -66,7 +66,7 @@
 		                        <div class="tab-content">
 		                            <div class="tab-pane" id="about">
 		                              <div class="row">
-		                                	<h4 class="info-text"> Let's start with the basic information (with validation)</h4>
+		                                	<h4 class="info-text"> Commençant Par les informations basique (avec validation)</h4>
 		                                	<!-- <div class="col-sm-4 col-sm-offset-1">
 		                                    	<div class="picture-container">
 		                                        	<div class="picture">
@@ -235,7 +235,8 @@
 		                        </div>
 		                        <div class="wizard-footer">
 		                            <div class="pull-right">
-		                                <input type='button' class='btn btn-next btn-fill btn-primary btn-wd' name='next' value='Next' />
+		                                <input type='button' class='btn btn-next1 btn-fill btn-primary btn-wd' name='next1' value='Next1' />
+		                                <!-- <input type='button' class='btn btn-next2 btn-fill btn-primary btn-wd' name='next2' value='Next2' /> -->
 		                                <input type='submit' class='btn btn-finish btn-fill btn-primary btn-wd'  name='finish' value='Finish' />
 		                            </div>
 
@@ -253,7 +254,8 @@
 
 	    <div class="footer">
 	        <div class="container text-center">
-	             Made with <i class="fa fa-heart heart"></i> by <a href="#">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>
+			<!--Made with <i class="fa fa-heart heart"></i> by <a href="#">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>-->
+	              <a href="/"><b>RDVFBS</b></a><!--<i class="fa fa-heart heart"></i>  <a href="#">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>-->
 	        </div>
 	    </div>
 	</div>

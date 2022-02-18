@@ -102,7 +102,7 @@ $(document).ready(function(){
             if($current >= $total) {
                 $($wizard).find('.btn-next').hide();
                 $($wizard).find('.btn-finish').show();
-            } else {
+            }else {
                 $($wizard).find('.btn-next').show();
                 $($wizard).find('.btn-finish').hide();
             }
