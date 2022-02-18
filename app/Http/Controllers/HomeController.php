@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        if(Auth::user()->is_admin){
+        if(Auth::user()->role =='admin'){
             $list_user= User::all();
             return view('users.index',['list' => $list_user]);
         }
