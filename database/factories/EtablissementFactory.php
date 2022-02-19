@@ -20,8 +20,9 @@ class EtablissementFactory extends Factory
             'adresse'=> $this-> faker->paragraph(),
             'service'=> $this-> faker-> numberBetween(1,10),
             'user_id'=> $this-> faker-> numberBetween(1,10),
-            'url'=> $this-> faker->text(10),
+            'url'=> $this-> faker->char(8)->unique(),
             'description'=> $this-> faker->sentence(13,true)
+
         ];
     }
 }

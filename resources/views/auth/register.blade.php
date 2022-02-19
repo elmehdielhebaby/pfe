@@ -220,7 +220,7 @@
 		                                    <div class="col-sm-8 col-sm-offset-1 ">
 	                                        	<div class="form-group label-floating">
 	                                        		<label class="control-label">Login société (partie de l’URL, ne peut être modifié</label>
-	                                    			<input type="text" name="url" class="form-control"required>
+	                                    			<input type="text" maxlength="8" onkeydown="if(event.keyCode==32) return false;" name="url" class="form-control"required>
 	                                        	</div>
 		                                    </div>
 
