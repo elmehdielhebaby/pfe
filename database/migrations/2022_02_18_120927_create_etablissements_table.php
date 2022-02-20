@@ -21,7 +21,7 @@ class CreateEtablissementsTable extends Migration
             $table->string('categorie')->randomElement(['Retailers', 'Sports', 'Médical', 'Education', 'Officiel']);
             $table->text('adresse');
             $table->integer('service');
-            $table->char('url',8)->unique();
+            $table->text('url',8)->unique();
             $table->longText('description');
             $table->timestamps();
             $table->softDeletes();

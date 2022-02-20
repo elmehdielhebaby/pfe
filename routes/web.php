@@ -23,9 +23,27 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/i', function () {
-    return view('users.index'); 
+
+
+
+Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index']);
+Route::get('/client/register', function() {
+	return view('reservation.register');
 });
+ 
+
+
+
+Route::get('/loll', function () {
+    return view('lol.landing');
+});
+
+
+
+
+
+
+
 
 Auth::routes();
 

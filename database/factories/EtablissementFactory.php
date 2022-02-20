@@ -14,13 +14,14 @@ class EtablissementFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $this-> faker-> sentence(),
+            'name'=> $this-> faker-> name,
             'phone'=> $this-> faker-> phoneNumber(),
             'categorie'=> $this-> faker->randomElement(['Retailers', 'Sports', 'Médical', 'Education', 'Officiel']),
             'adresse'=> $this-> faker->paragraph(),
             'service'=> $this-> faker-> numberBetween(1,10),
-            'user_id'=> $this-> faker-> numberBetween(1,10),
-            'url'=> $this-> faker->char(8)->unique(),
+            'user_id'=> $this-> faker-> numberBetween(1,4),
+            'url'=> $this-> faker->bothify('????????'),
+            // 'url'=> $this-> faker->str_random(8)->unique(),
             'description'=> $this-> faker->sentence(13,true)
 
         ];
