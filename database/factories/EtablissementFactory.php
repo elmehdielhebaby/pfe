@@ -23,7 +23,6 @@ class EtablissementFactory extends Factory
             'url'=> $this-> faker->bothify('????????'),
             // 'url'=> $this-> faker->str_random(8)->unique(),
             'description'=> $this-> faker->sentence(13,true)
-
         ];
     }
 }

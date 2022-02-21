@@ -17,7 +17,6 @@ class Etablissement extends Model
         'name',
         'user_id',
         'phone',
-        'role',
         'categorie',
         'adresse',
         'service',

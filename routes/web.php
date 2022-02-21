@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Client\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index']);
-Route::get('/client/register', function() {
-	return view('reservation.register');
-});
+
+
+Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'index'])->name('client.register');
+
+Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
+
+
+// Route::post('client/create', function(){
+// 	echo 'lol';
+// })->name('client.create');;
+
+
+Route::get('/client.login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
+// Route::get('/client/register', function() {
+// 	return view('reservation.register');
+// });
  
 
 
