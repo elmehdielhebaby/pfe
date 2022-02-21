@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Null_;
 
 class RegisterController extends Controller
 {
@@ -85,6 +86,8 @@ class RegisterController extends Controller
 
         Client::create([
             'phone' => Request('phone'),
+            'adresse' => Request('adresse'),
+            'cin' => Request('cin'),
             'user_id' => $lastInsertedId,
         ]); 
 

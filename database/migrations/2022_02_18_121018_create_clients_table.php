@@ -17,6 +17,9 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('phone');
+            $table->text('adresse')->nullable(true);
+            $table->text('cin')->nullable(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
