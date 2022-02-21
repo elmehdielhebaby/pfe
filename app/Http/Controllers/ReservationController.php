@@ -27,21 +27,11 @@ class ReservationController extends Controller
      */
     public function index(string $url)
     {   
-
-        // if(Auth::user()->role =='admin'){
-        //     $list_user= User::all();
-        //     return view('users.index',['list' => $list_user]);
-        // }
-        // $list_user= User::all();
-
-        // $etablissement=Etablissement::find($url);
-        // $search=$_GET[$url];
         $etablissement = DB::table('etablissements')->where('url','like','%'.$url.'%')->first();
         $user = DB::table('users')->where('id','like','%'.$etablissement->user_id.'%')->first();
 
         return view('reservation.index',['etablissement'=> $etablissement],['user'=> $user]);
         // return view('lol.index',['url'=> $url]);
 
-        
     }
 }

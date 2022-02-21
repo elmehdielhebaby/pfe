@@ -50,7 +50,7 @@ Coded by www.creative-tim.com
           <div class="row">	
             <div class="col-6 collapse-brand">	
               <a href="../../../index.html">	
-                <img src="../assets/img/brand/blue.png">	
+                <img src="/assets3/img/brand/blue.png">	
               </a>	
             </div>	
             <div class="col-6 collapse-close">	
@@ -156,76 +156,81 @@ Coded by www.creative-tim.com
                 <div class="text-center text-muted mb-4">
                   <small> Sign up</small>
                 </div>
-                
-
-
-
-
-
-                
-                <form role="form" method="POST" action="{{ route('client.create') }}">
-                            @csrf
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
-                                </div>
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                <form role="form" method="POST" action="{{ route('register') }}">
+                  @csrf
+                  <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                      <div class="input-group input-group-alternative mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                          </div>
+                          <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                      </div>
+                      @if ($errors->has('name'))
+                        <span class="invalid-feedback" style="display: block;" role="alert">
+                          <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                      @endif
+                      </div>
+                      <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                          <div class="input-group input-group-alternative mb-3">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                              </div>
+                              <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required>
+                          </div>
+                          @if ($errors->has('email'))
+                              <span class="invalid-feedback" style="display: block;" role="alert">
+                                  <strong>{{ $errors->first('email') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                      <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                        <div class="input-group input-group-alternative mb-3">
+                          <div class="input-group-prepend">
+                            <span class=" input-group-text"><i class="ni ni-mobile-button"></i></span>
+                          </div>
+                          <input class=" form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('phone') }}" type="phone" name="phone" value="{{ old('phone') }}" required>
+                        </div>
+                        @if ($errors->has('phone'))
+                          <span class="invalid-feedback" style="display: block;" role="alert">
+                            <strong>{{ $errors->first('phone') }}</strong>
+                          </span>
+                        @endif
+                      </div>
+                        <div class="">
+                          <div class="input-group input-group-alternative mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
                             </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required>
+                            <input class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}" placeholder="{{ __('Adresse') }}" type="text" name="adresse" value="{{ old('adresse') }}">
+                          </div>     
+                        </div>
+                        <div class="form-group{{ $errors->has('cin') ? ' has-danger' : '' }}">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-credit-card"></i></span>
                                 </div>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                                <input  class="form-control{{ $errors->has('cin') ? ' is-invalid' : '' }}" placeholder="{{ __('cin') }}" type="text" name="cin" value="{{ old('cin') }}" maxlength="8" onkeydown="if(event.keyCode==32) return false;" required>
                             </div>
-                            <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class=" input-group-text"><i class="ni ni-mobile-button"></i></span>
-                                    </div>
-                                    <input class=" form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('phone') }}" type="phone" name="phone" value="{{ old('phone') }}" required>
+                            @if ($errors->has('cin'))
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $errors->first('cin') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group{{ $errors->has('age') ? ' has-danger' : '' }}">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-credit-card"></i></span>
                                 </div>
-                                @if ($errors->has('phone'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
+                                <input  class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" min="1" max="120" placeholder="{{ __('age') }}" type="number" name="age" value="{{ old('age') }}"  onkeydown="if(event.keyCode==32) return false;" required>
                             </div>
-                            <div class="">
-                                <div class="input-group input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}" placeholder="{{ __('Adresse') }}" type="text" name="adresse" value="{{ old('adresse') }}">
-                                </div>
-                               
-                            </div>
-                            <div class="form-group{{ $errors->has('cin') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-credit-card"></i></span>
-                                    </div>
-                                    <input  class="form-control{{ $errors->has('cin') ? ' is-invalid' : '' }}" placeholder="{{ __('cin') }}" type="text" name="cin" value="{{ old('cin') }}" maxlength="8" onkeydown="if(event.keyCode==32) return false;" required>
-                                </div>
-                                @if ($errors->has('cin'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('cin') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('age'))
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $errors->first('age') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">

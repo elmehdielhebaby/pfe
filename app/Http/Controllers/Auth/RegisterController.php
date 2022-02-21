@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\Etablissement;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Client;
+use App\Models\Etablissement;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -66,39 +67,45 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        if($data['age']==null)
+        {
         $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-
-        // $user= $this->user->create([
-        //     'name'              => $request['name'],
-        //     'email'             => $request['email'],
-        //     'password'          => Hash::make($request['password'])
-        // ]);
         $lastInsertedId= $user->id;
-
         Etablissement::create([
             'name' => $data['titre'],
             'phone' => $data['phone'],
             'user_id' => $lastInsertedId,
-            // Auth::user()->id,
             'categorie' => $data['categorie'],
             'adresse' => $data['adresse'],
             'service' => $data['service'],
             'url' => $data['url'],
             'description' => $data['description']
         ]); 
-
         return $user;
-        
+        }else{
 
-        
-
+            $user= User::create([
+                'name' => Request('name'),
+                'email' => Request('email'),
+                'password' => Hash::make(Request('password')),
+                'role' => 'client',
+            ]);
+    
+            $lastInsertedId= $user->id;
+    
+            Client::create([
+                'phone' => Request('phone'),
+                'adresse' => Request('adresse'),
+                'cin' => Request('cin'),
+                'age' => Request('age'),
+                'user_id' => $lastInsertedId,
+            ]); 
+            return $user;
+        }   
+    
     }
-
-
 }

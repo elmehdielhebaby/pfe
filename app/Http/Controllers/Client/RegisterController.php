@@ -25,7 +25,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
 
     /**
@@ -33,6 +32,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
+    public function show(){
+        return view('reservation.register');
+    }
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -40,10 +43,6 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function index(){
-        return view('reservation.register');
-    }
-
 
     public function __construct()
     {
@@ -56,14 +55,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-    // }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -79,7 +78,6 @@ class RegisterController extends Controller
             'email' => Request('email'),
             'password' => Hash::make(Request('password')),
             'role' => 'client',
-
         ]);
 
         $lastInsertedId= $client->id;
@@ -88,16 +86,9 @@ class RegisterController extends Controller
             'phone' => Request('phone'),
             'adresse' => Request('adresse'),
             'cin' => Request('cin'),
+            'age' => Request('age'),
             'user_id' => $lastInsertedId,
         ]); 
-
-        // return $client;
-        return view('welcome');
-        // echo ' lllll';
-
-        
-
+        return redirect('home');
     }
-
-
 }

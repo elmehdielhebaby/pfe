@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Client\RegisterController;
+use App\Http\Controllers\Auth\RegisterController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,19 +30,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index']);
-
-
-Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'index'])->name('client.register');
-
+Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
 Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
 
 
-// Route::post('client/create', function(){
-// 	echo 'lol';
-// })->name('client.create');;
+Route::post('/loool', [App\Http\Controllers\Auth\LoginController::class])->name('loool');
 
 
-Route::get('/client.login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
+
+Route::get('/client/login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
 // Route::get('/client/register', function() {
 // 	return view('reservation.register');
 // });
@@ -48,8 +46,8 @@ Route::get('/client.login', [App\Http\Controllers\Client\LoginController::class,
 
 
 
-Route::get('/loll', function () {
-    return view('lol.landing');
+Route::get('/123', function () {
+    return view('reservation.profile');
 });
 
 
