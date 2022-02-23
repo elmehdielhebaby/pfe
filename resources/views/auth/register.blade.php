@@ -100,6 +100,7 @@
 													<div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} label-floating">
 			                                            <label class="control-label">Email <small>(required)</small></label>
 			                                            <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" required>
+			                                            <input class="" type="hidden" name="user" value="user" >
 			                                        </div>
 												</div>
 												@if ($errors->has('email'))

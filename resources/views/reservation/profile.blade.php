@@ -99,7 +99,7 @@ Coded by www.creative-tim.com
               </div>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown"> 
             <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
               <i class="ni ni-collection d-lg-none"></i>
               <span class="nav-link-inner--text">Examples</span>
@@ -112,7 +112,7 @@ Coded by www.creative-tim.com
             </div>
           </li>
         </ul>
-        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <!-- <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
             <a class="nav-link nav-link-icon" href="https://www.facebook.com/CreativeTim/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
               <i class="fa fa-facebook-square"></i>
@@ -150,7 +150,7 @@ Coded by www.creative-tim.com
               <span class="nav-link-inner--text">Upgrade to PRO</span>
             </a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>

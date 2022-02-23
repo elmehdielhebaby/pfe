@@ -144,7 +144,7 @@ Coded by www.creative-tim.com
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-6 text-center">
-                <h1 class="text-white">{{$etablissement->name}}</h1>
+                <h1 class="text-white text-uppercase">{{$etablissement->name}}</h1>
                 <!-- <img src="./{{ URL::asset('assets3/img/brand/white.png') }}" style="width: 200px;" class="img-fluid"> -->
                 <p class="lead text-white">{{$etablissement->description}}</p>
                 <button type="button" class="btn btn-success">Rendez-vous</button>
