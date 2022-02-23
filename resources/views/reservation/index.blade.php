@@ -118,7 +118,12 @@ Coded by www.creative-tim.com
             <a href="{{ route('client.login') }}" class="btn btn-success">Login</a>
           </li>
           <li class="nav-item d-none d-lg-block">
-          <a href="{{ route('client.register') }}" class="btn btn-white">Register</a>
+          <form role="form"  method="post"  action="{{ route('client.register') }}">
+          @csrf
+            <button type="submit" class="btn btn-white">Register</button>
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+          </form>
+            
           </li>
         </ul>
       </div>
@@ -140,7 +145,7 @@ Coded by www.creative-tim.com
         <span class="span-100"></span>
       </div>
       <div class="page-header">
-        <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="container shape-container d-flex align-items-center py-5">
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-6 text-center">
@@ -166,7 +171,7 @@ Coded by www.creative-tim.com
             </div>
           </div>
         </div>
-        <div class="container shape-container py-lg">
+        <div class="container shape-container py-5">
           <h2 class="text-white">Nous contacter</h2>
           <div class="container ">
             <p class=" text-white">Phone : {{$etablissement->phone}}</p>
@@ -1697,7 +1702,7 @@ Coded by www.creative-tim.com
           <p class="lead text-white">The Design System comes with four pre-built pages to help you get started faster. You can change the text and images and you're good to go. More importantly, looking at them will give you a picture of what you can built with this powerful Bootstrap 4 Design System.</p>
           <div class="btn-wrapper">
             <a href="./examples/login.html" class="btn btn-success">Login Page</a>
-            <a href="./examples/register.html" class="btn btn-white">Register Page</a>
+            <a href="./examples/register.html" class="btn btn-white">Register Page</a>            
           </div>
         </div>
         <div class="col-lg-5 mb-lg-auto">

@@ -33,7 +33,9 @@ class RegisterController extends Controller
      * @var string
      */
     public function show(){
-        return view('reservation.register');
+        $user_id=Request('user_id');
+        // echo "$user_id";
+        return view('reservation.register',['user_id'=>$user_id]);
     }
 
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -91,4 +93,5 @@ class RegisterController extends Controller
         ]); 
         return redirect('home');
     }
+
 }

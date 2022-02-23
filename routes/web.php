@@ -30,11 +30,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index']);
-Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
+Route::post('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
 Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
 
 
-Route::post('/loool', [App\Http\Controllers\Auth\LoginController::class])->name('loool');
+Route::get('/client.logout', [App\Http\Controllers\Client\LogoutController::class,'client_logout'])->name('client.logout');
+// Route::get('/log', function(){
+// 	echo 'lol';
+// })->name('log');
 
 
 

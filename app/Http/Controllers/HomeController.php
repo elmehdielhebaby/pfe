@@ -5,6 +5,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\returnSelf;
+
 class HomeController extends Controller
 {
     /**
@@ -30,11 +32,17 @@ class HomeController extends Controller
         }
         if(Auth::user()->role =='client'){
 
-            $client = DB::table('clients')->where('user_id','like','%'.Auth::user()->id.'%')->first();
-            // $client = DB::table('users')->where('id','like','%'.$etablissement->user_id.'%')->first();
-            return view('reservation.profile',['client'=> $client]);
+            
 
-            // return view('reservation.profile',[]);
+            $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();
+            
+            $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
+
+            if($client!=null)
+            return view('reservation.profile',['client'=> $client,'etablissement'=> $etablissement]);
+            else
+                // echo 
+                return view('welcome');
         }
         return view('dashboard');
     }

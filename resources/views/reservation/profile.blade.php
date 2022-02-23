@@ -181,12 +181,25 @@ Coded by www.creative-tim.com
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0">
                   <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
-                  <a href="{{ route('logout') }}" class="btn btn-sm btn-default float-right" onclick="event.preventDefault();
+                  <!-- <a href="{{ route('logout') }}" class="btn btn-sm btn-default float-right" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
                         <span>{{ __('Logout') }}</span>
-                    </a>
-<!-- 
+                    </a> -->
+                    <div class="dropdown-divider"></div>
+                    <form method="get" role="form" action="{{ route('client.logout') }}">
+                    <button type="submit" class="ni ni-user-run">{{ __('Logout') }}</button>
+                        <input type="hidden" name="url" value="{{$etablissement->url}}">
+                        <!-- Jiiib url mn reservation/mehdi -->
+
+                      </form>
+                  
+
+                      
+                    <!-- <a href="{{ route('client.logout') }}" class="" >
+                        <i class="ni ni-user-run"></i>
+                        <span>{{ __('Logout') }}</span>
+                     -->
                   <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
                 </div>
               </div>
@@ -254,6 +267,18 @@ Coded by www.creative-tim.com
       </div>
     </footer>
   </div>
+
+
+
+
+  <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>      
+        <!-- @stack('js') -->
+        <!-- Argon JS -->
+        <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
+
+
   <!--   Core JS Files   -->
   <script src="/assets3/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="/assets3/js/core/popper.min.js" type="text/javascript"></script>
@@ -271,7 +296,7 @@ Coded by www.creative-tim.com
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <script src="/assets3/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  <script>
+  <script> 
     window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",

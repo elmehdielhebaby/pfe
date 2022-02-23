@@ -87,25 +87,23 @@ class RegisterController extends Controller
         ]); 
         return $user;
         }else{
-
             $user= User::create([
                 'name' => Request('name'),
                 'email' => Request('email'),
                 'password' => Hash::make(Request('password')),
                 'role' => 'client',
             ]);
-    
             $lastInsertedId= $user->id;
-    
             Client::create([
+                'client_id' => $lastInsertedId,
+                'user_id' => Request('user_id'),
                 'phone' => Request('phone'),
                 'adresse' => Request('adresse'),
                 'cin' => Request('cin'),
                 'age' => Request('age'),
-                'user_id' => $lastInsertedId,
             ]); 
+            echo Request('user_id');
             return $user;
         }   
-    
     }
 }
