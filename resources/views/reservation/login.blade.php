@@ -39,8 +39,9 @@ Coded by www.creative-tim.com
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="../index.html">
-        <img src="/assets3/img/brand/white.png">
+      <a class="navbar-brand mr-lg-5" href="#">
+      <!-- href="{{route('reservation/$url')}}" -->
+        <img src="/assets3/img/brand/white.png"> 
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

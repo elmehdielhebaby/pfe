@@ -28,8 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-
-Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index']);
+ 
+Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
 Route::post('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
 Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
 

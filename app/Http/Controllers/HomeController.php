@@ -30,20 +30,16 @@ class HomeController extends Controller
             $list_user= User::all();
             return view('users.index',['list' => $list_user]);
         }
+
         if(Auth::user()->role =='client'){
-
-            
-
-            $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();
-            
+            $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();  
             $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
-
             if($client!=null)
-            return view('reservation.profile',['client'=> $client,'etablissement'=> $etablissement]);
+                return view('reservation.profile',['client'=> $client,'etablissement'=> $etablissement]);
             else
-                // echo 
                 return view('welcome');
         }
+        
         return view('dashboard');
     }
 }

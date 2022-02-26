@@ -31,7 +31,6 @@ class ReservationController extends Controller
         $user = DB::table('users')->where('id','like','%'.$etablissement->user_id.'%')->first();
 
         return view('reservation.index',['etablissement'=> $etablissement],['user'=> $user]);
-        // return view('lol.index',['url'=> $url]);
 
     }
 }

@@ -115,7 +115,12 @@ Coded by www.creative-tim.com
         </ul>
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item d-none d-lg-block">
-            <a href="{{ route('client.login') }}" class="btn btn-success">Login</a>
+            <form role="form"  method="get"  action="{{ route('client.login') }}">
+              @csrf
+              <button type="submit" class="btn btn-white">Login</button>
+              <input type="hidden" name="url" value="{{$etablissement->url}}">
+            </form>
+            <!-- <a href="{{ route('client.login') }}" class="btn btn-success">Login</a> -->
           </li>
           <li class="nav-item d-none d-lg-block">
           <form role="form"  method="post"  action="{{ route('client.register') }}">
