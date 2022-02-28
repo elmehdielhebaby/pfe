@@ -40,24 +40,6 @@
     <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/96/original/opt_ad_thumbnail.jpg" />
     <meta property="og:description" content="Start your development with a Dashboard for Bootstrap 4." />
     <meta property="og:site_name" content="Creative Tim" />
-    <!-- Google Tag Manager -->
-    <!-- <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
-    </script> -->
-    <!-- End Google Tag Manager -->
 </head>
 <body class="clickup-chrome-ext_installed">
 
@@ -91,7 +73,6 @@
                 <a href="{{ route('profile.edit_user_by_sup_admin',['admin' => auth()->user()]) }}" class="dropdown-item">
                 <!-- <a href="{{ route('profile.edit') }}" class="dropdown-item"> -->
 
-                
                     <i class="ni ni-single-02"></i>
                     <span>My profile</span>
                 </a>
@@ -463,15 +444,6 @@
             </div>
         </div>
     </div>
-    
-   
-       
-           
-
-
-
-
-
     <footer class="footer">
 <div class="row align-items-center justify-content-xl-between">
 <div class="col-xl-6">
@@ -501,9 +473,7 @@
 </div>
 </div></footer>
  </div>
-    </div>
-
-    
+    </div>    
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     

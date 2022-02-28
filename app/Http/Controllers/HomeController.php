@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Etablissement;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -29,31 +30,9 @@ class HomeController extends Controller
     public function index()
     {   
         if(Auth::user()->role =='admin'){
-        //     $list_user= User::all();
-        //     $user=array(null);
-        //     foreach($list_user as $admin)
-        //     {
-        //         $i=0;
-        //         $j=0;
-        //         if($admin->role=='user'){
-        //             if($i==0){
-        //                 $user=array($admin);
-        //                 $i++;
-        //             }
-        //             else
-        //             $user=array_push($admin);
-        //         }
-        //         if($admin->role=='client')
-        //             $client=array_push($admin);           
-        //     }
-
-        // $client = DB::table('users')->where('role','like','client');
-        // $user = DB::table('users')->where('role','like','user');
         $users= User::all();
         $etablissements= Etablissement::all();
-        return view('users.index',['users' => $users,'etablissements'=>$etablissements]);
-
-
+        return view('admin.index',['users' => $users,'etablissements'=>$etablissements]);
         }
 
         if(Auth::user()->role =='client'){
@@ -64,7 +43,12 @@ class HomeController extends Controller
             else
                 return view('welcome');
         }
-        
-        return view('dashboard');
+        if(Auth::user()->role =='user'){
+            $id=Auth::user()->id;
+            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+            $users=User::all();
+            $clients= Client::all();
+            return view('dashboard',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users]);
+        }
     }
 }
