@@ -96,11 +96,11 @@
                                     {{ __('User profile') }}
                                 </a>
                             </li>
-                            <!-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                    {{ __('Client Management') }}
                                 </a>
-                            </li> -->
+                            </li>
                         </ul>
                     </div>
                 </li>

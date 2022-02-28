@@ -18,30 +18,22 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        // if(Auth::user()->is_admin){
-        //     // if($id==null){
-        //     // return view('profile.edit_user_by_sup_admin');
-        //     // }
-        //     // else{
-        //         return view('profile.edit_user_by_sup_admin');
-        //     // }
-        // }
         return view('profile.edit');
 
     }
 
-    public function edit_user_by_sup_admin(User $admin)
+    public function edit_user_by_sup_admin(User $admins)
     {
-        // if(Auth::user()->is_admin){
-            // if($id==null){
-            // return view('profile.edit_user_by_sup_admin');
-            // }
-            // else{
-                return view('profile.edit_user_by_sup_admin',['admin' => $admin]);
-            // }
-        // }
-        // return view('profile.edit');
-
+        foreach($admins as $admin)
+        {
+            if($admin->role=='user'){
+                $user=array_push($admin);
+                }
+            if($admin->role=='client'){
+                $client=array_push($admin);           
+                }
+        }
+        return view('profile.edit_user_by_sup_admin',['user' => $user,'client'=>$client]);
     }
     /**
      * Update the profile

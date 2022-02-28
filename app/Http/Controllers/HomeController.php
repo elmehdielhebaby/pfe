@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Etablissement;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +29,31 @@ class HomeController extends Controller
     public function index()
     {   
         if(Auth::user()->role =='admin'){
-            $list_user= User::all();
-            return view('users.index',['list' => $list_user]);
+        //     $list_user= User::all();
+        //     $user=array(null);
+        //     foreach($list_user as $admin)
+        //     {
+        //         $i=0;
+        //         $j=0;
+        //         if($admin->role=='user'){
+        //             if($i==0){
+        //                 $user=array($admin);
+        //                 $i++;
+        //             }
+        //             else
+        //             $user=array_push($admin);
+        //         }
+        //         if($admin->role=='client')
+        //             $client=array_push($admin);           
+        //     }
+
+        // $client = DB::table('users')->where('role','like','client');
+        // $user = DB::table('users')->where('role','like','user');
+        $users= User::all();
+        $etablissements= Etablissement::all();
+        return view('users.index',['users' => $users,'etablissements'=>$etablissements]);
+
+
         }
 
         if(Auth::user()->role =='client'){

@@ -383,64 +383,46 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Users</h3>
+                            <h3 class="mb-0">Etablissement</h3>
                         </div>
                         <div class="col-4 text-right">
                             <a href="" class="btn btn-sm btn-primary">Add user</a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-12">
-                                        </div>
-
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Name de l'entreprise</th>
-                                <th scope="col">Name de l'admin </th>
+                                <th scope="col">Etablissement</th>
+                                <th scope="col">Admin </th>
                                 <th scope="col">Catégorie</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Creation Date</th>
-                                <th scope="col"></th>
+                                <th scope="col">Active</th>   
                             </tr>
                         </thead>
                         <tbody>
-                            <tr> 
-                                @if($list->count()>0)
-                                    @foreach($list as $admin)
-                                        @if ($admin->is_admin==0)
-                                            <tr>
-                                                <th scope="row"> {{$admin->titre}}</th>
-                                                <td>{{$admin->name}}</td>
-                                                <td>{{$admin->categorie}}</td>
-                                                <td><a href="mailto:admin@argon.com">{{$admin->email}}</a></td>
-                                                <td>{{$admin->created_at}}</td>
-                                            
-                                                <td class="text-right">
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-ellipsis-v"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-
-                                                            <!-- <form action="{{ route('profile.edit') }}" method="post"> -->
-                                                            <a class="dropdown-item"  href="{{ route('profile.edit_user_by_sup_admin',['admin' => $admin]) }}" >Modifier</a>    
-                                                            <!-- , ['id' => $admin->name] -->
-                                                            <!-- </form> -->
-
-
-                                                            <a class="dropdown-item" href="">Supprimer</a>
-                                                            </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                            @foreach($etablissements as $etablissement)
+                                <tr> 
+                                    <th>{{$etablissement->name}}</th>
+                                    @foreach($users as $user)
+                                        @if($etablissement->user_id==$user->id)
+                                            @break;
                                         @endif
                                     @endforeach
-                                @endif
-                            </tr>
+                                    <td scope="row"> {{$user->name}}</td>
+                                    <td>{{$etablissement->categorie}}</td>
+                                    <td><a href="#">{{$user->email}}</a></td>
+                                    <td>{{$user->created_at}}</td>
+                                    <td class="text-right">
+                                        <label class="custom-toggle">
+                                            <input type="checkbox" name="active" >
+                                            <span class="custom-toggle-slider rounded-circle"></span>
+                                        </label>
+                                    </td>       
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -452,7 +434,15 @@
             </div>
         </div>
     </div>
-        
+    
+   
+       
+           
+
+
+
+
+
     <footer class="footer">
 <div class="row align-items-center justify-content-xl-between">
 <div class="col-xl-6">
@@ -480,7 +470,8 @@
         </li>
     </ul>
 </div>
-</div></footer>    </div>
+</div></footer>
+ </div>
     </div>
 
     
