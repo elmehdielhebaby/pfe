@@ -39,25 +39,19 @@ Route::get('/client.logout', [App\Http\Controllers\Client\LogoutController::clas
 // 	echo 'lol';
 // })->name('log');
 
-
-
 Route::get('/client/login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
-// Route::get('/client/register', function() {
-// 	return view('reservation.register');
-// });
+
+
+
+
+Route::put('/users/{id}', [App\Http\Controllers\ClientController::class, 'update']);
  
 
 
 
-Route::get('/123', function () {
-    return view('reservation.profile');
-});
 
 
-
-
-
-
+Route::get('/lop',[App\Http\Controllers\Client\LoginController::class, 'back'])->name('lop');
 
 
 Auth::routes();

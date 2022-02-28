@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use App\Models\Etablissement;
 
 class ClientController extends Controller
 {
@@ -68,9 +69,20 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    // public function update(UpdateClientRequest $request, Client $client)
+    public function update($id)
     {
-        //
+        // auth()->user()->update($request->all());
+
+        $etablissement=Etablissement::find($id);
+
+        if($etablissement->active==0)
+            $etablissement->active=1;
+        else
+            $etablissement->active=0;
+        $etablissement->update();
+        return back()->withStatus(__('Profile successfully updated.'));
+        
     }
 
     /**

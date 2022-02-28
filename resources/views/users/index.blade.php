@@ -416,10 +416,14 @@
                                     <td><a href="#">{{$user->email}}</a></td>
                                     <td>{{$user->created_at}}</td>
                                     <td class="text-right">
-                                        <label class="custom-toggle">
-                                            <input type="checkbox" name="active" >
-                                            <span class="custom-toggle-slider rounded-circle"></span>
-                                        </label>
+                                        <form action="{{ url('users/'.$etablissement->id) }}" method="post" >
+                                            @method('put')
+                                            @csrf
+                                            <label class="custom-toggle">
+                                                <input type="checkbox" onChange="this.form.submit()" name="active" @if($etablissement->active == 1) checked @endif>
+                                                <span class="custom-toggle-slider rounded-circle"></span>
+                                            </label>
+                                        </form>
                                     </td>       
                                 </tr>
                             @endforeach

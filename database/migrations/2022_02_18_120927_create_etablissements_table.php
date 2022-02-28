@@ -23,6 +23,7 @@ class CreateEtablissementsTable extends Migration
             $table->integer('service');
             $table->text('url',8)->unique();
             $table->longText('description');
+            $table->boolean('active')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

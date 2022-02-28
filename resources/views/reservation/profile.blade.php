@@ -39,7 +39,7 @@ Coded by www.creative-tim.com
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="../index.html">
+      <a class="navbar-brand mr-lg-5" href="{{route('lop')}}">
         <img src="/assets3/img/brand/white.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -180,27 +180,24 @@ Coded by www.creative-tim.com
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0">
-                  <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
+                  <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
                   <!-- <a href="{{ route('logout') }}" class="btn btn-sm btn-default float-right" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
                         <span>{{ __('Logout') }}</span>
                     </a> -->
-                    <div class="dropdown-divider"></div>
+     
                     <form method="get" role="form" action="{{ route('client.logout') }}">
-                    <button type="submit" class="ni ni-user-run">{{ __('Logout') }}</button>
-                        <input type="hidden" name="url" value="{{$etablissement->url}}">
-                        <!-- Jiiib url mn reservation/mehdi -->
-
-                      </form>
-                  
-
+                      <!-- <button type="submit" class="ni ni-user-run">{{ __('Logout') }}</button> -->
+                      <button type="submit" class="btn btn-sm btn-default float-right  ni ni-user-run">{{ __('Logout') }}</button>
+                      <input type="hidden" name="url" value="{{$etablissement->url}}">
+                    </form>
                       
-                    <!-- <a href="{{ route('client.logout') }}" class="" >
+                      <!-- <a href="{{ route('client.logout') }}" class="" >
                         <i class="ni ni-user-run"></i>
                         <span>{{ __('Logout') }}</span>
                      -->
-                  <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
+                  <!-- <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1">

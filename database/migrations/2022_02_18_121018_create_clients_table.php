@@ -15,8 +15,8 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client_id')->unsigned();
-            $table->bigInteger('user_id');
+            $table->bigInteger('client_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->string('phone');
             $table->bigInteger('age');
             $table->text('adresse')->nullable(true);
@@ -24,7 +24,7 @@ class CreateClientsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('user_id')->references("id")->on("users")->onDelete("cascade");
+            $table->foreign('user_id')->references("id")->on("users")->onDelete('cascade');
         });
     }
 

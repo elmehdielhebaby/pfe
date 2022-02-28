@@ -22,6 +22,7 @@ class Etablissement extends Model
         'service',
         'url',
         'description',
+        'active',
     ];
     
 }
