@@ -192,6 +192,11 @@ Coded by www.creative-tim.com
                       <button type="submit" class="btn btn-sm btn-default float-right  ni ni-user-run">{{ __('Logout') }}</button>
                       <input type="hidden" name="url" value="{{$etablissement->url}}">
                     </form>
+                    <form method="get" role="form" action="">
+                      <!-- <button type="submit" class="ni ni-user-run">{{ __('Logout') }}</button> -->
+                      <button type="submit" class="btn btn-sm btn-default float-right ">{{ __('Edit') }}</button>
+                      <input type="hidden" name="url" value="{{$etablissement->url}}">
+                    </form>
                       
                       <!-- <a href="{{ route('client.logout') }}" class="" >
                         <i class="ni ni-user-run"></i>
@@ -199,6 +204,7 @@ Coded by www.creative-tim.com
                      -->
                   <!-- <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
                 </div>
+                
               </div>
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">

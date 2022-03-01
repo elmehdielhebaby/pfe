@@ -120,7 +120,6 @@ Coded by www.creative-tim.com
               <button type="submit" class="btn btn-white">Login</button>
               <input type="hidden" name="url" value="{{$etablissement->url}}">
             </form>
-            <!-- <a href="{{ route('client.login') }}" class="btn btn-success">Login</a> -->
           </li>
           <li class="nav-item d-none d-lg-block">
           <form role="form"  method="post"  action="{{ route('client.register') }}">
@@ -157,7 +156,9 @@ Coded by www.creative-tim.com
                 <h1 class="text-white text-uppercase">{{$etablissement->name}}</h1>
                 <!-- <img src="./{{ URL::asset('assets3/img/brand/white.png') }}" style="width: 200px;" class="img-fluid"> -->
                 <p class="lead text-white">{{$etablissement->description}}</p>
-                <button type="button" class="btn btn-success">Rendez-vous</button>
+                <form role="form" action="{{route('home')}}">
+                  <button type="submit"  class="btn btn-success">Rendez-vous</button>
+                </form>
                 <!-- <div class="btn-wrapper mt-5">
                   <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>

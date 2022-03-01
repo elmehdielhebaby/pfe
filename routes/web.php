@@ -32,12 +32,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
 Route::post('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
 Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
+Route::get('/client/profile', [App\Http\Controllers\Client\ProfileController::class, 'edit'])->name('client.profile');
 
 
 Route::get('/client.logout', [App\Http\Controllers\Client\LogoutController::class,'client_logout'])->name('client.logout');
-// Route::get('/log', function(){
-// 	echo 'lol';
-// })->name('log');
+Route::get('/lan', function(){
+	return view('reservation.landing');
+})->name('lan');
 
 Route::get('/client/login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
 

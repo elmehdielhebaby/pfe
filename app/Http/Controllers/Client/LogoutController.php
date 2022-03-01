@@ -59,14 +59,10 @@ class LogoutController extends Controller
 
         $request->session()->regenerateToken();
 
-        echo "$request('url')";
-
         if ($response = $this->loggedOut($request)) {
             return $response;
         }
-        return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect('reservation/'.Request('url'));
+        return redirect('reservation/'.Request('url'));
     }
 
     

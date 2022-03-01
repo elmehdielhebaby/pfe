@@ -17,8 +17,8 @@ Coded by www.creative-tim.com
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets3/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets3/img/favicon.png">
   <title>
     Argon Design System by Creative Tim
   </title>
@@ -39,7 +39,7 @@ Coded by www.creative-tim.com
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="../index.html">
+      <a class="navbar-brand mr-lg-5" href="#">
         <img src="/assets3/img/brand/white.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@ Coded by www.creative-tim.com
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="../../../index.html">
+              <a href="#">
                 <img src="/assets3/img/brand/blue.png">
               </a>
             </div>
@@ -106,7 +106,7 @@ Coded by www.creative-tim.com
             </a>
             <div class="dropdown-menu">
               <a href="../examples/landing.html" class="dropdown-item">Landing</a>
-              <a href="../examples/profile.html" class="dropdown-item">Profile</a>
+              <a href="/reservation/profile " class="dropdown-item">Profile</a>
               <a href="../examples/login.html" class="dropdown-item">Login</a>
               <a href="../examples/register.html" class="dropdown-item">Register</a>
             </div>
@@ -138,17 +138,17 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-neutral" href="https://www.creative-tim.com/builder/argon" target="_blank">
-              <span class="nav-link-inner--text">Online Builder</span>
-            </a>
+            
+            <form method="get" role="form" action="{{ route('client.profile') }}">
+              <button type="submit" class="btn btn-sm btn-default float-right ">{{ __('Profile') }}</button>
+              <input type="hidden" name="url" value="{{$etablissement->url}}">
+            </form>
           </li>
           <li class="nav-item d-none d-lg-block">
-            <a href="https://www.creative-tim.com/product/argon-design-system-pro?ref=ads-upgrade-pro" target="_blank" class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon">
-                <i class="fa fa-shopping-cart"></i>
-              </span>
-              <span class="nav-link-inner--text">Upgrade to PRO</span>
-            </a>
+            <form method="get" role="form" action="{{ route('client.logout') }}">
+              <button type="submit" class="btn btn-sm btn-default float-right  ni ni-user-run">{{ __('Logout') }}</button>
+                <input type="hidden" name="url" value="{{$etablissement->url}}">
+            </form>
           </li>
         </ul>
       </div>
@@ -220,7 +220,7 @@ Coded by www.creative-tim.com
             </div>
           </div>
           <div class="col-lg-6 col-10 mx-md-auto">
-            <img class="ml-lg-5" src="../assets/img/ill/ill.png" width="100%">
+            <img class="ml-lg-5" src="assets3/img/ill/ill.png" width="100%">
           </div>
         </div>
       </div>
@@ -325,21 +325,21 @@ Coded by www.creative-tim.com
     </footer>
   </div>
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="assets3/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="assets3/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="assets3/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="assets3/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="../assets/js/plugins/bootstrap-switch.js"></script>
+  <script src="assets3/js/plugins/bootstrap-switch.js"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <script src="../assets/js/plugins/moment.min.js"></script>
-  <script src="../assets/js/plugins/datetimepicker.js" type="text/javascript"></script>
-  <script src="../assets/js/plugins/bootstrap-datepicker.min.js"></script>
+  <script src="assets3/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="assets3/js/plugins/moment.min.js"></script>
+  <script src="assets3/js/plugins/datetimepicker.js" type="text/javascript"></script>
+  <script src="assets3/js/plugins/bootstrap-datepicker.min.js"></script>
   <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <script src="../assets/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
+  <script src="assets3/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS &&
