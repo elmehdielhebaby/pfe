@@ -151,7 +151,7 @@ Coded by www.creative-tim.com
                     <span class="btn-inner--text">Google</span>
                   </a>
                 </div>
-              </div> -->
+              </div> --> 
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
                   <small> Sign up</small>
