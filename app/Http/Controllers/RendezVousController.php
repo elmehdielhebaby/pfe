@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rendez_vous;
 use App\Http\Requests\StoreRendez_vousRequest;
 use App\Http\Requests\UpdateRendez_vousRequest;
+use GuzzleHttp\Psr7\Request;
 
 class RendezVousController extends Controller
 {
@@ -23,9 +24,23 @@ class RendezVousController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $data)
     {
-        //
+        echo 'loool';
+
+        // Rendez_vous::create([
+        //     // 'etablissement_id' => $data['etablissement_id'],
+        //     // 'client_id' => $data['client_id'],
+        //     // 'date' => $data['date'],
+        //     // 'time' => $data['time'],
+        //     'etablissement_id'=> 'lool',
+        //     'client_id' => 'lool',
+        //     'date' => $data['date'],
+        //     'time' => $data['time']
+        // ]);
+
+        // return redirect()->back();
+        return view('home');
     }
 
     /**
@@ -34,10 +49,19 @@ class RendezVousController extends Controller
      * @param  \App\Http\Requests\StoreRendez_vousRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRendez_vousRequest $request)
+    public function store()
     {
-        //
-    }
+        
+        Rendez_vous::create([
+            'etablissement_id' => Request('etablissement_id'),
+            'client_id' => Request('client_id'),
+            'date' => Request('date'),
+            'time' => Request('time'),
+        ]); 
+
+        return redirect()->back()->with('success','Rendez_vous ajouter avec succès!!!');
+  
+      }
 
     /**
      * Display the specified resource.

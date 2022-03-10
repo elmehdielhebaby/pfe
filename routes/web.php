@@ -34,6 +34,13 @@ Route::post('/client.register', [App\Http\Controllers\Client\RegisterController:
 Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
 Route::get('/client/profile', [App\Http\Controllers\Client\ProfileController::class, 'edit'])->name('client.profile');
 
+Route::get('/rendezvous/create', [App\Http\Controllers\RendezVousController::class, 'store'])->name('rendezvous.create');
+// Route::get('/rcreate', function(){
+// 	echo "mooooh";
+// 	return view('welcome');
+// })->name('rcreate');
+
+
 
 Route::get('/client.logout', [App\Http\Controllers\Client\LogoutController::class,'client_logout'])->name('client.logout');
 Route::get('/lan', function(){

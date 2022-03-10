@@ -1,16 +1,3 @@
-<!--
-=========================================================
-* Argon Design System - v1.2.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,16 +164,111 @@ Coded by www.creative-tim.com
                 <h1 class="text-white display-1">People stories</h1>
                 <h2 class="display-4 font-weight-normal text-white">The time is right now!</h2>
                 <div class="btn-wrapper mt-4">
-                  <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-warning btn-icon mt-3 mb-sm-0">
+
+
+                  <form action="{{route('rendezvous.create')}}" role="form" method="get">
+                    <!-- @method('PUT') -->
+                    @csrf
+                    <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
+                    <input type="hidden" name="client_id" value="{{auth()->user()->id}}">
+                    <!-- <label for="date" class="col-1 col-form-label text-white" > Date </label>
+                    <div class="form-group{{ $errors->has('date') ? ' has-danger' : '' }}">
+                      <div class="center input-group date col-5" data-provide="datepicker">
+                        <input name="text" type="text" class="form-control" required >
+                        <div class="input-group-addon">
+                          <span  class=" input-group-text bg-light d-block">
+                            <i class="fa fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    @if ($errors->has('date'))
+                        <span class="invalid-feedback" style="display: block;" role="alert">
+                          <strong>{{ $errors->first('date') }}</strong>
+                        </span>
+                    @endif -->
+                    <div class="form-group{{ $errors->has('date') ? ' has-danger' : '' }}">
+                      <div class="form-group center col-8">
+                        <label for="date" class=" col-form-label text-white">Date</label>
+                        <input type="date" name="date" value="{{old('date')}}" class="form-control" required >
+                      </div>
+                    </div>
+                    @if ($errors->has('date'))
+                        <span class="invalid-feedback" style="display: block;" role="alert">
+                          <strong>{{ $errors->first('date') }}</strong>
+                        </span>
+                    @endif
+
+                      <!-- 
+                    <script>
+                        $('#datepicker').datepicker({
+                            uiLibrary: 'bootstrap4'
+                        });
+                    </script>
+                   
+                    <script type="text/javascript">
+                      $(function () {
+                          $('#datetimepicker11').datetimepicker({
+                              daysOfWeekDisabled: [0, 6]
+                          });
+                      });
+                    </script> -->
+                    <div class="form-group{{ $errors->has('time') ? ' has-danger' : '' }}">
+                      <div class="center col-8">
+                        <label for="" class="text-white">Time</label>
+                        <select  name="time"  class="custom-select custom-select-lg mb-3" required>
+                          <option value="08:00:00">08:00</option>
+                          <option value="09:00:00">09:00</option>
+                          <option value="10:00:00">10:00</option>
+                          <option value="11:00:00">11:00</option>
+                          <option value="12:00:00">12:00</option>
+                          <option value="13:00:00">13:00</option>
+                          <option value="14:00:00">14:00</option>
+                        </select>
+                      </div>
+                    </div>
+                    @if ($errors->has('time'))
+                        <span class="invalid-feedback" style="display: block;" role="alert">
+                          <strong>{{ $errors->first('time') }}</strong>
+                        </span>
+                    @endif
+
+
+                  <!-- <a class="btn btn-warning btn-icon mt-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                    <span class="btn-inner--text">Play more</span>
-                  </a>
+                    <span class="btn-inner--text">Rendez-vous</span>
+                  </a> -->
+                  
+                  <button type="submit" class="btn btn-success">Rendez-vous</button>
+
+                  </form>
+
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+      
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>

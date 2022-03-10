@@ -15,13 +15,14 @@ class CreateRendezVousesTable extends Migration
     {
         Schema::create('rendez_vouses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('etablissement_id')->unsigned();
             $table->bigInteger('client_id')->unsigned();
             $table->date('date');
+            $table->time('time');
+            $table->boolean('active')->default(1);
             $table->timestamps();
 
-
-            $table->foreign('user_id')->references("id")->on("users")->onDelete("cascade");
+            $table->foreign('etablissement_id')->references("id")->on("etablissements")->onDelete("cascade");
         });
     }
 
