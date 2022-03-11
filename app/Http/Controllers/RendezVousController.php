@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Client;
 use App\Models\Rendez_vous;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreRendez_vousRequest;
 use App\Http\Requests\UpdateRendez_vousRequest;
-use GuzzleHttp\Psr7\Request;
 
 class RendezVousController extends Controller
 {
@@ -16,7 +20,14 @@ class RendezVousController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->role =='user'){
+            $id=Auth::user()->id;
+            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+            $users=User::all();
+            $clients= Client::all();
+            $rendez_vous= Rendez_vous::all();
+            return view('client.rendez_vous_management',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
+        }
     }
 
     /**
@@ -106,5 +117,13 @@ class RendezVousController extends Controller
     public function destroy(Rendez_vous $rendez_vous)
     {
         //
+    }
+
+    public function annuler($id)
+    {
+        $rendez_vous=Rendez_vous::find($id);
+        $rendez_vous->active=0;
+        $rendez_vous->update();
+        return redirect()->back()->withStatus(__('Profile successfully updated.'));
     }
 }

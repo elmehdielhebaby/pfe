@@ -1,0 +1,18 @@
+.k-widget.form-control {
+  border: none;
+  box-shadow: none;
+  color: #c2c2c2;
+}
+.k-widget.form-control .k-input {
+  box-shadow: none;
+  border-width: 0px;
+}
+.k-widget.form-control .k-picker-wrap,
+.k-widget.form-control .k-picker-wrap.k-state-hover {
+  border: 1px solid #e2e2e4;
+  background-color: transparent;
+}
+.k-widget.form-control .k-picker-wrap.k-state-focused {
+  border: 1px solid #517397;
+  box-shadow: none;
+}

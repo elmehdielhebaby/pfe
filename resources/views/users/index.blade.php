@@ -427,11 +427,9 @@
 
 
                                                             <!-- <form action="{{ route('profile.edit') }}" method="post"> -->
-                                                            <a class="dropdown-item"  href="{{ route('profile.edit_user_by_sup_admin',['admin' => $admin]) }}" >Modifier</a>    
+                                                            <!-- <a class="dropdown-item"  href="{{ route('profile.edit_user_by_sup_admin',['admin' => $admin]) }}" >Modifier</a>     -->
                                                             <!-- , ['id' => $admin->name] -->
                                                             <!-- </form> -->
-
-
                                                             <a class="dropdown-item" href="">Supprimer</a>
                                                             </div>
                                                     </div>

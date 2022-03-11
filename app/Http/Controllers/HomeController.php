@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Etablissement;
+use App\Models\Rendez_vous;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,8 @@ class HomeController extends Controller
             $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
             $users=User::all();
             $clients= Client::all();
-            return view('dashboard',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users]);
+            $rendez_vous= Rendez_vous::all();
+            return view('dashboard',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
         }
     }
 }

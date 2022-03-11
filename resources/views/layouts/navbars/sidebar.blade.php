@@ -101,6 +101,11 @@
                                     {{ __('Client Management') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('rendez-vous.index') }}">
+                                    {{ __('Les rendez-vous') }}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
