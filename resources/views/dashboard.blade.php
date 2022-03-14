@@ -278,7 +278,39 @@
             </div>
         </div> -->
 
-<div class="container-fluid mt--7">
+
+
+
+        <div class="col-md-2">
+          <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#modal-default">Default</button>
+          <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title" id="modal-title-default">Type your modal title</h6>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+<div class="container-fluid mt-3">
     <div class="row">
         <div class="col">
             <div class="card shadow">
@@ -321,7 +353,7 @@
                                                     <td>{{$client->adresse}}</td>
                                                     <td>{{$user->created_at}}</td>
                                                     <td class="text-right">
-                                                        <div class="dropdown">
+                                                        <!-- <div class="dropdown">
                                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 <i class="fas fa-ellipsis-v"></i>
                                                             </a>
@@ -330,7 +362,7 @@
                                                                 <a class="dropdown-item" href="#">Another action</a>
                                                                 <a class="dropdown-item" href="#">Something else here</a>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </td>
                                                 </tr>
                                             @endif
@@ -399,7 +431,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Date</th>
-                                <th scope="col">Service duration </th>
+                                <th scope="col">Service duration</th>
                                 <!-- <th scope="col">Service name</th> -->
                                 <th scope="col">Client</th>
                                 <th scope="col"></th>  

@@ -37,7 +37,7 @@ class RendezVousController extends Controller
      */
     public function create(array $data)
     {
-        echo 'loool';
+      
 
         // Rendez_vous::create([
         //     // 'etablissement_id' => $data['etablissement_id'],
@@ -62,7 +62,6 @@ class RendezVousController extends Controller
      */
     public function store()
     {
-        
         Rendez_vous::create([
             'etablissement_id' => Request('etablissement_id'),
             'client_id' => Request('client_id'),

@@ -28,9 +28,11 @@ class ReservationController extends Controller
     public function index(string $url)
     {   
         $etablissement = DB::table('etablissements')->where('url','like','%'.$url.'%')->first();
-        $user = DB::table('users')->where('id','like','%'.$etablissement->user_id.'%')->first();
-
-        return view('reservation.index',['etablissement'=> $etablissement],['user'=> $user]);
-
+        if($etablissement->active==1){
+            $user = DB::table('users')->where('id','like','%'.$etablissement->user_id.'%')->first();
+            return view('reservation.index',['etablissement'=> $etablissement],['user'=> $user]);
+        }
+        else
+            return view('welcome');
     }
 }

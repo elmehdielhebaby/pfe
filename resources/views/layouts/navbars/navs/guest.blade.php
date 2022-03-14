@@ -30,11 +30,11 @@
                         <span class="nav-link-inner--text">{{ __('Accueil') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('home') }}">
                         <span class="nav-link-inner--text">{{ __('Dashboard') }}</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('register') }}">
                         <span class="nav-link-inner--text">{{ __('Register') }}</span>
@@ -45,11 +45,11 @@
                         <span class="nav-link-inner--text">{{ __('Login') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('profile.edit') }}">
                         <span class="nav-link-inner--text">{{ __('Profile') }}</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="#About">
                         <span class="nav-link-inner--text">{{ __('About') }}</span>

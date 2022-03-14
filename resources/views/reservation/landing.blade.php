@@ -100,7 +100,7 @@
           </li>
         </ul>
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link nav-link-icon" href="https://www.facebook.com/CreativeTim/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
               <i class="fa fa-facebook-square"></i>
               <span class="nav-link-inner--text d-lg-none">Facebook</span>
@@ -123,9 +123,12 @@
               <i class="fa fa-github"></i>
               <span class="nav-link-inner--text d-lg-none">Github</span>
             </a>
+          </li> -->
+          <li class="nav-item">
+
+            <a type="button" href='#mes_rendez_vous' class="btn btn-sm btn-default float-right text-white">{{ __('Mes Rendez-vous') }}</a>
           </li>
           <li class="nav-item">
-            
             <form method="get" role="form" action="{{ route('client.profile') }}">
               <button type="submit" class="btn btn-sm btn-default float-right ">{{ __('Profile') }}</button>
               <input type="hidden" name="url" value="{{$etablissement->url}}">
@@ -240,39 +243,257 @@
                   </a> -->
                   
                   <button type="submit" class="btn btn-success">Rendez-vous</button>
-
                   </form>
-
-                  
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-      
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
         </svg>
+      </div>
+    </div>
+    <div class="section section-components" id='mes_rendez_vous'>
+      <div class="container">
+        <h3 class="h4 text-success font-weight-bold mb-4">Mes Rendez-vous</h4>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <!-- Tabs with icons -->
+            <div class="nav-wrapper">
+              <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Messages</a>
+                </li>
+              </ul>
+            </div>
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                          <tr>
+                            <th class="text-center" scope="col">Date</th>
+                            <th class="text-center" scope="col">Time </th>
+                            <!-- <th scope="col">Service name</th> -->
+                            <th class="text-center" scope="col">Created at</th>
+                            <th scope="col"></th>  
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($rendez_vouss as $rendez_vous)
+                            @if($rendez_vous->client_id==auth()->user()->id and $rendez_vous->etablissement_id==$etablissement->id and $rendez_vous->active==1)
+                              <tr >
+                                <th class="text-center">{{$rendez_vous->date}}</th>
+                                <td class="text-center" scope="row"> {{$rendez_vous->time}}</td>
+                                <td class="text-center">{{$rendez_vous->created_at}}</td>
+                                <td class="text-right">
+                                  <div class="dropdown ">
+                                    <button type="button" class="btn btn-primary " >Dowload</button>
+                                    <button type="button" class="btn  btn-danger " data-toggle="modal" data-target="#annuler">Annuler rendez-vous</button>
+                                    <div class="modal fade" id="annuler" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                      <div class="modal fade form-container show" tabindex="-1" role="dialog" style="z-index: 1051; display: block; padding-right: 16px;">
+                                        <div class="modal-dialog booking-info" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Confirmation annulation</h5>
+                                              <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="form-container">
+                                                <div class="booking-info-container">
+                                                  <div class="tab-content">
+                                                    <div id="booking-info" class="tab-pane active">
+                                                      <div class="top-block row">
+                                                        <div class="col-md-6 col-sm-8">
+                                                          <div class="date-time">
+                                                            <div class="date-interval">
+                                                              <i class="fa fa-calendar-alt"></i>
+                                                              <div class="date-from">Date     :{{$rendez_vous->date}}</div>
+                                                            </div>
+                                                            <div class="time-interval">
+                                                              <div class="time-from">Time    : {{$rendez_vous->time}}</div>
+                                                            </div>
+                                                          </div><!-- /.date-time -->
+                                                          <div class="booking-history-block ">
+                                                            <div class="history with-icon">
+                                                              <span class="one-row">
+                                                                <i class="fa ico color-info fa-file-plus"></i>
+                                                              </span>
+                                                              <span>Created at   :   {{$rendez_vous->date}}</span>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="main-block form-horizontal">
+                                                        <div class="comment" id="comment_list">
+                                                          <div class="status-in-calendar"></div>
+                                                        </div>
+                                                      </div><!-- /#booking-info -->
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
+                                                      <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
+                                                      <div class="loader" style="display: none;"></div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>  
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </td>
+                              </tr>
+                            @endif
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="card-footer py-4">
+                      <nav class="d-flex justify-content-end" aria-label="...">
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                    <p class="description">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                    <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+    
+
+          <div class=" row row-grid justify-content-between align-items-center mt-lg p-9">
+            <div class="col-lg-5">
+              <h3 class="h4 text-success font-weight-bold mb-4">Progress bars</h3>
+              <div class="progress-wrapper">
+                <div class="progress-info">
+                  <div class="progress-label">
+                    <span>Task completed</span>
+                  </div>
+                  <div class="progress-percentage">
+                    <span>40%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-default" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                </div>
+              </div>
+              <div class="progress-wrapper">
+                <div class="progress-info">
+                  <div class="progress-label">
+                    <span>Task completed</span>
+                  </div>
+                  <div class="progress-percentage">
+                    <span>60%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <h3 class="h4 text-success font-weight-bold mb-5">Pagination</h3>
+              <nav aria-label="Page navigation example" class="mb-4">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">1</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="javascript:;">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">4</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">5</a>
+                  </li>
+                </ul>
+              </nav>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;"><i class="fa fa-angle-left"></i></a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">1</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="javascript:;">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">4</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">5</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;"><i class="fa fa-angle-right"></i></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="row row-grid justify-content-between">
+            <div class="col-lg-5">
+              <h3 class="h4 text-success font-weight-bold mb-5">Navigation Pills</h3>
+              <ul class="nav nav-pills nav-pills-circle mb-3" id="tabs_2" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link rounded-circle active" id="home-tab" data-toggle="tab" href="#tabs_2_1" role="tab" aria-controls="home" aria-selected="true">
+                    <span class="nav-link-icon d-block"><i class="ni ni-atom"></i></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
+                    <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tabs_2_3" role="tab" aria-controls="contact" aria-selected="false">
+                    <span class="nav-link-icon d-block"><i class="ni ni-cloud-download-95"></i></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-5">
+              <h3 class="h4 text-success font-weight-bold mb-5">Labels</h3>
+        </h3>
+        <span class="badge badge-pill badge-default text-uppercase">Default</span>
+        <span class="badge badge-pill badge-primary text-uppercase">Primary</span>
+        <span class="badge badge-pill badge-success text-uppercase">Success</span>
+        <span class="badge badge-pill badge-danger text-uppercase">Danger</span>
+        <span class="badge badge-pill badge-warning text-uppercase">Warning</span>
+        <span class="badge badge-pill badge-info text-uppercase">Info</span>
       </div>
     </div>
     <div class="section features-6">

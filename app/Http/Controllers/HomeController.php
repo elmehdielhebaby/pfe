@@ -39,11 +39,13 @@ class HomeController extends Controller
         if(Auth::user()->role =='client'){
             $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();  
             $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
+            $rendez_vous= Rendez_vous::all();
             if($client!=null)
-                return view('reservation.landing',['client'=> $client,'etablissement'=> $etablissement]);
+                return view('reservation.landing',['client'=> $client,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous]);
             else
                 return view('welcome');
-        }
+            }
+            
         if(Auth::user()->role =='user'){
             $id=Auth::user()->id;
             $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
