@@ -40,24 +40,6 @@
     <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/96/original/opt_ad_thumbnail.jpg" />
     <meta property="og:description" content="Start your development with a Dashboard for Bootstrap 4." />
     <meta property="og:site_name" content="Creative Tim" />
-    <!-- Google Tag Manager -->
-    <!-- <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
-    </script> -->
-    <!-- End Google Tag Manager -->
 </head>
 <body class="clickup-chrome-ext_installed">
 
@@ -71,7 +53,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0" href="{{ route('home') }}">
+    <a class="navbar-brand pt-0" href="{{ route('homme') }}">
         <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
@@ -122,7 +104,7 @@
         <div class="navbar-collapse-header d-md-none">
             <div class="row">
                 <div class="col-6 collapse-brand">
-                    <a  href="{{ route('home') }}">
+                    <a  href="{{ route('homme') }}">
                         <img src="{{ asset('argon') }}/img/brand/blue.png">
                     </a>
                 </div>
@@ -148,7 +130,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">
+                <a class="nav-link" href="{{ route('homme') }}">
                     <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard Sup Admin') }}
                 </a>
             </li>
@@ -224,7 +206,7 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
 <div class="container-fluid">
     <!-- Brand -->
-    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">dashboard Sup Admin</a>
+    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('homme') }}">dashboard Sup Admin</a>
     <!-- Form -->
     <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
         <div class="form-group mb-0">

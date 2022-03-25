@@ -23,6 +23,9 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="assets/css/demo.css" rel="stylesheet" />
+
+
+	
 </head>
 
 <body>
@@ -252,14 +255,14 @@
 	        </div><!-- end row -->
 	    </div> <!--  big container -->
 
-	    <div class="footer">
-	        <div class="container text-center">
-			<!--Made with <i class="fa fa-heart heart"></i> by <a href="#">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>-->
-	              <a href="/"><b>RDVFBS</b></a><!--<i class="fa fa-heart heart"></i>  <a href="#">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>-->
-	        </div>
-	    </div>
 	</div>
+	
+	<footer class="footer">
+		
+		@include('layouts.footers.nav')
+	</footer>
 </body>
+
 	<!--   Core JS Files   -->
     <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>

@@ -1,284 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.cards')
-    <!-- <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card bg-gradient-default shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                                <h2 class="text-white mb-0">Sales value</h2>
-                            </div>
-                            <div class="col">
-                                <ul class="nav nav-pills justify-content-end">
-                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                            <span class="d-none d-md-block">Month</span>
-                                            <span class="d-md-none">M</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                            <span class="d-none d-md-block">Week</span>
-                                            <span class="d-md-none">W</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body"> -->
-                        <!-- Chart -->
-                        <!-- <div class="chart"> -->
-                            <!-- Chart wrapper -->
-                            <!-- <canvas id="chart-sales" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body"> -->
-                        <!-- Chart -->
-                        <!-- <div class="chart">
-                            <canvas id="chart-orders" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive"> -->
-                        <!-- Projects table -->
-                        <!-- <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Page name</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col">Unique users</th>
-                                    <th scope="col">Bounce rate</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/
-                                    </th>
-                                    <td>
-                                        4,569
-                                    </td>
-                                    <td>
-                                        340
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/index.html
-                                    </th>
-                                    <td>
-                                        3,985
-                                    </td>
-                                    <td>
-                                        319
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/charts.html
-                                    </th>
-                                    <td>
-                                        3,513
-                                    </td>
-                                    <td>
-                                        294
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/tables.html
-                                    </th>
-                                    <td>
-                                        2,050
-                                    </td>
-                                    <td>
-                                        147
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/profile.html
-                                    </th>
-                                    <td>
-                                        1,795
-                                    </td>
-                                    <td>
-                                        190
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive"> -->
-                        <!-- Projects table -->
-                        <!-- <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Referral</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        Facebook
-                                    </th>
-                                    <td>
-                                        1,480
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">60%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Facebook
-                                    </th>
-                                    <td>
-                                        5,480
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">70%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Google
-                                    </th>
-                                    <td>
-                                        4,807
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">80%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Instagram
-                                    </th>
-                                    <td>
-                                        3,678
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">75%</span>
-                                            <div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        twitter
-                                    </th>
-                                    <td>
-                                        2,645
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">30%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+@include('layouts.headers.cards')
 
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--7" >
     <div class="row">
         <div class="col">
             <div class="card shadow">
@@ -288,7 +13,7 @@
                             <h3 class="mb-0">{{$etablissement->name}}</h3>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="" class="btn btn-sm btn-primary">Add user</a>
+                            <!-- <a href="" class="btn btn-sm btn-primary">Add user</a> -->
                         </div>
                     </div>
                 </div>
@@ -296,118 +21,189 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Phone </th>
-                                <th scope="col">age</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Cin</th>
-                                <th scope="col">Adresse</th>  
-                                <th scope="col">Date </th>  
-                                <th scope="col"></th>  
+                                <th class="text-center" scope="col">Name</th>
+                                <th class="text-center" scope="col">Phone </th>
+                                <!-- <th scope="col">age</th> -->
+                                <th class="text-center" scope="col">Email</th>
+                                <th class="text-center" scope="col">Cin</th>
+                                <!-- <th scope="col">Adresse</th>   -->
+                                <!-- <th scope="col">Date </th>   -->
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @if($users!=null and $clients!=null)
-                                @foreach($clients as $client)
-                                    @if(auth()->user()->id==$client->user_id)
-                                        @foreach($users as $user)
-                                            @if($user->id==$client->client_id)
-                                                <tr> 
-                                                    <th>{{$user->name}}</th>
-                                                    <td scope="row"> {{$client->phone}}</td>
-                                                    <td>{{$client->age}}</td>
-                                                    <td><a href="#">{{$user->email}}</a></td>
-                                                    <td>{{$client->cin}}</td>
-                                                    <td>{{$client->adresse}}</td>
-                                                    <td>{{$user->created_at}}</td>
-                                                    <td class="text-right">
-                                                        <div class="dropdown">
-                                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-ellipsis-v"></i>
-                                                        </a>
-                                                           
-                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach($clients as $client)
+                            @if(auth()->user()->id==$client->user_id)
+                            @foreach($users as $user)
+                            @if($user->id==$client->client_id)
+                            <tr>
+                                <th class="text-center">{{$user->name}}</th>
+                                <td class="text-center" scope="row"> {{$client->phone}}</td>
+                                <!-- <td>{{$client->age}}</td> -->
+                                <td class="text-center"><a href="mailto:$user->email?subject = Feedback&body = Message">{{$user->email}}</a></td>
+                                <td class="text-center">{{$client->cin}}</td>
+                                <td class="text-center text-right">
+                                    <div class="dropdown">
+
+                                        <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#m{{$client->client_id}}">Details</button>
+                                        <div class="">
+                                            <div class="modal fade" id="m{{$client->client_id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                                <div class="modal fade form-container show" tabindex="-1" role="dialog" style="z-index: 1051; display: block; padding-right: 16px;">
+                                                    <div class="modal-dialog booking-info" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Rendez-vous info</h4>
+                                                                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div id="view-client-info" class="tab-pane client-info">
+                                                                    <div class="client-info">
+                                                                        <div class="col-sm-12 center">
+                                                                            <div class="client-photo  hidden">
+                                                                                <i class="fa fa-user"></i>
+                                                                            </div>
+                                                                            <div class="booking-form-title  ">
+                                                                                Client Info
+                                                                            </div>
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-advance table-bordered data-list">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="title">
+                                                                                                <span class="with-icon"><i class="fa fa-user text-right"> </i> Name</span>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div class="data main"><span>{{$user->name}}</span></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td class="title">
+                                                                                                <span class="with-icon"><i class="fa fa-envelope"></i> Email</span>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div class="data main">
+                                                                                                    <span><a href="mailto:$user->email?subject = Feedback&body = Message">{{$user->email}}</a></span>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        <tr>
+                                                                                            <td class="title">
+                                                                                                <span class="with-icon"><i class="fa fa-phone"></i> Phone</span>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div class="data main"><span><a target="_blank" href="tel:+212665962908">{{$client->phone}}</a></span></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td class="title">
+                                                                                                <span class="with-icon"><i class="fa fa-user"></i> Age</span>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div class="data main"><span>{{$client->age}}</span></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td class="title">
+                                                                                                <span class="with-icon"><i class="fa fa-user"></i> Adresse</span>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div class="data main"><span>{{$client->adresse}}</span></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach                
-                                    @endif
-                                @endforeach
-                            @endif
-                        </tbody>
-                    </table>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+
+
+
+
+                                                    <div class="loader" style="display: none;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                 </div>
-                <div class="card-footer py-4">
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">
+            </div>
+            <div class="modal fade" id="mo{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default1" aria-hidden="true">
+                <!-- <div class="modal fade form-container show"  style="z-index: 1051; display: block; padding-right: 16px;"> -->
+                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="modal-title-default">Confirmation annulation</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-danger" href="">Confirm</a>
+                        </div>
+                    </div>
+                </div>
+                </td>
+                </tr>
+                @endif
+                @endforeach
+                @endif
+                @endforeach
+                @endif
+                </tbody>
+                </table>
+            </div>
+            <div class="card-footer py-4">
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">
                                 <i class="fas fa-angle-left"></i>
                                 <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                        <li class="page-item">
+                            <a class="page-link" href="#">
                                 <i class="fas fa-angle-right"></i>
                                 <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="card-footer py-4">
-                    <nav class="d-flex justify-content-end" aria-label="...">
-                        
-                    </nav>
-                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-footer py-4">
+                <nav class="d-flex justify-content-end" aria-label="...">
+
+                </nav>
             </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
 
 
 
-
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <!-- @include('layouts.footers.auth') -->
-    <!-- </div> -->
- @endsection
+@include('layouts.footers.auth')
+<!-- </div> -->
+@endsection
 
 @push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
 @endpush

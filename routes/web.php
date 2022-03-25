@@ -24,21 +24,37 @@ Route::get('/', function () {
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/homme', [App\Http\Controllers\HomeController::class, 'indexx'])->name('homme');
 
 
 
  
   
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
-Route::post('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
+Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
 Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
 Route::get('/client/profile', [App\Http\Controllers\Client\ProfileController::class, 'edit'])->name('client.profile');
 
 Route::get('/rendezvous/create', [App\Http\Controllers\RendezVousController::class, 'store'])->name('rendezvous.create');
-// Route::get('/rcreate', function(){
-// 	echo "mooooh";
-// 	return view('welcome');
-// })->name('rcreate');
+Route::get('/rendezvous/pdf', [App\Http\Controllers\RendezVousController::class, 'pdf'])->name('rendez_vous.pdf');
+
+Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendEmail'])->name('mail');
+
+
+Route::get('/reservation_login', function(){
+	return view('reservation.login');
+})->name('reservation_login');
+
+
+
+Route::get('/rendezvous/search', [App\Http\Controllers\RendezVousController::class, 'search'])->name('rendezvous.search');
+
+
+
+Route::get('/test', function(){
+	
+	return view('reservation.pdf');
+})->name('test');
 
 
 
@@ -72,6 +88,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
 Route::get('/rendez_vous.annuler/{id}', 'App\Http\Controllers\RendezVousController@annuler');
+Route::get('/rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@Confirmer');
 
 
 

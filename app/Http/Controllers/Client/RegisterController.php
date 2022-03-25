@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Http\Controllers\Controller;
-use App\Models\Client;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Models\Client;
+use App\Models\Rendez_vous;
 use GuzzleHttp\Psr7\Request;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -90,8 +92,18 @@ class RegisterController extends Controller
             'cin' => Request('cin'),
             'age' => Request('age'),
             'user_id' => $lastInsertedId,
-        ]); 
-        return redirect('home');
-    }
+        ]);
 
+
+        $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();  
+        $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
+        $rendez_vous= Rendez_vous::all();
+        $client_user_table= User::find($client->client_id);
+        if($client!=null)
+            return view('reservation.landing',['client'=> $client,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'client_user_table'=>$client_user_table]);
+        else
+            return view('welcome');
+        }
+        // return redirect('home');
+    
 }

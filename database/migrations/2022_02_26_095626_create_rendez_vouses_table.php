@@ -21,7 +21,6 @@ class CreateRendezVousesTable extends Migration
             $table->time('time');
             $table->boolean('active')->default(1);
             $table->timestamps();
-
             $table->foreign('etablissement_id')->references("id")->on("etablissements")->onDelete("cascade");
         });
     }

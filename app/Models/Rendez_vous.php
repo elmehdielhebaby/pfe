@@ -16,4 +16,6 @@ class Rendez_vous extends Model
         'time',
         'active',
     ];
+
+    // protected $date = ['date'];   
 }

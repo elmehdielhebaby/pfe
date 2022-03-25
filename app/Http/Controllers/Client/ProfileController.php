@@ -60,13 +60,11 @@ class ProfileController extends Controller
 
     // public function update_user_by_sup_admin(ProfileRequest_sup_admin $request,User $admin)
     // { 
-    //     // if (auth()->user()->id == 1) {
-    //     //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-    //     // }
-
-    //     // auth()->user()->update($request->all());
-
-    //     // return back()->withStatus(__('Profile successfully updated.'));
+    //      if (auth()->user()->id == 1) {
+    //          return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+    //      }
+    //      auth()->user()->update($request->all());
+    //      return back()->withStatus(__('Profile successfully updated.'));
     //     return view('welcome');
     // }
 

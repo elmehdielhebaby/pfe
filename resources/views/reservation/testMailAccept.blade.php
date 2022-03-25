@@ -16,7 +16,8 @@
 	</style>
 </head>
 <body>
-    
+    <h3>Hello {{$details['name_client']}}</h3>
+	<p>votre rendez vous a été accepté</p>
 <center>
 	<table>
 		<colgroup>
@@ -36,8 +37,8 @@
 		    <td><h5><i class="fa fa-comments-o"></i>time</h5><dl><dt></dt><dd>{{$details['time']}}</dd></td>
 		  </tr>
 		  <tr>
-		    <td><h5><i class="fa fa-map-marker"></i>Adresse</h5><dl><dt></dt><dd>{{$details['adress']}}</dd></td>
-		    <td></td>
+		    <td colspan="2"><h5><i class="fa fa-map-marker"></i>Adresse</h5><dl><dt></dt><dd>{{$details['adress']}}</dd></td>
+		    
 		  </tr>
 	</table>
 </center>
