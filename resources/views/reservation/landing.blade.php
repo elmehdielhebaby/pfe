@@ -48,20 +48,12 @@
             </div>
           </div>
         </div>
-
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
-
             <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Mes Rendez-vous') }}</a>
           </li>
           <li class="nav-item">
-            
               <a role="tab" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">Profile</a>
-          
-              
-
-              
-            
           </li>
           <li class="nav-item d-none d-lg-block">
             <form method="get" role="form" action="{{ route('client.logout') }}">
@@ -349,12 +341,6 @@
             </div>
           </div>
       </div>
-
-
-
-
-
-
     </div>
   </div>
   </div>

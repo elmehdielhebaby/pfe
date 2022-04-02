@@ -69,24 +69,25 @@ class RegisterController extends Controller
     {
         if($data['user']=='user')
         {
-        $user= User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-        $lastInsertedId= $user->id;
-        Etablissement::create([
-            'name' => $data['titre'],
-            'phone' => $data['phone'],
-            'user_id' => $lastInsertedId,
-            'categorie' => $data['categorie'],
-            'adresse' => $data['adresse'],
-            'service' => $data['service'],
-            'url' => $data['url'],
-            'description' => $data['description']
-        ]); 
-        return $user;
+            $user= User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+            $lastInsertedId= $user->id;
+            Etablissement::create([
+                'name' => $data['titre'],
+                'phone' => $data['phone'],
+                'user_id' => $lastInsertedId,
+                'categorie' => $data['categorie'],
+                'adresse' => $data['adresse'],
+                'service' => $data['service'],
+                'url' => $data['url'],
+                'description' => $data['description']
+            ]); 
+            return $user;
         }else{
+            // echo Request('etablissement_id');
             $user= User::create([
                 'name' => Request('name'),
                 'email' => Request('email'),
@@ -96,7 +97,7 @@ class RegisterController extends Controller
             $lastInsertedId= $user->id;
             Client::create([
                 'client_id' => $lastInsertedId,
-                'user_id' => Request('user_id'),
+                'user_id' => Request('etablissement_id'),
                 'phone' => Request('phone'),
                 'adresse' => Request('adresse'),
                 'cin' => Request('cin'),

@@ -63,7 +63,7 @@
                                 <td class="text-right">
                                     <div class="dropdown">
                                       
-                                        <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#m{{$rendez_vous->id}}">Details</button>
+                                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#m{{$rendez_vous->id}}">Details</button>
                                         <div class="">
                                             <div class="modal fade" id="m{{$rendez_vous->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                                                 <div class="modal fade form-container show" tabindex="-1" role="dialog" style="z-index: 1051; display: block; padding-right: 16px;">
@@ -188,13 +188,11 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Fermer</button>
                                                                     <!-- <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Annuler rendez-vous</a> -->
                                                                     <a class="btn btn-success" href="{{ url('rendez_vous.Confirmer/'.$rendez_vous->id) }}">Confirm</a>
 
-                                                                    <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#mo{{$user->id}}">Annuler rendez-vous</button>
-
-
+                                                                    <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#mo{{$rendez_vous->id}}">Annuler rendez-vous</button>
 
 
                                                                     <div class="loader" style="display: none;"></div>
@@ -204,12 +202,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="mo{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default1" aria-hidden="true">
+                                            <div class="modal fade" id="mo{{$rendez_vous->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default1" aria-hidden="true">
                                                 <!-- <div class="modal fade form-container show"  style="z-index: 1051; display: block; padding-right: 16px;"> -->
                                                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h6 class="modal-title" id="modal-title-default">Confirmation annulation</h6>
+                                                            <h4 class="modal-title" id="modal-title-default">Confirmation annulation</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">×</span>
                                                             </button>

@@ -1,56 +1,25 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- @extends('layouts.app', ['class' => 'bg-default']) -->
 
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name') }}</title>
-        <!-- Favicon -->
-        <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-        <!-- Extra details for Live View on GitHub Pages -->
-
-        <!-- Icons -->
-        <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-        <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-        <!-- Argon CSS -->
-        <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
-    </head>
-    <body class="{{ $class ?? '' }}">
-       
-        
-        <div class="main-content">
-        @include('layouts.navbars.navs.guest')
-            <link rel="stylesheet" href="style.css">
-            <section class="main">
-                <div>
-                    <h2><br></h2>
-                    <h3>Facilitez la prise de rendez-vous en ligne <br>De vos clients Pour optimiser votre temps <br>Et développer votre activité</h3>
-                    <a href="{{ route('register') }}" class="main-btn">Create your webSite</a>
+@section('content')
+    <!-- <div class="header bg-gradient-primary py-7 py-lg-8"> -->
+    <div class="header bg py-7 py-lg-8" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.webp');height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;">
+        <div class="container">
+            <div class="header-body text-center mt-7 mb-7">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-6">
+                        <!-- <h1 class="text-white">{{ __('Welcome to Argon Dashboard FREE Laravel Live Preview.') }}</h1> -->
+                        <h1 class="">Facilitez la prise de rendez-vous en ligne De vos clients Pour optimiser votre temps Et développer votre activité</h1>
+                        <br>
+                    <a href="{{ route('register') }}" class="main-btn ">Create your webSite</a>
+                    </div>
                 </div>
-            </section>
+            </div>
         </div>
-        
-            @include('layouts.About')
-        
-            @include('layouts.Contact')
-
-        
-            @include('layouts.footers.guest')
-        
-
-
-<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        
-        @stack('js')
-        
-        <!-- Argon JS -->
-        <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
-    </body>
-</html>
-
+        <div class="separator separator-bottom separator-skew zindex-100">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+    </div>
+    <div class="container mt--10 pb-5"></div>
+@endsection

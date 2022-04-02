@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Client;
 
 use App\Models\User;
+use App\Models\Etablissement;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Models\Client;
+
 // use App\Http\Requests\ProfileRequest_sup_admin;
 
 class ProfileController extends Controller
@@ -21,8 +24,9 @@ class ProfileController extends Controller
     public function edit() 
     {
         if(Auth::user()->role =='client'){
-            $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();  
+            $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first(); 
             $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
+            $etablissement =Etablissement::find($client->user_id);
             if($client!=null)
                 return view('reservation.profile',['client'=> $client,'etablissement'=> $etablissement]);
                 // return redirect('reservation/'.Request('url'));
@@ -50,6 +54,15 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     { 
+        $client=Client::find(Request('client_id'));
+        // echo Request('client_id');
+        $client->update($request->all());
+        auth()->user()->update($request->all());
+        return back()->withStatus(__('Profile successfully updated.'));
+
+
+
+
         // if (auth()->user()->id == 1) {
         //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
         // }

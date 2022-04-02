@@ -52,7 +52,6 @@
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">	
           <li class="nav-item d-none d-lg-block">	
             <a href="{{ route('client.login') }}" class="btn btn-link text-white " style="font-size:16px">Login</a>	
-
           </li>	
           <!-- <li class="nav-item d-none d-lg-block">	
             <a href="{{ route('client.register') }}" class="btn btn-white">Register</a>	
@@ -116,7 +115,7 @@
                               </div>
                               <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required>
                               <input class="" type="hidden" name="user" value="client" >
-                              <input class="" type="hidden" name="user_id" value="{{$user_id}}" >
+                              <input class="" type="hidden" name="etablissement_id" value="{{$etablissement_id}}" >
                           </div>
                           @if ($errors->has('email'))
                               <span class="invalid-feedback" style="display: block;" role="alert">

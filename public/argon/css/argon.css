@@ -7133,7 +7133,9 @@ button.close
 {
     display: flex;
 
-    padding: 1.25rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
 
     border-bottom: 0 solid #e9ecef;
     border-top-left-radius: .4375rem;
@@ -7159,7 +7161,9 @@ button.close
 {
     position: relative;
 
-    padding: 1.5rem; 
+    /* padding: 1.5rem;  */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 
     flex: 1 1 auto;
 }
@@ -7168,7 +7172,7 @@ button.close
 {
     display: flex;
 
-    padding: 1.5rem;
+    padding: 1rem;
 
     border-top: 0 solid #e9ecef; 
 
@@ -19003,7 +19007,7 @@ textarea[resize='horizontal']
 }
 .navbar-horizontal .navbar-brand img
 {
-    height: 30px;
+    height: 45px;
 }
 
 .navbar-horizontal .navbar-dark .navbar-brand

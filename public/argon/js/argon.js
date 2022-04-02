@@ -936,7 +936,7 @@ var OrdersChart = (function() {
 						ticks: {
 							callback: function(value) {
 								if (!(value % 10)) {
-									//return '$' + value + 'k'
+									// return '$' + value + 'k'
 									return value
 								}
 							}
@@ -962,10 +962,11 @@ var OrdersChart = (function() {
 				}
 			},
 			data: {
-				labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				labels: ['Retailers', 'Sports', 'Médical', 'Education', 'Officiel'],
 				datasets: [{
 					label: 'Sales',
-					data: [25, 20, 30, 22, 17, 29]
+					// data: [0, 1, 2, 3, 5]
+					data: [retailers, sports, medical, education, officiel]
 				}]
 			}
 		});
@@ -1015,7 +1016,7 @@ var SalesChart = (function() {
 						ticks: {
 							callback: function(value) {
 								if (!(value % 10)) {
-									return '$' + value + 'k';
+									return '' + value + '';
 								}
 							}
 						}
@@ -1032,17 +1033,19 @@ var SalesChart = (function() {
 								content += '<span class="popover-body-label mr-auto">' + label + '</span>';
 							}
 
-							content += '<span class="popover-body-value">$' + yLabel + 'k</span>';
+							content += '<span class="popover-body-value">' + yLabel + '</span>';
 							return content;
 						}
 					}
 				}
 			},
 			data: {
-				labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				// labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou','Sep','Oct','Nov','Déc'],
 				datasets: [{
 					label: 'Performance',
-					data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+					// data: [30, 5, 10, 1, 5, 8, 6, 15, 2, 9, 7, 4]
+					data: [jan, fev, mar, avr, mai, jun, jul, aou, sep,oct, nov, dec]
 				}]
 			}
 		});
@@ -1061,3 +1064,264 @@ var SalesChart = (function() {
 	}
 
 })();
+
+
+//
+// Doughnut chart
+//
+
+var BarStackedChart = (function() {
+
+	// Variables
+
+	var $chart = $('#chart-bar-stacked');
+
+
+	// Methods
+
+	function init($this) {
+
+		// Only for demo purposes - return a random number to generate datasets
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+
+		// Chart data
+
+		var data = {
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			datasets: [{
+				label: 'Dataset 1',
+				backgroundColor: Charts.colors.theme['danger'],
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				]
+			}, {
+				label: 'Dataset 2',
+				backgroundColor: Charts.colors.theme['primary'],
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				]
+			}, {
+				label: 'Dataset 3',
+				backgroundColor: Charts.colors.theme['success'],
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				]
+			}]
+
+		};
+
+
+		// Options
+
+		var options = {
+			tooltips: {
+				mode: 'index',
+				intersect: false
+			},
+			responsive: true,
+			scales: {
+				xAxes: [{
+					stacked: true,
+				}],
+				yAxes: [{
+					stacked: true
+				}]
+			}
+		}
+
+
+		// Init chart
+
+		var barStackedChart = new Chart($this, {
+			type: 'bar',
+			data: data,
+			options: options
+		});
+
+		// Save to jQuery object
+
+		$this.data('chart', barStackedChart);
+
+	};
+
+
+	// Events
+
+	if ($chart.length) {
+		init($chart);
+	}
+
+})();
+
+//
+// Charts
+//
+
+'use strict';
+
+//
+// Doughnut chart
+//
+
+var DoughnutChart = (function() {
+
+	// Variables
+
+	var $chart = $('#chart-doughnut');
+
+
+	// Methods
+
+	function init($this) {
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+		var doughnutChart = new Chart($this, {
+			type: 'doughnut',
+			data: {
+				labels: [
+					'Danger',
+					'Warning',
+					'Success',
+					'Primary',
+					'Info'
+				],
+				datasets: [{
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+					],
+					backgroundColor: [
+						Charts.colors.theme['danger'],
+						Charts.colors.theme['warning'],
+						Charts.colors.theme['success'],
+						Charts.colors.theme['primary'],
+						Charts.colors.theme['info'],
+					],
+					label: 'Dataset 1'
+				}],
+			},
+			options: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				}
+			}
+		});
+
+		// Save to jQuery object
+
+		$this.data('chart', doughnutChart);
+
+	};
+
+
+	// Events
+
+	if ($chart.length) {
+		init($chart);
+	}
+
+})();
+
+
+
+var PieChart = (function() {
+
+	// Variables
+
+	var $chart = $('#chart-pie');
+
+
+	// Methods
+
+	function init($this) {
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+		var pieChart = new Chart($this, {
+			type: 'pie',
+			data: {
+				labels: [
+					'Education',
+					'Retailers',
+					'Sports',
+					'Medical',
+					'Officiel'
+				],
+				datasets: [{
+					data: [
+						education,
+						retailers,
+						sports,
+						medical,
+						officiel
+					],
+					backgroundColor: [
+						Charts.colors.theme['danger'],
+						Charts.colors.theme['warning'],
+						Charts.colors.theme['success'],
+						Charts.colors.theme['primary'],
+						Charts.colors.theme['info'],
+					],
+					label: 'Dataset 1'
+				}],
+			},
+			options: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				}
+			}
+		});
+
+		// Save to jQuery object
+
+		$this.data('chart', pieChart);
+
+	};
+
+
+	// Events
+
+	if ($chart.length) {
+		init($chart);
+	}
+
+})();
+
+//

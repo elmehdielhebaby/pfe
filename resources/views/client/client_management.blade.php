@@ -10,7 +10,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">{{$etablissement->name}}</h3>
+                            <h3 class="mb-0">Clients</h3>
                         </div>
                         <div class="col-4 text-right">
                             <!-- <a href="" class="btn btn-sm btn-primary">Add user</a> -->
@@ -46,7 +46,7 @@
                                 <td class="text-center text-right">
                                     <div class="dropdown">
 
-                                        <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#m{{$client->client_id}}">Details</button>
+                                        <button type="button" class="btn btn-block btn-primary " data-toggle="modal" data-target="#m{{$client->client_id}}">Details</button>
                                         <div class="">
                                             <div class="modal fade" id="m{{$client->client_id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                                                 <div class="modal fade form-container show" tabindex="-1" role="dialog" style="z-index: 1051; display: block; padding-right: 16px;">
@@ -140,7 +140,7 @@
                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h6 class="modal-title" id="modal-title-default">Confirmation annulation</h6>
+                            <h3 class="modal-title" id="modal-title-default">Confirmation annulation</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>

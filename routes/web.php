@@ -23,27 +23,28 @@ Route::get('/', function () {
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/homme', [App\Http\Controllers\HomeController::class, 'indexx'])->name('homme');
-
-
 
  
   
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
+
+
+// Client
 Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
-Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
-Route::get('/client/profile', [App\Http\Controllers\Client\ProfileController::class, 'edit'])->name('client.profile');
+Route::group(['middleware' => 'auth'], function () {
+	Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
+	Route::get('/client/profile', [App\Http\Controllers\Client\ProfileController::class, 'edit'])->name('client.profile');
+	Route::put('/client/profile/update', [App\Http\Controllers\Client\ProfileController::class, 'update'])->name('client.profile.update');
+	Route::get('/rendezvous/create', [App\Http\Controllers\RendezVousController::class, 'store'])->name('rendezvous.create');
+	Route::get('/rendezvous/pdf', [App\Http\Controllers\RendezVousController::class, 'pdf'])->name('rendez_vous.pdf');
+});
 
-Route::get('/rendezvous/create', [App\Http\Controllers\RendezVousController::class, 'store'])->name('rendezvous.create');
-Route::get('/rendezvous/pdf', [App\Http\Controllers\RendezVousController::class, 'pdf'])->name('rendez_vous.pdf');
+// Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendEmail'])->name('mail');
 
-Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendEmail'])->name('mail');
-
-
-Route::get('/reservation_login', function(){
-	return view('reservation.login');
-})->name('reservation_login');
+// Route::get('/reservation_login', function(){
+// 	return view('reservation.login');
+// })->name('reservation_login');
+Route::get('/reservation_login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('reservation_login');
 
 
 
@@ -53,7 +54,7 @@ Route::get('/rendezvous/search', [App\Http\Controllers\RendezVousController::cla
 
 Route::get('/test', function(){
 	
-	return view('reservation.pdf');
+	return view('reservation.test2');
 })->name('test');
 
 
@@ -66,12 +67,8 @@ Route::get('/lan', function(){
 Route::get('/client/login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
 
 
-
-
 Route::put('/users/{id}', [App\Http\Controllers\ClientController::class, 'update']);
  
-
-
 
 
 
@@ -83,12 +80,33 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 
+// User
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
+	Route::get('/rendez_vous.annuler/{id}', 'App\Http\Controllers\RendezVousController@annuler');
+	Route::get('/rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@Confirmer');
+});
 
 
 
-Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
-Route::get('/rendez_vous.annuler/{id}', 'App\Http\Controllers\RendezVousController@annuler');
-Route::get('/rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@Confirmer');
+
+
+
+// Admin
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/admin/profile/edit',[App\Http\Controllers\ProfileController::class, 'admin_edit'])->name('admin.profile.edit');
+	Route::put('/admin/profile/update',[App\Http\Controllers\ProfileController::class, 'admin_update'])->name('admin.profile.update');
+	Route::get('/admin/user_management',[App\Http\Controllers\EtablissementController::class, 'index'])->name('admin.user_management');
+	
+});
+
+
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 
 
@@ -96,7 +114,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::get('profile/{admin}', ['as' => 'profile.edit_user_by_sup_admin', 'uses' => 'App\Http\Controllers\ProfileController@edit_user_by_sup_admin']);
-	// Route::put('profile/{admin}', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update_user_by_sup_admin']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
 	 Route::get('map', function () {return view('pages.maps');})->name('map');
@@ -106,4 +123,4 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::post('profile.edit','App\Http\Controllers\ProfileController@edit_user_by_sup_admin');
+// Route::post('profile.edit','App\Http\Controllers\ProfileController@edit_user_by_sup_admin');

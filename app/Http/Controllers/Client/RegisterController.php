@@ -37,7 +37,7 @@ class RegisterController extends Controller
     public function show(){
         $user_id=Request('user_id');
         // echo "$user_id";
-        return view('reservation.register',['user_id'=>$user_id]);
+        return view('reservation.register',['user_id'=>$user_id,'etablissement_id' => Request('etablissement_id')]);
     }
 
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -77,33 +77,35 @@ class RegisterController extends Controller
     protected function create()
     {
 
-        $client= User::create([
-            'name' => Request('name'),
-            'email' => Request('email'),
-            'password' => Hash::make(Request('password')),
-            'role' => 'client',
-        ]);
+        // $client= User::create([
+        //     'name' => Request('name'),
+        //     'email' => Request('email'),
+        //     'password' => Hash::make(Request('password')),
+        //     'role' => 'client',
+        // ]);
 
-        $lastInsertedId= $client->id;
+        // $lastInsertedId= $client->id;
 
-        Client::create([
-            'phone' => Request('phone'),
-            'adresse' => Request('adresse'),
-            'cin' => Request('cin'),
-            'age' => Request('age'),
-            'user_id' => $lastInsertedId,
-        ]);
+        // Client::create([
+        //     'phone' => Request('phone'),
+        //     'client_id' => '250',
+        //     'adresse' => Request('adresse'),
+        //     'cin' => Request('cin'),
+        //     'age' => Request('age'),
+        //     'user_id' => $lastInsertedId,
+        // ]);
 
 
-        $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();  
-        $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
-        $rendez_vous= Rendez_vous::all();
-        $client_user_table= User::find($client->client_id);
-        if($client!=null)
-            return view('reservation.landing',['client'=> $client,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'client_user_table'=>$client_user_table]);
-        else
-            return view('welcome');
-        }
+        // $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first();  
+        // $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
+        // $rendez_vous= Rendez_vous::all();
+        // $client_user_table= User::find($client->client_id);
+        // if($client!=null)
+        //     return view('reservation.landing',['client'=> $client,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'client_user_table'=>$client_user_table]);
+        // else
+        //     return view('welcome');
+        // }
         // return redirect('home');
+    }
     
 }

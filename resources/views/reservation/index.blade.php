@@ -60,7 +60,7 @@
             <form role="form" method="get" action="{{ route('client.register') }}">
               @csrf
               <button type="submit" class="btn btn-link text-primary" style="font-size:16px">Register</button>
-              <input type="hidden" name="user_id" value="{{$user->id}}">
+              <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
             </form>
           </li>
         </ul>

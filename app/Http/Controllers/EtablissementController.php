@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Client;
+use App\Models\Rendez_vous;
 use App\Models\Etablissement;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreEtablissementRequest;
 use App\Http\Requests\UpdateEtablissementRequest;
 
@@ -15,7 +21,16 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->role =='admin'){
+            $id=Auth::user()->id;
+            $etablissements=Etablissement::all();
+            $users=User::all();
+            // $clients= Client::all();
+            $rendez_vous= Rendez_vous::all();
+            return view('admin.user_management',['etablissements'=> $etablissements,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
+        }else{
+            redirect('home');
+        }
     }
 
     /**

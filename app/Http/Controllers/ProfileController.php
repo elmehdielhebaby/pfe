@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Models\Etablissement;
+use GuzzleHttp\Psr7\Request;
+
 // use App\Http\Requests\ProfileRequest_sup_admin;
 
 class ProfileController extends Controller
@@ -18,22 +22,13 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
-
+        $etablissement = DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();        
+        return view('profile.edit',['etablissement'=>$etablissement]);  
     }
 
-    public function edit_user_by_sup_admin(User $admins)
+    public function admin_edit()
     {
-        foreach($admins as $admin)
-        {
-            if($admin->role=='user'){
-                $user=array_push($admin);
-                }
-            if($admin->role=='client'){
-                $client=array_push($admin);           
-                }
-        }
-        return view('profile.edit_user_by_sup_admin',['user' => $user,'client'=>$client]);
+        return view('profile.admin_edit');  
     }
     /**
      * Update the profile
@@ -46,7 +41,21 @@ class ProfileController extends Controller
         if (auth()->user()->id == 1) {
             return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
         }
+        
+        $etablissement=Etablissement::find(Request('etablissement_id'));
+        $etablissement->update($request->all());
+        auth()->user()->update($request->all());
 
+
+        return back()->withStatus(__('Profile successfully updated.'));
+    }
+
+    public function admin_update(ProfileRequest $request) 
+    { 
+        if (auth()->user()->id == 1) {
+            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        }
+        
         auth()->user()->update($request->all());
         return back()->withStatus(__('Profile successfully updated.'));
     }
