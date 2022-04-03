@@ -102,6 +102,7 @@ class RegisterController extends Controller
                 'adresse' => Request('adresse'),
                 'cin' => Request('cin'),
                 'age' => Request('age'),
+                'genre' => Request('genre'),
             ]); 
             return $user;
         }   

@@ -33,19 +33,7 @@ class ProfileController extends Controller
         }
     }
 
-    public function edit_user_by_sup_admin(User $admins)
-    {
-        // foreach($admins as $admin)
-        // {
-        //     if($admin->role=='user'){
-        //         $user=array_push($admin);
-        //         }
-        //     if($admin->role=='client'){
-        //         $client=array_push($admin);           
-        //         }
-        // }
-        // return view('profile.edit_user_by_sup_admin',['user' => $user,'client'=>$client]);
-    }
+
     /**
      * Update the profile
      *
@@ -54,11 +42,12 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     { 
-        $client=Client::find(Request('client_id'));
+        $client=Client::find(Request('clien_id'));
         // echo Request('client_id');
         $client->update($request->all());
         auth()->user()->update($request->all());
-        return back()->withStatus(__('Profile successfully updated.'));
+        
+        return redirect()->back()->withStatus(__('Le Profile à été Modifié.'));
 
 
 

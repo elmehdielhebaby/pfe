@@ -16,5 +16,6 @@ class Client extends Model
         'adresse',
         'cin',
         'age',
+        'genre',
     ];
 }

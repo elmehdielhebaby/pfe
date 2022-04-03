@@ -18,9 +18,10 @@ class CreateClientsTable extends Migration
             $table->bigInteger('client_id');
             $table->bigInteger('user_id')->unsigned();
             $table->string('phone');
-            $table->bigInteger('age');
             $table->text('adresse')->nullable(true);
             $table->text('cin')->nullable(true);
+            $table->bigInteger('age');
+            $table->string('genre');
             $table->softDeletes();
             $table->timestamps();
 

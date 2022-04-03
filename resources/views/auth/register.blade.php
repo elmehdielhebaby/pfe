@@ -931,14 +931,10 @@
             </div>	
           </div>	
         </div>	
-        	
-        <ul class="navbar-nav align-items-lg-center ml-lg-auto">	
-          <li class="nav-item d-none d-lg-block">	
-            <a href="{{ route('login') }}" class="btn btn-link text-white " style="font-size:16px">Login</a>	
-          </li>	
-          <!-- <li class="nav-item d-none d-lg-block">	
-            <a href="{{ route('client.register') }}" class="btn btn-white">Register</a>	
-          </li>	 -->
+        <ul class="navbar-nav " style="text-align:rigth">	
+          <li class="nav-item d-none d-lg-block" style="text-align:rigth">	
+            <a href="{{ route('login') }}" class="btn text-white btn-primary btn-wd " style="font-size:16px;text-align:rigth">Login</a>	
+          </li>
         </ul>	
       </div>	
     </div>	

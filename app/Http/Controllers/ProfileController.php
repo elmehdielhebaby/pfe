@@ -52,25 +52,13 @@ class ProfileController extends Controller
 
     public function admin_update(ProfileRequest $request) 
     { 
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-        }
+        // if (auth()->user()->id == 1) {
+        //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        // }
         
         auth()->user()->update($request->all());
         return back()->withStatus(__('Profile successfully updated.'));
     }
-
-    // public function update_user_by_sup_admin(ProfileRequest_sup_admin $request,User $admin)
-    // { 
-    //     // if (auth()->user()->id == 1) {
-    //     //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-    //     // }
-
-    //     // auth()->user()->update($request->all());
-
-    //     // return back()->withStatus(__('Profile successfully updated.'));
-    //     return view('welcome');
-    // }
 
     /**
      * Change the password
@@ -80,9 +68,9 @@ class ProfileController extends Controller
      */
     public function password(PasswordRequest $request)
     {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
-        }
+        // if (auth()->user()->id == 1) {
+        //     return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
+        // }
 
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 

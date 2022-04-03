@@ -19,11 +19,11 @@
   <link href="{{ URL::asset('assets3/css/font-awesome.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{ URL::asset('assets3/css/argon-design-system.css?v=1.2.2') }}" rel="stylesheet" />
-  <style>       
-			ul{
-				list-style-type: none;
-			}
-		</style>
+  <style>
+    ul {
+      list-style-type: none;
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -109,64 +109,60 @@
             </div>
           </div>
         </div>
-
         <div class="container">
-
-          <div  class="col-12 col-md-8">
+          <div class="col-12 col-md-8">
             <h3 class="small-title text-white">Nous contacter</h3>
             <section id="contacts">
               <div class="info">
                 <ul>
                   <li>
-                    <div class="">
-                      <i class="fa fa-phone text-white" ></i>
-                      <a class="phone-number text-white" href="">{{$etablissement->phone}}</a>
+                    <div class=" h4">
+                      <i class="fa fa-phone text-white"> </i>
+                      <label for=""><a class="phone-number text-white h5" href=""> {{$etablissement->phone}}</a></label>
                     </div>
                   </li>
                   <li>
-                    <div class="links emails text-white " >
-                      <i class="ni ni-email-83" ></i>
-                      <a href="mailto:{{$user->email}}" class="text-white">   {{$user->email}}</a>
+                    <div class="h4">
+                      <i class="ni ni-email-83 text-white"></i>
+                      <label for=""><a href="mailto:{{$user->email}}" class="email text-white h5"> {{$user->email}}</a></label>
                     </div>
                   </li>
                   <li>
-                    <div class="links address_links text-white">
-                    <i class="ni ni-pin-3">&#xe0c8;</i>
-                      {{$etablissement->adresse}}
+                    <div class="links address_links text-white h4">
+                      <i class="ni ni-pin-3">&#xe0c8;</i>
+                      <label class="h5 text-white" for=""> {{$etablissement->adresse}}</label>
                     </div>
                   </li>
-
                 </ul>
               </div>
             </section>
           </div>
         </div>
-
       </div>
+    </div>
+    <footer class="footer ">
+      @include('layouts.footers.nav')
+    </footer>
 
-     </div>
 
-  <footer class="footer "  >
-    @include('layouts.footers.nav')
-  </footer>
-  
-  <!--   Core JS Files   -->
-  <script src="{{ URL::asset('assets3/js/core/jquery.min.js') }}" type="text/javascript"></script>
-  <script src="{{ URL::asset('assets3/js/core/popper.min.js') }}" type="text/javascript"></script>
-  <script src="{{ URL::asset('assets3/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
-  <script src="{{ URL::asset('assets3/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="{{ URL::asset('assets3/js/plugins/bootstrap-switch.js') }}"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="{{ URL::asset('assets3/js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
-  <script src="{{ URL::asset('assets3/js/plugins/moment.min.js') }}"></script>
-  <script src="{{ URL::asset('assets3/js/plugins/datetimepicker.js') }}" type="text/javascript"></script>
-  <script src="{{ URL::asset('assets3/js/plugins/bootstrap-datepicker.min.js') }}"></script>
-  <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <script src="{{ URL::asset('assets3/js/argon-design-system.min.js?v=1.2.2') }}" type="text/javascript"></script>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+
+    <!--   Core JS Files   -->
+    <script src="{{ URL::asset('assets3/js/core/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets3/js/core/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets3/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets3/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="{{ URL::asset('assets3/js/plugins/bootstrap-switch.js') }}"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="{{ URL::asset('assets3/js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets3/js/plugins/moment.min.js') }}"></script>
+    <script src="{{ URL::asset('assets3/js/plugins/datetimepicker.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets3/js/plugins/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script src="{{ URL::asset('assets3/js/argon-design-system.min.js?v=1.2.2') }}" type="text/javascript"></script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 </body>
 
 </html>

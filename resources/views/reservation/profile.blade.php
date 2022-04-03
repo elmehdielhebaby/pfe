@@ -92,7 +92,7 @@
                     <h6 class="heading-small text-muted mb-4">{{ __('Client information') }}</h6>
                     @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      {{ session('status') }}
+                    <span class="alert-inner--text"><strong>{{ session('status') }}</strong></span>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -159,7 +159,7 @@
                         <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                       </div>
                     </div>
-                    <input type="hidden" name="client_id" value="{{$client->id}}">
+                    <input type="hidden" name="clien_id" value="{{$client->id}}">
                   </form>
                   <hr class="my-4" />
                   <form method="post" action="{{ route('profile.password') }}" autocomplete="off">

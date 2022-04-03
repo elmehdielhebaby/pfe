@@ -7,6 +7,27 @@
     <div class="row">
         <div class="col">
             <div class="card shadow">
+
+                @if(session()->has('activete'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+                    <span class="alert-inner--text"><strong>{{ session()->get('activete') }} !</strong></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
+                @if(session()->has('deactivate'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                    <span class="alert-inner--text"><strong>{{ session()->get('deactivate') }} !</strong></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
@@ -56,13 +77,14 @@
                                                             </div>
                                                             <div class="modal-body ">
                                                                 <table>
+
                                                                     <body>
                                                                         <tr>
                                                                             <td>
                                                                                 <label for="" class="">Status</label>
                                                                             </td>
                                                                             <td>
-                                                                                <form action="{{ url('users/'.$etablissement->id) }}" method="post">
+                                                                                <form action="{{ url('user/'.$etablissement->id) }}" method="post">
                                                                                     @method('put')
                                                                                     @csrf
                                                                                     <label for=""></label>

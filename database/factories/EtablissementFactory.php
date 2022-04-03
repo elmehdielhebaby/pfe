@@ -17,12 +17,16 @@ class EtablissementFactory extends Factory
             'name'=> $this-> faker-> name,
             'phone'=> $this-> faker-> phoneNumber(),
             'categorie'=> $this-> faker->randomElement(['Retailers', 'Sports', 'Médical', 'Education', 'Officiel']),
-            'adresse'=> $this-> faker->paragraph(),
+            'adresse'=> $this-> faker->address(),
             'service'=> $this-> faker-> numberBetween(1,10),
             'user_id'=> $this-> faker-> numberBetween(1,4),
+            'user_id'=> $this-> faker-> numberBetween(1,4),
+            // 'url'=> $this-> faker->slug(1, false),
             'url'=> $this-> faker->bothify('????????'),
             // 'url'=> $this-> faker->str_random(8)->unique(),
-            'description'=> $this-> faker->sentence(13,true)
+            'description'=> $this-> faker->sentence(13,true),
+            'active'=> $this->faker->numberBetween(0,1)
+
         ];
     }
 }

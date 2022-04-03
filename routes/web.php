@@ -67,7 +67,7 @@ Route::get('/lan', function(){
 Route::get('/client/login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('client.login');
 
 
-Route::put('/users/{id}', [App\Http\Controllers\ClientController::class, 'update']);
+Route::put('/user/{id}', [App\Http\Controllers\ClientController::class, 'update']);
  
 
 
@@ -97,7 +97,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/admin/profile/edit',[App\Http\Controllers\ProfileController::class, 'admin_edit'])->name('admin.profile.edit');
 	Route::put('/admin/profile/update',[App\Http\Controllers\ProfileController::class, 'admin_update'])->name('admin.profile.update');
 	Route::get('/admin/user_management',[App\Http\Controllers\EtablissementController::class, 'index'])->name('admin.user_management');
-	
 });
 
 

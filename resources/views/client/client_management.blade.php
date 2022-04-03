@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.headers.cards')
 
-<div class="container-fluid mt--7" >
+<div class="container-fluid mt--7">
     <div class="row">
         <div class="col">
             <div class="card shadow">
@@ -45,7 +45,6 @@
                                 <td class="text-center">{{$client->cin}}</td>
                                 <td class="text-center text-right">
                                     <div class="dropdown">
-
                                         <button type="button" class="btn btn-block btn-primary " data-toggle="modal" data-target="#m{{$client->client_id}}">Details</button>
                                         <div class="">
                                             <div class="modal fade" id="m{{$client->client_id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
@@ -114,20 +113,17 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
                                                                     <div class="col-sm-12"></div>
                                                                 </div>
+                                                                <br>
+                                                                <br>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
-
-
-
-
                                                     <div class="loader" style="display: none;"></div>
                                                 </div>
                                             </div>

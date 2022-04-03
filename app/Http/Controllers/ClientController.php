@@ -76,12 +76,16 @@ class ClientController extends Controller
 
         $etablissement=Etablissement::find($id);
 
-        if($etablissement->active==0)
+        if($etablissement->active==0){
             $etablissement->active=1;
-        else
+            $etablissement->update();
+            return back()->with('activete',"L'Etablissement à été Activé");
+            }
+        else{
             $etablissement->active=0;
-        $etablissement->update();
-        return back()->withStatus(__('Profile successfully updated.'));
+            $etablissement->update();
+            return back()->with('deactivate','Le Etablissement à été Désactivé');
+        }
         
     }
 

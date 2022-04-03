@@ -34,10 +34,8 @@ class HomeController extends Controller
         // Session::flush();
         if(Auth::user()->role =='admin'){
             $users= User::all();
-            $nbr_client=0;
-            foreach($users as $user)
-                if($user->role=='client')
-                    $nbr_client+=1;
+            $clients= Client::all();
+            $nbr_client=count($clients);
             $etablissements= Etablissement::all();
             $nbr_etablissement=count($etablissements) ;
             $rendez_vous = Rendez_vous::all();

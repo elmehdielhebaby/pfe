@@ -25,7 +25,7 @@
                 </div>
                 <div class="info">
                     <h3>Email</h3>
-                    <p>business@fbsrdv.com</p>
+                    <p>contact@pferdv.com</p>
                 </div>
             </div>
         </div>

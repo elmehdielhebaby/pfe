@@ -64,7 +64,7 @@ class RendezVousController extends Controller
             'time' => Request('time'),
         ]); 
 
-        return redirect()->back()->with('success','Rendez_vous ajouter avec succès!!!');
+        return redirect()->back()->with('success','Rendez Vous ajouter avec succès ');
   
       }
 
@@ -122,71 +122,51 @@ class RendezVousController extends Controller
     {
         $rendez_vous=Rendez_vous::find($id);
         // if(Auth::user()->role =='user'){
-        $rendez_vous->active=0;
-        $rendez_vous->update();
+        if($rendez_vous->active==0){
+            return redirect()->back()->with('rdv_deja','Le Rendez Vous est déjà Annulé');
+        }else{
+            $rendez_vous->active=0;
+            $rendez_vous->update();
 
-        $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
-        $client=User::find($rendez_vous->client_id);
-        $details = [
-            'name_etablissement'=> $etablissement->name,
-            'name_client'=> $client->name,
-            'date' => $rendez_vous->date,
-            'time' => $rendez_vous->time,
-            'adress' => $etablissement->adresse,
-        ];
-        
-        Mail::to($client->email)->send(new MailCanceled($details));
-        
-        return redirect()->back()->withStatus(__('Profile successfully updated.'));
-        // }else{
-
-            // $lol=Carbon::now();
-            // $sub = date_diff($lol, $rendez_vous->date);
-            // echo $sub;
+            $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
+            $client=User::find($rendez_vous->client_id);
+            $details = [
+                'name_etablissement'=> $etablissement->name,
+                'name_client'=> $client->name,
+                'date' => $rendez_vous->date,
+                'time' => $rendez_vous->time,
+                'adress' => $etablissement->adresse,
+            ];
             
-            // $origin = new DateTime('2009-10-11');
-            // $target = new DateTime('2009-10-13');
-            // $interval = $origin->diff($target);
-            // echo $interval->format('%R%a days');
-
-            $sub =new Date($rendez_vous->date);
-
-            // $end = $start->copy()->subDay(1);
-
-            // echo $id."<br>";
-            // echo $lol."<br>";
-            // // echo $sub."<br>";
-            // echo $sub->diffInDays($lol);
-            // if()
-
-            // if(){
-
-            // }else{
-
-            // }
+            // Mail::to($client->email)->send(new MailCanceled($details));
             
-        // }
+            return redirect()->back()->with('rdv_annl','Le Rendez Vous à été Annulé');
+        }
     }
 
     public function Confirmer($id)
     {
         $rendez_vous=Rendez_vous::find($id);
-        $rendez_vous->active=2;
-        $rendez_vous->update();
+        if($rendez_vous->active==2){
+            return redirect()->back()->with('rdv_deja','Le Rendez Vous est déjà Confirmé');
+        }else{
+            $rendez_vous->active=2;
+            $rendez_vous->update();
 
-        $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
-        $client=User::find($rendez_vous->client_id);
-        $details = [
-            'name_etablissement'=> $etablissement->name,
-            'name_client'=> $client->name,
-            'date' => $rendez_vous->date,
-            'time' => $rendez_vous->time,
-            'adress' => $etablissement->adresse,
-        ];
-        
-        Mail::to($client->email)->send(new MailAccepted($details));
+            $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
+            $client=User::find($rendez_vous->client_id);
+            $details = [
+                'name_etablissement'=> $etablissement->name,
+                'name_client'=> $client->name,
+                'date' => $rendez_vous->date,
+                'time' => $rendez_vous->time,
+                'adress' => $etablissement->adresse,
+            ];
+            
+            // Mail::to($client->email)->send(new MailAccepted($details));
 
-        return redirect()->back()->withStatus(__('Profile successfully updated.'));
+            return redirect()->back()->with('rdv_confirmer','Le Rendez Vous à été Confirmé');
+        }
     }
     public function pdf(){
         
@@ -200,8 +180,11 @@ class RendezVousController extends Controller
             $pdf = PDF::loadView('reservation.pdf', ['user'=>$user,'rendez_vous'=>$rendez_vous,'etablissement'=>$etablissement,'client'=>$client]);
             return $pdf->download('Rendez_Vous.pdf');
         }else{
-            return redirect()->back()->withStatus(__('Rendez vous non accepted yeat'));
+            if($rendez_vous->active==1)
+                return redirect()->back()->with('rdv_pas_encore_accepte','Rendez Vous pas encore accepté');
+            if($rendez_vous->active==0)
+                return redirect()->back()->with('rdv_est_annule','Rendez Vous annulé');
+            
         }
     }
-
 }

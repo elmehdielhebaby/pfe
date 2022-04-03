@@ -53,7 +53,7 @@
             <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Mes Rendez-vous') }}</a>
           </li>
           <li class="nav-item">
-              <a role="tab" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">Profile</a>
+            <a role="tab" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">Profile</a>
           </li>
           <li class="nav-item d-none d-lg-block">
             <form method="get" role="form" action="{{ route('client.logout') }}">
@@ -67,8 +67,10 @@
   </nav>
   <!-- End Navbar -->
   <div class="wrapper">
+
     <div class="section section-hero section-shaped">
       <div class="shape shape-style-3 shape-default">
+
         <span class="span-150"></span>
         <span class="span-50"></span>
         <span class="span-50"></span>
@@ -85,11 +87,54 @@
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-8 text-center">
+
+
+                @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <span class="alert-inner--text"><strong>{{ session()->get('success') }} !</strong></span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                @if(session()->has('rdv_annl'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
+                  <span class="alert-inner--text"><strong>{{ session()->get('rdv_annl') }} !</strong></span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                <!-- 
+                <h3 class="h4 text-success font-weight-bold mb-4 mt-5">Alerts</h3>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+                  <span class="alert-inner--text"><strong>Success!</strong> This is a success alert—check it out!</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
+                  <span class="alert-inner--text"><strong>Info!</strong> This is an info alert—check it out!</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                  <span class="alert-inner--text"><strong>Danger!</strong> This is an error alert—check it out!</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div> -->
+
+
                 <h1 class="text-white display-1">{{$etablissement->name}}</h1>
                 <h2 class="display-4 font-weight-normal text-white">{{$etablissement->description}}</h2>
                 <div class="btn-wrapper mt-4">
-
-
                   <form action="{{route('rendezvous.create')}}" role="form" method="get">
                     <!-- @method('PUT') -->
                     @csrf
@@ -179,9 +224,26 @@
     </div>
     <div class="section section-components" id='mes_rendez_vous'>
       <div class="container">
-        <h3 class="h4 text-success font-weight-bold mb-4">
-          </h4>
-          <div class="row justify-content-center">
+          @if(session()->has('rdv_est_annule'))
+          <div class="alert alert-danger alert-dismissible fade show card-body " role="alert">
+            <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+            <span class="alert-inner--text"><strong>{{ session()->get('rdv_est_annule') }} !</strong></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
+          @if(session()->has('rdv_pas_encore_accepte'))
+          <div class="alert alert-info alert-dismissible fade show " role="alert">
+            <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
+            <span class="alert-inner--text"><strong>{{ session()->get('rdv_pas_encore_accepte') }} !</strong></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
+      <div class="row justify-content-center">
+
             <div class="col-lg-11">
               <!-- Tabs with icons -->
               <div class="nav-wrapper">
@@ -231,7 +293,7 @@
                               @endif
                               <td class="text-center">
                                 <!-- <div class="dropdown "> -->
-                                <form action="{{route('rendez_vous.pdf')}}" method="get" >
+                                <form action="{{route('rendez_vous.pdf')}}" method="get">
                                   <button type="submit" class="btn btn-primary "><i class="fa fa-file-pdf-o"></i> pdf</button>
                                   <button type="button" class="btn  btn-danger " data-toggle="modal" data-target="#l{{$rendez_vous->id}}">Annuler rendez-vous</button>
                                   <input type="hidden" name="id" value="{{$rendez_vous->id}}">
@@ -305,7 +367,7 @@
                     </div>
                     <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                       <div class="table-responsive">
-                        <div class="" >
+                        <div class="">
                           <form method="get" role="form" action="{{ route('client.profile') }}">
                             <button type="submit" class="btn btn-sm btn-link float-right ">{{ __('Edit') }}</button>
                             <input type="hidden" name="url" value="{{$etablissement->url}}">
@@ -333,7 +395,7 @@
 
 
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
