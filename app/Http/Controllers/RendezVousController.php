@@ -29,15 +29,39 @@ class RendezVousController extends Controller
     public function index()
     {
         if(Auth::user()->role =='user'){
-            $id=Auth::user()->id;
+            // $id=Auth::user()->id;
             $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
             $users=User::all();
             $clients= Client::all();
-            $rendez_vous= Rendez_vous::all();
+            $toDate=now();
+            $rendez_vous = DB::table('rendez_vouses')->where('date', '>', $toDate)->get();
             return view('client.rendez_vous_management',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
         }
     }
 
+    public function history()
+    {
+        if(Auth::user()->role =='user'){
+            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+            $users=User::all();
+            $clients= Client::all();
+            $toDate=now();
+            $rendez_vous = DB::table('rendez_vouses')->where('date', '<', $toDate)->get();
+            return view('client.rendez_vous_history',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
+        }
+    }
+
+    public function today_rendez_vous()
+    {
+        if(Auth::user()->role =='user'){
+            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+            $users=User::all();
+            $clients= Client::all();
+            $toDate=now();
+            $rendez_vous = DB::table('rendez_vouses')->where('date', '=', $toDate)->get();
+            return view('client.today_rendez_vous',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -121,27 +145,33 @@ class RendezVousController extends Controller
     public function annuler($id)
     {
         $rendez_vous=Rendez_vous::find($id);
-        // if(Auth::user()->role =='user'){
-        if($rendez_vous->active==0){
-            return redirect()->back()->with('rdv_deja','Le Rendez Vous est déjà Annulé');
-        }else{
-            $rendez_vous->active=0;
-            $rendez_vous->update();
+        $date_rdv=$rendez_vous->created_at;
+        $diff=now()->diffInHours($date_rdv);
+        if($diff<24 || Auth::user()->role=='user'){
+            // if(Auth::user()->role =='user'){
+            if($rendez_vous->active==0){
+                    return redirect()->back()->with('rdv_deja','Le Rendez Vous est déjà Annulé');
+                }else{
+                    $rendez_vous->active=0;
+                    $rendez_vous->update();
 
-            $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
-            $client=User::find($rendez_vous->client_id);
-            $details = [
-                'name_etablissement'=> $etablissement->name,
-                'name_client'=> $client->name,
-                'date' => $rendez_vous->date,
-                'time' => $rendez_vous->time,
-                'adress' => $etablissement->adresse,
-            ];
-            
-            // Mail::to($client->email)->send(new MailCanceled($details));
-            
-            return redirect()->back()->with('rdv_annl','Le Rendez Vous à été Annulé');
-        }
+                    $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
+                    $client=User::find($rendez_vous->client_id);
+                    $details = [
+                        'name_etablissement'=> $etablissement->name,
+                        'name_client'=> $client->name,
+                        'date' => $rendez_vous->date,
+                        'time' => $rendez_vous->time,
+                        'adress' => $etablissement->adresse,
+                    ];
+                    
+                    Mail::to($client->email)->send(new MailCanceled($details));
+                    
+                    return redirect()->back()->with('rdv_annl','Le Rendez Vous à été Annulé');
+                }
+        }else
+        return redirect()->back()->with('rdv_annl_imp'," Interdit l’annulation d’un rendez-vous après un jour");
+        
     }
 
     public function Confirmer($id)

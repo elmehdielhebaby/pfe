@@ -87,11 +87,18 @@
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-8 text-center">
-
-
                 @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                   <span class="alert-inner--text"><strong>{{ session()->get('success') }} !</strong></span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                @if(session()->has('rdv_annl_imp'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                  <span class="alert-inner--text"><strong>{{ session()->get('rdv_annl_imp') }} !</strong></span>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -106,32 +113,15 @@
                   </button>
                 </div>
                 @endif
-                <!-- 
-                <h3 class="h4 text-success font-weight-bold mb-4 mt-5">Alerts</h3>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
-                  <span class="alert-inner--text"><strong>Success!</strong> This is a success alert—check it out!</span>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                @if(session()->has('rdv_deja'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
                   <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-                  <span class="alert-inner--text"><strong>Info!</strong> This is an info alert—check it out!</span>
+                  <span class="alert-inner--text"><strong>{{ session()->get('rdv_deja') }} !</strong></span>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
-                  <span class="alert-inner--text"><strong>Danger!</strong> This is an error alert—check it out!</span>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div> -->
-
-
+                @endif
                 <h1 class="text-white display-1">{{$etablissement->name}}</h1>
                 <h2 class="display-4 font-weight-normal text-white">{{$etablissement->description}}</h2>
                 <div class="btn-wrapper mt-4">
@@ -159,7 +149,7 @@
                     <div class="form-group{{ $errors->has('date') ? ' has-danger' : '' }}">
                       <div class="form-group center col-8">
                         <label for="date" class=" col-form-label text-white">Date</label>
-                        <input type="date" name="date" value="{{old('date')}}" class="form-control" required>
+                        <input type="date" name="date" value="{{old('date')}}" min="<?php echo date("Y-m-d"); ?>" class="form-control" required>
                       </div>
                     </div>
                     @if ($errors->has('date'))
@@ -167,7 +157,6 @@
                       <strong>{{ $errors->first('date') }}</strong>
                     </span>
                     @endif
-
                     <!-- 
                     <script>
                         $('#datepicker').datepicker({
@@ -201,13 +190,10 @@
                       <strong>{{ $errors->first('time') }}</strong>
                     </span>
                     @endif
-
-
                     <!-- <a class="btn btn-warning btn-icon mt-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
                     <span class="btn-inner--text">Rendez-vous</span>
                   </a> -->
-
                     <button type="submit" class="btn btn-success">Rendez-vous</button>
                   </form>
                 </div>
@@ -224,125 +210,123 @@
     </div>
     <div class="section section-components" id='mes_rendez_vous'>
       <div class="container">
-          @if(session()->has('rdv_est_annule'))
-          <div class="alert alert-danger alert-dismissible fade show card-body " role="alert">
-            <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
-            <span class="alert-inner--text"><strong>{{ session()->get('rdv_est_annule') }} !</strong></span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          @endif
-          @if(session()->has('rdv_pas_encore_accepte'))
-          <div class="alert alert-info alert-dismissible fade show " role="alert">
-            <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-            <span class="alert-inner--text"><strong>{{ session()->get('rdv_pas_encore_accepte') }} !</strong></span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          @endif
-      <div class="row justify-content-center">
-
-            <div class="col-lg-11">
-              <!-- Tabs with icons -->
-              <div class="nav-wrapper">
-                <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-calendar-grid-58 mr-2"></i>Mes Rendez-vous</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="true"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
-                  </li>
-                  <!-- <li class="nav-item">
+        @if(session()->has('rdv_est_annule'))
+        <div class="alert alert-danger alert-dismissible fade show card-body " role="alert">
+          <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+          <span class="alert-inner--text"><strong>{{ session()->get('rdv_est_annule') }} !</strong></span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+        @if(session()->has('rdv_pas_encore_accepte'))
+        <div class="alert alert-info alert-dismissible fade show " role="alert">
+          <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
+          <span class="alert-inner--text"><strong>{{ session()->get('rdv_pas_encore_accepte') }} !</strong></span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+        <div class="row justify-content-center">
+          <div class="col-lg-11">
+            <!-- Tabs with icons -->
+            <div class="nav-wrapper">
+              <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-calendar-grid-58 mr-2"></i>Mes Rendez-vous</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="true"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
+                </li>
+                <!-- <li class="nav-item">
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Messages</a>
                   </li> -->
-                </ul>
-              </div>
-              <div class="card shadow">
-                <div class="card-body">
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                      <div class="table-responsive">
-                        <table class="table align-items-center table-flush ">
-                          <thead class="thead-light">
-                            <tr>
-                              <th class="text-center " scope="col">Date</th>
-                              <th class="text-center" scope="col">Time </th>
-                              <!-- <th scope="col">Service name</th> -->
-                              <th class="text-center" scope="col">Created at</th>
-                              <th class="text-center" scope="col">Status</th>
-                              <th scope="col"></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            @foreach($rendez_vouss as $rendez_vous)
-                            @if($rendez_vous->client_id==auth()->user()->id and $rendez_vous->etablissement_id==$etablissement->id)
-                            <tr>
-                              <th class="text-center " style="vertical-align: middle">{{$rendez_vous->date}}</th>
-                              <td class="text-center" style="vertical-align: middle"> {{$rendez_vous->time}}</td>
-                              <td class="text-center" style="vertical-align: middle">{{$rendez_vous->created_at}}</td>
-                              @if($rendez_vous->active==1)
-                              <td class="text-center text-warning " style="vertical-align: middle">Pending </td>
-                              @endif
-                              @if($rendez_vous->active==2)
-                              <td class="text-center text-success" style="vertical-align: middle">Confirmed </td>
-                              @endif
-                              @if($rendez_vous->active==0)
-                              <td class="text-center text-danger" style="vertical-align: middle">Canceled</td>
-                              @endif
-                              <td class="text-center">
-                                <!-- <div class="dropdown "> -->
-                                <form action="{{route('rendez_vous.pdf')}}" method="get">
-                                  <button type="submit" class="btn btn-primary "><i class="fa fa-file-pdf-o"></i> pdf</button>
-                                  <button type="button" class="btn  btn-danger " data-toggle="modal" data-target="#l{{$rendez_vous->id}}">Annuler rendez-vous</button>
-                                  <input type="hidden" name="id" value="{{$rendez_vous->id}}">
-                                </form>
-                                <div class="modal fade" id="l{{$rendez_vous->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-                                  <div class="modal fade form-container show" tabindex="-1" role="dialog" style="z-index: 1051; display: block; padding-right: 16px;">
-                                    <div class="modal-dialog booking-info" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title">Confirmation annulation</h5>
-                                          <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                          <div class="form-container">
-                                            <div class="booking-info-container">
-                                              <div class="tab-content">
-                                                <div id="booking-info" class="tab-pane active">
-                                                  <div class="top-block row">
-                                                    <div class="col-md-6 col-sm-8">
-                                                      <div class="date-time">
-                                                        <div class="date-interval">
-                                                          <i class="fa fa-calendar-alt"></i>
-                                                          <div class="date-from">Date :{{$rendez_vous->date}}</div>
-                                                        </div>
-                                                        <div class="time-interval">
-                                                          <div class="time-from">Time : {{$rendez_vous->time}}</div>
-                                                        </div>
-                                                      </div><!-- /.date-time -->
-                                                      <div class="booking-history-block ">
-                                                        <div class="history with-icon">
-                                                          <span class="one-row">
-                                                            <i class="fa ico color-info fa-file-plus"></i>
-                                                          </span>
-                                                          <span>Created at : {{$rendez_vous->date}}</span>
-                                                        </div>
+              </ul>
+            </div>
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-flush ">
+                        <thead class="thead-light">
+                          <tr>
+                            <th class="text-center " scope="col">Date</th>
+                            <th class="text-center" scope="col">Time </th>
+                            <!-- <th scope="col">Service name</th> -->
+                            <th class="text-center" scope="col">Created at</th>
+                            <th class="text-center" scope="col">Status</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($rendez_vouss as $rendez_vous)
+                          @if($rendez_vous->client_id==auth()->user()->id and $rendez_vous->etablissement_id==$etablissement->id)
+                          <tr>
+                            <th class="text-center " style="vertical-align: middle">{{$rendez_vous->date}}</th>
+                            <td class="text-center" style="vertical-align: middle"> {{$rendez_vous->time}}</td>
+                            <td class="text-center" style="vertical-align: middle">{{$rendez_vous->created_at}}</td>
+                            @if($rendez_vous->active==1)
+                            <td class="text-center text-warning " style="vertical-align: middle">Pending </td>
+                            @endif
+                            @if($rendez_vous->active==2)
+                            <td class="text-center text-success" style="vertical-align: middle">Confirmed </td>
+                            @endif
+                            @if($rendez_vous->active==0)
+                            <td class="text-center text-danger" style="vertical-align: middle">Canceled</td>
+                            @endif
+                            <td class="text-center">
+                              <!-- <div class="dropdown "> -->
+                              <form action="{{route('rendez_vous.pdf')}}" method="get">
+                                <button type="submit" class="btn btn-primary "><i class="fa fa-file-pdf-o"></i> pdf</button>
+                                <button type="button" class="btn  btn-danger " data-toggle="modal" data-target="#l{{$rendez_vous->id}}">Annuler rendez-vous</button>
+                                <input type="hidden" name="id" value="{{$rendez_vous->id}}">
+                              </form>
+                              <div class="modal fade" id="l{{$rendez_vous->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal fade form-container show" tabindex="-1" role="dialog" style="z-index: 1051; display: block; padding-right: 16px;">
+                                  <div class="modal-dialog booking-info" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">Confirmation annulation</h5>
+                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="form-container">
+                                          <div class="booking-info-container">
+                                            <div class="tab-content">
+                                              <div id="booking-info" class="tab-pane active">
+                                                <div class="top-block row">
+                                                  <div class="col-md-6 col-sm-8">
+                                                    <div class="date-time">
+                                                      <div class="date-interval">
+                                                        <i class="fa fa-calendar-alt"></i>
+                                                        <div class="date-from">Date :{{$rendez_vous->date}}</div>
+                                                      </div>
+                                                      <div class="time-interval">
+                                                        <div class="time-from">Time : {{$rendez_vous->time}}</div>
+                                                      </div>
+                                                    </div><!-- /.date-time -->
+                                                    <div class="booking-history-block ">
+                                                      <div class="history with-icon">
+                                                        <span class="one-row">
+                                                          <i class="fa ico color-info fa-file-plus"></i>
+                                                        </span>
+                                                        <span>Created at : {{$rendez_vous->date}}</span>
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  <div class="main-block form-horizontal">
-                                                    <div class="comment" id="comment_list">
-                                                      <div class="status-in-calendar"></div>
-                                                    </div>
-                                                  </div><!-- /#booking-info -->
                                                 </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
-                                                  <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
-                                                  <div class="loader" style="display: none;"></div>
-                                                </div>
+                                                <div class="main-block form-horizontal">
+                                                  <div class="comment" id="comment_list">
+                                                    <div class="status-in-calendar"></div>
+                                                  </div>
+                                                </div><!-- /#booking-info -->
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
+                                                <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
+                                                <div class="loader" style="display: none;"></div>
                                               </div>
                                             </div>
                                           </div>
@@ -351,36 +335,35 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- </div> -->
-
-                              </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                        </nav>
-                      </div>
+                              </div>
+                            </td>
+                          </tr>
+                          @endif
+                          @endforeach
+                        </tbody>
+                      </table>
                     </div>
-                    <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
-                      <div class="table-responsive">
-                        <div class="">
-                          <form method="get" role="form" action="{{ route('client.profile') }}">
-                            <button type="submit" class="btn btn-sm btn-link float-right ">{{ __('Edit') }}</button>
-                            <input type="hidden" name="url" value="{{$etablissement->url}}">
-                          </form>
-                        </div>
-                        <div class="text-center mt-5">
-                          <h3>{{ auth()->user()->name }} <span class="font-weight-light">, {{ $client->age }}</span></h3>
-                          <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client->phone }}</div>
-                          <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client_user_table->email }}</div>
-                          <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{ $client->adresse }}</div>
-                          <!-- <div><i class="ni education_hat mr-2"></i>University of Computer Science</div> -->
-                        </div>
-                        <!-- <div class="mt-5 py-5 border-top text-center">
+                    <div class="card-footer py-4">
+                      <nav class="d-flex justify-content-end" aria-label="...">
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                    <div class="table-responsive">
+                      <div class="">
+                        <form method="get" role="form" action="{{ route('client.profile') }}">
+                          <button type="submit" class="btn btn-sm btn-link float-right ">{{ __('Edit') }}</button>
+                          <input type="hidden" name="url" value="{{$etablissement->url}}">
+                        </form>
+                      </div>
+                      <div class="text-center mt-5">
+                        <h3>{{ auth()->user()->name }} <span class="font-weight-light">, {{ $client->age }}</span></h3>
+                        <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client->phone }}</div>
+                        <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client_user_table->email }}</div>
+                        <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{ $client->adresse }}</div>
+                        <!-- <div><i class="ni education_hat mr-2"></i>University of Computer Science</div> -->
+                      </div>
+                      <!-- <div class="mt-5 py-5 border-top text-center">
                           <div class="row justify-content-center">
                             <div class="col-lg-9">
                               <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
@@ -388,20 +371,17 @@
                             </div>
                           </div>
                         </div> -->
-                        <!-- </div>
+                      <!-- </div>
                             </div>
                           </div> -->
-                        <!-- </section> -->
-
-
-                      </div>
-
+                      <!-- </section> -->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -428,13 +408,13 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <script src="assets3/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  <script>
+  <!-- <script>
     window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-design-system-pro"
       });
-  </script>
+  </script> -->
 </body>
 
 </html>

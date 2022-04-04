@@ -106,6 +106,16 @@
                                     {{ __('Les rendez-vous') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('rendez-vous.history') }}">
+                                    {{ __('History des Rendez-Vous') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('rendez-vous.today_rendez_vous') }}">
+                                    {{ __("Les Rendez-Vous d'aujourduit") }}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
 
 
-// Client
+// --------------------------------------Client-----------------------------------------------------------
 Route::get('/client.register', [App\Http\Controllers\Client\RegisterController::class, 'show'])->name('client.register');
 Route::group(['middleware' => 'auth'], function () {
 	Route::post('/client/create', [App\Http\Controllers\Client\RegisterController::class, 'create'])->name('client.create');
@@ -39,11 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/rendezvous/pdf', [App\Http\Controllers\RendezVousController::class, 'pdf'])->name('rendez_vous.pdf');
 });
 
-// Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendEmail'])->name('mail');
 
-// Route::get('/reservation_login', function(){
-// 	return view('reservation.login');
-// })->name('reservation_login');
+
+
 Route::get('/reservation_login', [App\Http\Controllers\Client\LoginController::class, 'index'])->name('reservation_login');
 
 
@@ -77,12 +75,13 @@ Route::get('/lop',[App\Http\Controllers\Client\LoginController::class, 'back'])-
 
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 
-// User
+// -----------------------------------User--------------------------------------------------------------------
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
+	Route::get('/rendez-vous.history', 'App\Http\Controllers\RendezVousController@history')->name('rendez-vous.history');
+	Route::get('/rendez-vous.today_rendez_vous', 'App\Http\Controllers\RendezVousController@today_rendez_vous')->name('rendez-vous.today_rendez_vous');
 	Route::get('/rendez_vous.annuler/{id}', 'App\Http\Controllers\RendezVousController@annuler');
 	Route::get('/rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@Confirmer');
 });
@@ -92,7 +91,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-// Admin
+// ------------------------------------Admin-------------------------------------------------------------------
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/admin/profile/edit',[App\Http\Controllers\ProfileController::class, 'admin_edit'])->name('admin.profile.edit');
 	Route::put('/admin/profile/update',[App\Http\Controllers\ProfileController::class, 'admin_update'])->name('admin.profile.update');
@@ -103,16 +102,18 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+
+
+
+
+// ------------------------Originale----------------------------------------------------------------------------
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
+// Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-	Route::get('profile/{admin}', ['as' => 'profile.edit_user_by_sup_admin', 'uses' => 'App\Http\Controllers\ProfileController@edit_user_by_sup_admin']);
+	// Route::get('profile/{admin}', ['as' => 'profile.edit_user_by_sup_admin', 'uses' => 'App\Http\Controllers\ProfileController@edit_user_by_sup_admin']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
 	 Route::get('map', function () {return view('pages.maps');})->name('map');
@@ -122,4 +123,3 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-// Route::post('profile.edit','App\Http\Controllers\ProfileController@edit_user_by_sup_admin');

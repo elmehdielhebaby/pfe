@@ -18,6 +18,8 @@ class Rendez_vousFactory extends Factory
             'etablissement_id'=> $this-> faker-> numberBetween(1,50),
             'client_id'=> $this-> faker-> numberBetween(1,50),
             'date'=> $this-> faker-> dateTimeBetween('-3 week', '+7 week'),
+            // 'time'=> $this->faker-> numberBetween(0,2),
+            // 'time'=> $this->faker-> date('H:i', rand(480,54000)),
             'time'=> $this-> faker-> time('H:i'),
             'active'=> $this->faker->numberBetween(0,2)
         
