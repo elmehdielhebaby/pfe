@@ -3,10 +3,6 @@
 @section('content')
 @include('layouts.headers.cards')
 
-@foreach($clients as $client)
-@foreach($users as $user)
-@endforeach
-@endforeach
 
 <div class="container-fluid mt--7">
 
@@ -68,22 +64,15 @@
                         </thead>
                         <tbody>
                             @foreach($rendez_vouss as $rendez_vous)
-                                    @if($rendez_vous->etablissement_id==$etablissement->id )
-                                        @foreach($clients as $client)
-                                            @if($client->client_id==$rendez_vous->client_id)
-                                                @foreach($users as $user)
-                                                    @if($user->id==$rendez_vous->client_id)
-                                                        @break
-                                                    @endif
-                                                @endforeach
-                                                @break
-                                            @endif
-                                        @endforeach
-                            <!-- <tr>  -->
+                                @foreach($clients as $client)
+                                    @if($client->id==$rendez_vous->client_id)
+                                        @break
+                                    @endif
+                            @endforeach
                             <tr>
                                 <th class="text-center">{{$rendez_vous->date}}</th>
                                 <td class="text-center" scope="row"> {{$rendez_vous->time}}</td>
-                                <td class="text-center">{{$user->name}}</td>
+                                <td class="text-center">{{$client->name}}</td>
                                 @if($rendez_vous->active==1)
                                 <td class="text-center text-warning">Pending </td>
                                 @endif
@@ -107,19 +96,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="form-container">
-                                                                    <!-- <div class="booking-info-container"> -->
-                                                                    <!-- <ul class="nav nav-tabs custom-tabs">
-                                                                                                    <li>
-                                                                                                        <a data-toggle="tab" href="#booking-info" class="btn btn-link text-primary">
-                                                                                                            <div class="title">Booking</div>
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                    <li class="">
-                                                                                                        <a data-toggle="tab" href="#view-client-info" class="btn btn-link text-primary">
-                                                                                                            <div class="title">Client</div>
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul> -->
+                                                                
                                                                     <div class="tab-content">
                                                                         <!-- <div id="booking-info" class="tab-pane active">
                                                                                 <div class="top-block row"> -->
@@ -172,7 +149,7 @@
                                                                                                             <span class="with-icon"> Name </span>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <div class="data main"><span>{{$user->name}} </span></div>
+                                                                                                            <div class="data main"><span>{{$client->name}} </span></div>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
@@ -191,7 +168,7 @@
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <div class="data main">
-                                                                                                                <span><a href="mailto:$user->email?subject = Feedback&body = Message">{{$user->email}}</a></span>
+                                                                                                                <span><a href="mailto:$user->email?subject = Feedback&body = Message">{{$client->email}}</a></span>
                                                                                                             </div>
                                                                                                         </td>
                                                                                                     <tr>
@@ -207,20 +184,17 @@
                                                                                             </table>
                                                                                         </div>
                                                                                     </div>
-
                                                                                 </div>
                                                                                 <div class="col-sm-12"></div>
                                                                             </div>
                                                                         </div>
-                                                                    </div><!-- /#client-info -->
-                                                                    <!-- </div> -->
-                                                                    <!-- </div> -->
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Fermer</button>
                                                                 <!-- <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Annuler rendez-vous</a> -->
-                                                                <a class="btn btn-success" href="{{ url('rendez_vous.Confirmer/'.$rendez_vous->id) }}">Confirm</a>
+                                                                <a class="btn btn-success" href="{{ url('user.rendez_vous.Confirmer/'.$rendez_vous->id) }}">Confirm</a>
 
                                                                 <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#mo{{$rendez_vous->id}}">Annuler rendez-vous</button>
 
@@ -252,8 +226,7 @@
                                                                 <div class="time-interval">
                                                                     <div class="time-from">Time : {{$rendez_vous->time}}</div>
                                                                 </div>
-                                                            </div><!-- /.date-time -->
-                                                            <!-- <div class="booking-code">15k10nnl</div> -->
+                                                            </div>
                                                             <div class="booking-history-block ">
                                                                 <div class="history with-icon">
                                                                     <span class="one-row">
@@ -272,12 +245,11 @@
                                             </div>
                                         </div>
                                     </div>
-                </div>
-                </td>
-                </tr>
-                @endif
-                @endforeach
-                </tbody>
+                                </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
 

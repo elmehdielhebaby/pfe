@@ -52,8 +52,9 @@
             <form role="form" method="get" action="{{ route('client.login') }}">
               @csrf
               <button type="submit" class="btn btn-link text-primary " style="font-size:16px">Login</button>
-              <input type="hidden" name="url" value="{{$etablissement->url}}">
-              <input type="hidden" name="user_id" value="{{$user->id}}">
+              <!-- <input type="hidden" name="url" value="{{$etablissement->url}}">
+              <input type="hidden" name="user_id" value="{{$user->id}}"> -->
+              <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
             </form>
           </li>
           <li class="nav-item d-none d-lg-block">
@@ -89,8 +90,13 @@
               <div class="col-lg-6 text-center">
                 <h1 class="text-white text-uppercase">{{$etablissement->name}}</h1>
                 <p class="lead text-white">{{$etablissement->description}}</p>
-                <!-- <form role="form" action="{{route('home')}}"> -->
-                <a type="submit" href="{{route('reservation_login')}}" class="btn btn-success text-white">Rendez-vous</a>
+                <!-- <a type="submit" href="{{route('reservation_login')}}" class="btn btn-success text-white">Rendez-vous</a> -->
+                <form role="form" method="get" action="{{ route('client.login') }}">
+                  @csrf
+                <a type="submit" href="{{route('client.login')}}" class="btn btn-success text-white">Rendez-vous</a>
+                  <!-- <button type="submit" class="btn btn-link text-primary " style="font-size:16px">Login</button> -->
+                  <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
+                </form>
                 <!-- </form> -->
                 <!-- <div class="btn-wrapper mt-5">
                   <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">

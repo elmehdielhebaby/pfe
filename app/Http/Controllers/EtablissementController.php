@@ -21,16 +21,12 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role =='admin'){
-            $id=Auth::user()->id;
-            $etablissements=Etablissement::all();
-            $users=User::all();
-            // $clients= Client::all();
-            $rendez_vous= Rendez_vous::all();
-            return view('admin.user_management',['etablissements'=> $etablissements,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
-        }else{
-            redirect('home');
-        }
+        $etablissements=Etablissement::all();
+        $users=User::all();
+        // $clients= Client::all();
+        $rendez_vous= Rendez_vous::all();
+        $segment="user_management";
+        return view('admin.user_management',['etablissements'=> $etablissements,'users'=>$users,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
 
     /**

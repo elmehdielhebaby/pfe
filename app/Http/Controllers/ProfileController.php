@@ -23,12 +23,14 @@ class ProfileController extends Controller
     public function edit()
     {
         $etablissement = DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();        
-        return view('profile.edit',['etablissement'=>$etablissement]);  
+        $segment="profile";
+        return view('profile.edit',['etablissement'=>$etablissement,'segment'=>$segment]);  
     }
 
     public function admin_edit()
     {
-        return view('profile.admin_edit');  
+        $segment="profile";
+        return view('profile.admin_edit',['segment'=>$segment]);  
     }
     /**
      * Update the profile

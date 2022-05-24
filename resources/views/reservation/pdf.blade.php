@@ -62,23 +62,23 @@
     <table style="background-color:#f2f5fa;padding: 1px;text-align:left;width:60%;">
         <tr style="margin-right: 150px;">
             <th style="padding: 3px;">Name :</th>
-            <td style="padding: 3px;">{{$user->name}}</td>
+            <td style="padding: 3px;">{{auth()->user()->name}}</td>
         </tr>
         <tr>
             <th style="padding: 3px;">Cin :</th>
-            <td style="padding: 3px;">{{$client->cin}}</td>
+            <td style="padding: 3px;">{{auth()->user()->cin}}</td>
         </tr>
         <tr>
             <th style="padding: 3px;">Tel :</th>
-            <td style="padding: 3px;">{{$client->phone}}</td>
+            <td style="padding: 3px;">{{auth()->user()->phone}}</td>
         </tr>
         <tr>
             <th style="padding: 3px;">Email :</th>
-            <td style="padding: 3px;">{{$user->email}}</td>
+            <td style="padding: 3px;">{{auth()->user()->email}}</td>
         </tr>
         <tr>
             <th style="padding: 3px;">Adresse :</th>
-            <td style="padding: 3px;">{{$client->adresse}}</td>
+            <td style="padding: 3px;">{{auth()->user()->adresse}}</td>
         </tr>
     </table>
 
@@ -115,6 +115,10 @@
         <tr>
             <th style="padding: 3px;">phone :</th>
             <td style="padding: 3px;">{{$etablissement->phone}}</td>
+        </tr>
+        <tr>
+            <th style="padding: 3px;">adresse:</th>
+            <td style="padding: 3px;">{{$email_etablissement}}</td>
         </tr>
         <tr>
             <th style="padding: 3px;">adresse:</th>

@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Register
+    Argon Design System by Creative Tim
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -26,7 +26,7 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="{{ url('reservation/'.$url) }}">
+      <a class="navbar-brand mr-lg-5" href="../index.html">
         <img src="/assets3/img/brand/white.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,12 +50,11 @@
         </div>
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item d-none d-lg-block">
-            <form role="form" method="get" action="{{ route('client.login') }}">
-              @csrf
-              <button type="submit" class="btn btn-link text-white " style="font-size:16px">Login</button>
-              <input type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
-            </form>
+            <a href="{{ route('client.login') }}" class="btn btn-link text-white " style="font-size:16px">Login</a>
           </li>
+          <!-- <li class="nav-item d-none d-lg-block">	
+            <a href="{{ route('client.register') }}" class="btn btn-white">Register</a>	
+          </li>	 -->
         </ul>
       </div>
     </div>
@@ -89,7 +88,7 @@
                 <div class="text-center text-muted mb-4">
                   <small> Sign up</small>
                 </div>
-                <form role="form" method="POST" action="{{ route('client.create') }}">
+                <form role="form" method="POST" action="{{ route('register') }}">
                   @csrf
                   <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                     <div class="input-group input-group-alternative mb-3">
@@ -110,7 +109,7 @@
                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                       </div>
                       <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required>
-                      <!-- <input class="" type="hidden" name="user" value="client"> -->
+                      <input class="" type="hidden" name="user" value="client">
                       <input class="" type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
                     </div>
                     @if ($errors->has('email'))
@@ -173,10 +172,10 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                       </div>
-                      <select name="genre" class="form-control" required>
-                        <option disabled="" selected="">Genre</option>
-                        <option value="H"> Homme </option>
-                        <option value="F"> Femme </option>
+                      <select name="genre" class="form-control"  required>
+														<option disabled="" selected="">Genre</option>
+														<option value="H"> Homme </option>
+														<option value="F"> Femme </option>
                       </select>
                     </div>
                     @if ($errors->has('genre'))
@@ -226,6 +225,10 @@
                     <button type="submit" class="btn btn-primary mt-4">{{ __('Create account') }}</button>
                   </div>
                 </form>
+
+
+
+
               </div>
             </div>
           </div>

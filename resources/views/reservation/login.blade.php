@@ -26,9 +26,8 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="#">
-      
-        <img src="/assets3/img/brand/white.png"> 
+      <a class="navbar-brand mr-lg-5" href="{{ url('reservation/'.$url) }}">
+        <img src="/assets3/img/brand/white.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -53,18 +52,11 @@
           <li class="nav-item d-none d-lg-block">
             <form role="form" method="get" action="{{ route('client.register') }}">
               @csrf
+              <input type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
               <button type="submit" class="btn btn-link text-white" style="font-size:16px">Register</button>
             </form>
           </li>
         </ul>
-        
-
-
-
-
-
-
-
       </div>
     </div>
   </nav>
@@ -101,45 +93,45 @@
               <div class="text-center text-muted mb-4">
                 <small>Sign in </small>
               </div>
-              <form role="form" action="{{ route('login') }}" method="post">
-              @csrf
+              <form role="form" action="{{ route('client.check') }}" method="post">
+                @csrf
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" value="admin@argon.com" required autofocus>
-                                </div>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" type="password" value="secret" required>
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="customCheckLogin">
-                                    <span class="text-muted">{{ __('Remember me') }}</span>
-                                </label>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
-                            </div>
-                          </form>
+                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" value="admin@argon.com" required autofocus>
+                  </div>
+                  @if ($errors->has('email'))
+                  <span class="invalid-feedback" style="display: block;" role="alert">
+                    <strong>{{ $errors->first('email') }}</strong>
+                  </span>
+                  @endif
+                </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" type="password" value="secret" required>
+                  </div>
+                  @if ($errors->has('password'))
+                  <span class="invalid-feedback" style="display: block;" role="alert">
+                    <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+                  @endif
+                </div>
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                  <label class="custom-control-label" for="customCheckLogin">
+                    <span class="text-muted">{{ __('Remember me') }}</span>
+                  </label>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
+                </div>
+              </form>
             </div>
           </div>
           <div class="row mt-3">
@@ -147,7 +139,11 @@
               <a href="#" class="text-light"><small>Forgot password?</small></a>
             </div>
             <div class="col-6 text-right">
-              <a href="{{route('client.register')}}" class="text-light"><small>Create new account</small></a>
+              <form role="form" method="get" action="{{ route('client.register') }}">
+                @csrf
+                <input type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
+                <a type="submit" class=" text-light" onclick="this.closest('form').submit();return false;"><small>Create new account</small></a>
+              </form>
             </div>
           </div>
         </div>
@@ -156,7 +152,7 @@
   </section>
   <footer class="footer">
     @include('layouts.footers.nav')
-</footer>
+  </footer>
   <!--   Core JS Files   -->
   <script src="/assets3/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="/assets3/js/core/popper.min.js" type="text/javascript"></script>

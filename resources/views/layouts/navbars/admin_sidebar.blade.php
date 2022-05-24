@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ route('home') }}">
+        <a class="navbar-brand pt-0" href="{{ route('admin.home') }}">
             <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
@@ -22,7 +22,7 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                    <a href="{{ route('admin.profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('My profile') }}</span>
                     </a>
@@ -53,7 +53,7 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('admin.home') }}">
                             <img src="{{ asset('argon') }}/img/brand/blue.png">
                         </a>
                     </div>
@@ -79,26 +79,22 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link" href="{{ route('admin.home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard Admin') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <!-- <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
-                    </a> -->
                     <hr class="my-3">
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            <li class="nav-item {{ $segment == 'profile' ? 'active' : null }}">
                                 <a class="nav-link" href="{{ route('admin.profile.edit') }}">
                                     {{ __('Profile') }}
                                 </a>
                                 <hr class="my-3">
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.user_management') }}">
+                                <a class="nav-link {{ $segment == 'user_management' ? 'active' : null }}" href="{{ route('admin.user_management') }}">
                                     {{ __('User Management') }}
                                 </a>
                             </li>

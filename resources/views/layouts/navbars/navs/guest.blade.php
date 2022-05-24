@@ -15,26 +15,16 @@
                         <span class="nav-link-inner--text text-primary h3">{{ __('Accueil') }}</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('home') }}">
-                        <span class="nav-link-inner--text">{{ __('Dashboard') }}</span>
-                    </a>
-                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('register') }}">
+                    <a class="nav-link nav-link-icon" href="{{ route('user.register') }}">
                         <span class="nav-link-inner--text text-primary h3">{{ __('Register') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('login') }}">
+                    <a class="nav-link nav-link-icon" href="{{ route('user.login') }}">
                         <span class="nav-link-inner--text text-primary h3">{{ __('Login') }}</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('profile.edit') }}">
-                        <span class="nav-link-inner--text">{{ __('Profile') }}</span>
-                    </a>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="#About">
                         <span class="nav-link-inner--text text-primary h3">{{ __('About') }}</span>

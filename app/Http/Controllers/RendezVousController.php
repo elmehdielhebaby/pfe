@@ -28,39 +28,40 @@ class RendezVousController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role =='user'){
-            // $id=Auth::user()->id;
-            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
-            $users=User::all();
-            $clients= Client::all();
-            $toDate=now();
-            $rendez_vous = DB::table('rendez_vouses')->where('date', '>', $toDate)->get();
-            return view('client.rendez_vous_management',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
-        }
+        $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+        $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
+        $toDate=now();
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '>', $toDate)->orderBy('date','asc')->get();
+        $segment="index";
+        return view('users.rendez_vous_management',['etablissement'=> $etablissement,'clients'=> $clients,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
 
     public function history()
     {
-        if(Auth::user()->role =='user'){
-            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
-            $users=User::all();
-            $clients= Client::all();
-            $toDate=now();
-            $rendez_vous = DB::table('rendez_vouses')->where('date', '<', $toDate)->get();
-            return view('client.rendez_vous_history',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
-        }
+        $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+        $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
+        $toDate=now();
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '<', $toDate)->orderBy('date','asc')->get();
+        $segment="history";
+        return view('users.rendez_vous_history',['etablissement'=> $etablissement,'clients'=> $clients,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
 
     public function today_rendez_vous()
     {
-        if(Auth::user()->role =='user'){
-            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
-            $users=User::all();
-            $clients= Client::all();
-            $toDate=now();
-            $rendez_vous = DB::table('rendez_vouses')->where('date', '=', $toDate)->get();
-            return view('client.today_rendez_vous',['clients'=> $clients,'etablissement'=> $etablissement,'users'=>$users,'rendez_vouss'=>$rendez_vous]);
-        }
+        $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+        $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
+        $toDate = date('Y-m-d', time());
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '=', $toDate)->orderBy('time','asc')->get();
+        $segment="today_rendez_vous";
+        return view('users.today_rendez_vous',['etablissement'=> $etablissement,'clients'=> $clients,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
+    }
+
+    public function client_management()
+    {
+        $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+        $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
+        $segment="client_management";
+        return view('users.client_management',['etablissement'=> $etablissement,'clients'=> $clients,'segment'=>$segment]);
     }
     /**
      * Show the form for creating a new resource.
@@ -69,7 +70,7 @@ class RendezVousController extends Controller
      */
     public function create(array $data)
     {
-      
+
         return redirect()->back();
     }
 
@@ -89,8 +90,7 @@ class RendezVousController extends Controller
         ]); 
 
         return redirect()->back()->with('success','Rendez Vous ajouter avec succès ');
-  
-      }
+    }
 
     /**
      * Display the specified resource.
@@ -174,7 +174,32 @@ class RendezVousController extends Controller
         
     }
 
-    public function Confirmer($id)
+    public function user_annuler_rdv($id)
+    {
+        $rendez_vous=Rendez_vous::find($id);
+        if($rendez_vous->active==0){
+                return redirect()->back()->with('rdv_deja','Le Rendez Vous est déjà Annulé');
+            }else{
+                $rendez_vous->active=0;
+                $rendez_vous->update();
+                $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+                $client=Client::find($rendez_vous->client_id);
+                $details = [
+                    'name_etablissement'=> $etablissement->name,
+                    'name_client'=> $client->name,
+                    'date' => $rendez_vous->date,
+                    'time' => $rendez_vous->time,
+                    'adress' => $etablissement->adresse,
+                ];
+                
+                Mail::to($client->email)->send(new MailCanceled($details));
+                
+                return redirect()->back()->with('rdv_annl','Le Rendez Vous à été Annulé');
+            }
+    }
+
+
+    public function confirmer($id)
     {
         $rendez_vous=Rendez_vous::find($id);
         if($rendez_vous->active==2){
@@ -183,8 +208,9 @@ class RendezVousController extends Controller
             $rendez_vous->active=2;
             $rendez_vous->update();
 
-            $etablissement=DB::table('etablissements')->where('id','like','%'.Request('etablissement_id').'%')->first();
-            $client=User::find($rendez_vous->client_id);
+            $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+            $client=Client::find($rendez_vous->client_id);
+            // echo $rendez_vous->id;
             $details = [
                 'name_etablissement'=> $etablissement->name,
                 'name_client'=> $client->name,
@@ -193,7 +219,7 @@ class RendezVousController extends Controller
                 'adress' => $etablissement->adresse,
             ];
             
-            // Mail::to($client->email)->send(new MailAccepted($details));
+            Mail::to($client->email)->send(new MailAccepted($details));
 
             return redirect()->back()->with('rdv_confirmer','Le Rendez Vous à été Confirmé');
         }
@@ -204,10 +230,12 @@ class RendezVousController extends Controller
         $rendez_vous=Rendez_vous::find($id);
         
         if($rendez_vous->active==2){
-            $client=DB::table('clients')->where('client_id','like','%'.$rendez_vous->client_id.'%')->first();
-            $user = Auth::user();
+            // $client=DB::table('clients')->where('id','like','%'.$rendez_vous->client_id.'%')->first();
+            // $client = Auth::user();
             $etablissement=Etablissement::find($rendez_vous->etablissement_id);
-            $pdf = PDF::loadView('reservation.pdf', ['user'=>$user,'rendez_vous'=>$rendez_vous,'etablissement'=>$etablissement,'client'=>$client]);
+            $user=User::find($etablissement->user_id);
+            $email_etablissement=$user->email;
+            $pdf = PDF::loadView('reservation.pdf', ['rendez_vous'=>$rendez_vous,'etablissement'=>$etablissement,'email_etablissement'=>$email_etablissement]);
             return $pdf->download('Rendez_Vous.pdf');
         }else{
             if($rendez_vous->active==1)
@@ -217,4 +245,15 @@ class RendezVousController extends Controller
             
         }
     }
+
+    public function rendez_vous_list_pdf(){
+
+        $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
+        $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
+        $toDate = date('Y-m-d', time());
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '=', $toDate)->get();
+        $pdf = PDF::loadView('users.Rendez_Vous_list_pdf', ['rendez_vouss'=>$rendez_vous,'etablissement'=>$etablissement,'clients'=>$clients]);
+        return $pdf->download('Rendez_Vous_list.pdf');
+    }
+
 }

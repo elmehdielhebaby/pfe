@@ -29,28 +29,13 @@
       <a class="navbar-brand mr-lg-5" href="#">
         <img src="/assets3/img/brand/white.png" width="120" height="200">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="navbar-collapse collapse" id="navbar_global">
-        <div class="navbar-collapse-header">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <a href="#">
-                <img src="/assets3/img/brand/blue.png">
-              </a>
-            </div>
-            <div class="col-6 collapse-close">
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-              </button>
-            </div>
-          </div>
-        </div>
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
             <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Mes Rendez-vous') }}</a>
+          </li>
+          <li class="nav-item">
+            <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Historique Rendez-vous') }}</a>
           </li>
           <li class="nav-item">
             <a role="tab" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">Profile</a>
@@ -125,7 +110,7 @@
                 <h1 class="text-white display-1">{{$etablissement->name}}</h1>
                 <h2 class="display-4 font-weight-normal text-white">{{$etablissement->description}}</h2>
                 <div class="btn-wrapper mt-4">
-                  <form action="{{route('rendezvous.create')}}" role="form" method="get">
+                  <form action="{{route('client.rendezvous.create')}}" role="form" method="get">
                     <!-- @method('PUT') -->
                     @csrf
                     <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
@@ -157,20 +142,6 @@
                       <strong>{{ $errors->first('date') }}</strong>
                     </span>
                     @endif
-                    <!-- 
-                    <script>
-                        $('#datepicker').datepicker({
-                            uiLibrary: 'bootstrap4'
-                        });
-                    </script>
-                   
-                    <script type="text/javascript">
-                      $(function () {
-                          $('#datetimepicker11').datetimepicker({
-                              daysOfWeekDisabled: [0, 6]
-                          });
-                      });
-                    </script> -->
                     <div class="form-group{{ $errors->has('time') ? ' has-danger' : '' }}">
                       <div class="center col-8">
                         <label for="" class="text-white">Time</label>
@@ -237,11 +208,12 @@
                   <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-calendar-grid-58 mr-2"></i>Mes Rendez-vous</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="true"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
+                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>L'historique
+ des rendez vous</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Messages</a>
-                  </li> -->
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="true"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
+                </li>
               </ul>
             </div>
             <div class="card shadow">
@@ -262,7 +234,6 @@
                         </thead>
                         <tbody>
                           @foreach($rendez_vouss as $rendez_vous)
-                          @if($rendez_vous->client_id==auth()->user()->id and $rendez_vous->etablissement_id==$etablissement->id)
                           <tr>
                             <th class="text-center " style="vertical-align: middle">{{$rendez_vous->date}}</th>
                             <td class="text-center" style="vertical-align: middle"> {{$rendez_vous->time}}</td>
@@ -278,7 +249,7 @@
                             @endif
                             <td class="text-center">
                               <!-- <div class="dropdown "> -->
-                              <form action="{{route('rendez_vous.pdf')}}" method="get">
+                              <form action="{{route('client.rendez_vous.pdf')}}" method="get">
                                 <button type="submit" class="btn btn-primary "><i class="fa fa-file-pdf-o"></i> pdf</button>
                                 <button type="button" class="btn  btn-danger " data-toggle="modal" data-target="#l{{$rendez_vous->id}}">Annuler rendez-vous</button>
                                 <input type="hidden" name="id" value="{{$rendez_vous->id}}">
@@ -325,7 +296,7 @@
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
-                                                <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
+                                                <a class="btn btn-danger" href="{{ url('client.rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
                                                 <div class="loader" style="display: none;"></div>
                                               </div>
                                             </div>
@@ -338,6 +309,44 @@
                               </div>
                             </td>
                           </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="card-footer py-4">
+                      <nav class="d-flex justify-content-end" aria-label="...">
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show " id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-flush ">
+                        <thead class="thead-light">
+                          <tr>
+                            <th class="text-center " scope="col">Date</th>
+                            <th class="text-center" scope="col">Time </th>
+                            <th class="text-center" scope="col">Created at</th>
+                            <th class="text-center" scope="col">Status</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($rendez_vous_history as $rendez_vous)
+                          @if($rendez_vous->client_id==auth()->user()->id and $rendez_vous->etablissement_id==$etablissement->id)
+                          <tr>
+                            <th class="text-center " style="vertical-align: middle">{{$rendez_vous->date}}</th>
+                            <td class="text-center" style="vertical-align: middle"> {{$rendez_vous->time}}</td>
+                            <td class="text-center" style="vertical-align: middle">{{$rendez_vous->created_at}}</td>
+                            <!-- @if($rendez_vous->active==1)
+                            <td class="text-center text-warning " style="vertical-align: middle">Pending </td>
+                            @endif -->
+                            @if($rendez_vous->active==2)
+                            <td class="text-center text-success" style="vertical-align: middle">Confirmed </td>
+                            @endif
+                            @if($rendez_vous->active==0)
+                            <td class="text-center text-danger" style="vertical-align: middle">Canceled</td>
+                            @endif
+                                                        </tr>
                           @endif
                           @endforeach
                         </tbody>
@@ -348,7 +357,7 @@
                       </nav>
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                  <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                     <div class="table-responsive">
                       <div class="">
                         <form method="get" role="form" action="{{ route('client.profile') }}">
@@ -359,7 +368,7 @@
                       <div class="text-center mt-5">
                         <h3>{{ auth()->user()->name }} <span class="font-weight-light">, {{ $client->age }}</span></h3>
                         <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client->phone }}</div>
-                        <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client_user_table->email }}</div>
+                        <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $etablissement->email }}</div>
                         <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{ $client->adresse }}</div>
                         <!-- <div><i class="ni education_hat mr-2"></i>University of Computer Science</div> -->
                       </div>
@@ -377,6 +386,7 @@
                       <!-- </section> -->
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>

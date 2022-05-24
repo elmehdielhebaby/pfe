@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
+                        <form method="post" action="{{ route('user.profile.update') }}" autocomplete="off">
                             @csrf
                             @method('put')
 
@@ -162,7 +162,7 @@
                             </div>
                         </form>
                         <hr class="my-4" />
-                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                        <form method="post" action="{{ route('user.profile.password') }}" autocomplete="off">
                             @csrf
                             @method('put')
 

@@ -72,8 +72,6 @@
                 </div>
                 <a href="{{ route('profile.edit_user_by_sup_admin',['admin' => auth()->user()]) }}" class="dropdown-item">
                 <!-- <a href="{{ route('profile.edit') }}" class="dropdown-item"> -->
-
-                
                     <i class="ni ni-single-02"></i>
                     <span>My profile</span>
                 </a>

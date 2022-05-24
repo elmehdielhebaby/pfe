@@ -19,10 +19,10 @@ class Rendez_vousFactory extends Factory
             'client_id'=> $this-> faker-> numberBetween(1,50),
             'date'=> $this-> faker-> dateTimeBetween('-3 week', '+7 week'),
             // 'time'=> $this->faker-> numberBetween(0,2),
-            // 'time'=> $this->faker-> date('H:i', rand(480,54000)),
-            'time'=> $this-> faker-> time('H:i'),
+            'time'=> $this->faker-> randomElement(['08:00:00','09:00:00','10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00',]),
+            // 'time'=> $this->faker-> time('H:i', rand(480,54000)),
+            // 'time'=> $this-> faker-> time('H:i'),
             'active'=> $this->faker->numberBetween(0,2)
-        
         ];
     }
 }
