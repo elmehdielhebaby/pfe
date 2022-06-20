@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('assets3/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" href="{{ URL::asset('assets3/img/favicon.png') }}">
   <title>
-    Argon Design System by Creative Tim
+    index
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -51,7 +51,7 @@
           <li class="nav-item d-none d-lg-block">
             <form role="form" method="get" action="{{ route('client.login') }}">
               @csrf
-              <button type="submit" class="btn btn-link text-primary " style="font-size:16px">Login</button>
+              <button type="submit" class="btn btn-link text-primary " style="font-size:16px">Se connecter</button>
               <!-- <input type="hidden" name="url" value="{{$etablissement->url}}">
               <input type="hidden" name="user_id" value="{{$user->id}}"> -->
               <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
@@ -60,7 +60,7 @@
           <li class="nav-item d-none d-lg-block">
             <form role="form" method="get" action="{{ route('client.register') }}">
               @csrf
-              <button type="submit" class="btn btn-link text-primary" style="font-size:16px">Register</button>
+              <button type="submit" class="btn btn-link text-primary" style="font-size:16px">S'inscrire</button>
               <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
             </form>
           </li>
@@ -93,7 +93,7 @@
                 <!-- <a type="submit" href="{{route('reservation_login')}}" class="btn btn-success text-white">Rendez-vous</a> -->
                 <form role="form" method="get" action="{{ route('client.login') }}">
                   @csrf
-                <a type="submit" href="{{route('client.login')}}" class="btn btn-success text-white">Rendez-vous</a>
+                  <a type="submit" href="{{route('client.login')}}" class="btn btn-success text-white">Rendez-vous</a>
                   <!-- <button type="submit" class="btn btn-link text-primary " style="font-size:16px">Login</button> -->
                   <input type="hidden" name="etablissement_id" value="{{$etablissement->id}}">
                 </form>
@@ -117,7 +117,7 @@
         </div>
         <div class="container">
           <div class="col-12 col-md-8">
-            <h3 class="small-title text-white">Nous contacter</h3>
+            <h3 class="small-title text-white">Contactez-nous</h3>
             <section id="contacts">
               <div class="info">
                 <ul>

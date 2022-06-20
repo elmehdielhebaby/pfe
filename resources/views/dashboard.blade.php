@@ -56,7 +56,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Clients sont Rendes vous</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Clients sans Rendes vous</h5>
                                     <span class="h2 font-weight-bold mb-0">{{$nbr_client_sont_rdv}}</span>
                                 </div>
                                 <div class="col-auto">
@@ -73,7 +73,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Rendez vous confirmer</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Rendez vous confirmé</h5>
                                     <span class="h2 font-weight-bold mb-0">{{$nbr_rendez_vous_ok}}</span>
                                 </div>
                                 <div class="col-auto">
@@ -147,51 +147,51 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="card">
-                    <div class="card-header">
-                        <!-- Title -->
-                        <h5 class="h3 mb-0">Clients Ages</h5>
-                    </div>
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <div class="chart">
-                            <!-- Chart wrapper -->
-                            <canvas id="chart-doughnut" class="chart-canvas"></canvas>
-                        </div>
+            <div class="card">
+                <div class="card-header">
+                    <!-- Title -->
+                    <h5 class="h3 mb-0">Âge des clients</h5>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="chart">
+                        <!-- Chart wrapper -->
+                        <canvas id="chart-doughnut" class="chart-canvas"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    @include('layouts.footers.auth')
-    <!-- </div> -->
-    @endsection
-    <script>
-        var jan = "{{$jan}}";
-        var fev = "{{$fev}}";
-        var mar = "{{$mar}}";
-        var avr = "{{$avr}}";
-        var mai = "{{$mai}}";
-        var jun = "{{$jun}}";
-        var jul = "{{$jul}}";
-        var aou = "{{$aou}}";
-        var sep = "{{$sep}}";
-        var oct = "{{$oct}}";
-        var nov = "{{$nov}}";
-        var dec = "{{$dec}}";
+@include('layouts.footers.auth')
+<!-- </div> -->
+@endsection
+<script>
+    var jan = "{{$jan}}";
+    var fev = "{{$fev}}";
+    var mar = "{{$mar}}";
+    var avr = "{{$avr}}";
+    var mai = "{{$mai}}";
+    var jun = "{{$jun}}";
+    var jul = "{{$jul}}";
+    var aou = "{{$aou}}";
+    var sep = "{{$sep}}";
+    var oct = "{{$oct}}";
+    var nov = "{{$nov}}";
+    var dec = "{{$dec}}";
 
-        var a="{{$a}}";
-        var b="{{$b}}";
-        var c="{{$c}}";
-        var d="{{$d}}";
-        var e="{{$e}}";
-    </script>
+    var a = "{{$a}}";
+    var b = "{{$b}}";
+    var c = "{{$c}}";
+    var d = "{{$d}}";
+    var e = "{{$e}}";
+</script>
 
 
-    @push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-    <!-- <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script> -->
-    @endpush
+@push('js')
+<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+<!-- <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script> -->
+@endpush

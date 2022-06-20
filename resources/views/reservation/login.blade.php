@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/assets3/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/assets3/img/favicon.png">
   <title>
-    Argon Design System by Creative Tim
+    login client
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -53,7 +53,7 @@
             <form role="form" method="get" action="{{ route('client.register') }}">
               @csrf
               <input type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
-              <button type="submit" class="btn btn-link text-white" style="font-size:16px">Register</button>
+              <button type="submit" class="btn btn-link text-white" style="font-size:16px">s'inscrire</button>
             </form>
           </li>
         </ul>
@@ -91,7 +91,7 @@
             </div> -->
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Sign in </small>
+                <small>S'identifier </small>
               </div>
               <form role="form" action="{{ route('client.check') }}" method="post">
                 @csrf
@@ -114,7 +114,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" type="password" value="secret" required>
+                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Mot de passe') }}" type="password" value="secret" required>
                   </div>
                   @if ($errors->has('password'))
                   <span class="invalid-feedback" style="display: block;" role="alert">
@@ -125,24 +125,24 @@
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                   <label class="custom-control-label" for="customCheckLogin">
-                    <span class="text-muted">{{ __('Remember me') }}</span>
+                    <span class="text-muted">{{ __('Souviens de moi') }}</span>
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
+                  <button type="submit" class="btn btn-primary my-4">{{ __("S'identifier") }}</button>
                 </div>
               </form>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="#" class="text-light"><small>Forgot password?</small></a>
+              <a href="#" class="text-light"><small>Mot de passe oublié ?</small></a>
             </div>
             <div class="col-6 text-right">
               <form role="form" method="get" action="{{ route('client.register') }}">
                 @csrf
                 <input type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
-                <a type="submit" class=" text-light" onclick="this.closest('form').submit();return false;"><small>Create new account</small></a>
+                <a type="submit" class=" text-light" onclick="this.closest('form').submit();return false;"><small>Créer nouveau compte</small></a>
               </form>
             </div>
           </div>

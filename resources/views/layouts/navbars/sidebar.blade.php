@@ -14,21 +14,21 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
                         </span>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
+                        <h6 class="text-overflow m-0">{{ __('Bienvenu !') }}</h6>
                     </div>
                     <a href="{{ route('user.profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>{{ __('My profile') }}</span>
+                        <span>{{ __('Mon profil') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('Client Management') }}</span>
+                        <span>{{ __('Gestion des clients') }}</span>
                     </a>
                     <!-- <a href="#" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
@@ -42,7 +42,7 @@
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span>{{ __('Logout') }}</span>
+                        <span>{{ __('Se déconnecter') }}</span>
                     </a>
                 </div>
             </li>
@@ -80,7 +80,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link {{ $segment == 'home' ? 'active' : null }} " href="{{ route('user.home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Tableau de bord') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -88,12 +88,12 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ $segment == 'profile' ? 'active' : null }} " href="{{ route('user.profile.edit') }}">
-                                    {{ __('User profile') }}
+                                    {{ __("Profil d'utilisateur") }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ $segment == 'client_management' ? 'active' : null }} " href="{{ route('user.client.management') }}">
-                                    {{ __('Client Management') }}
+                                    {{ __('Gestion clients') }}
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -103,11 +103,11 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ $segment == 'history' ? 'active' : null }}" href="{{ route('user.rendez-vous.history') }}">
-                                    {{ __('History des Rendez-Vous') }}
+                                    {{ __('Les historiques des Rendez-Vous') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                            
+
                                 <a class="nav-link {{ $segment == 'today_rendez_vous' ? 'active' : null }} " href="{{ route('user.rendez-vous.today_rendez_vous') }}">
                                     {{ __("Les Rendez-Vous d'aujourd'hui") }}
                                 </a>
@@ -115,9 +115,9 @@
                         </ul>
                     </div>
                 </li>
-                
+
             </ul>
             <!-- Divider -->
-                    </div>
+        </div>
     </div>
 </nav>

@@ -10,7 +10,7 @@
                     <!-- <h1 class="text-white">{{ __('Welcome to Argon Dashboard FREE Laravel Live Preview.') }}</h1> -->
                     <h1 class="">Facilitez la prise de rendez-vous en ligne De vos clients Pour optimiser votre temps Et développer votre activité</h1>
                     <br>
-                    <a href="{{ route('register') }}" class="main-btn ">Create your webSite</a>
+                    <a href="{{ route('register') }}" class="main-btn ">Créez votre site web</a>
                 </div>
             </div>
         </div>

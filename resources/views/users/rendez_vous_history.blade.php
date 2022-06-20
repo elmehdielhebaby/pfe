@@ -43,7 +43,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Historique des rendez-vous</h3>
+                            <h3 class="mb-0">Les historiques des rendez-vous</h3>
                         </div>
                     </div>
                 </div>
@@ -52,18 +52,18 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center" scope="col">Date</th>
-                                <th class="text-center" scope="col">Time </th>
+                                <th class="text-center" scope="col">Temps </th>
                                 <th class="text-center" scope="col">Client</th>
-                                <th class="text-center" scope="col">Status</th>
+                                <th class="text-center" scope="col">état</th>
                                 <th class="text-center" scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($rendez_vouss as $rendez_vous)
-                                @foreach($clients as $client)
-                                    @if($client->id==$rendez_vous->client_id)
-                                        @break
-                                    @endif
+                            @foreach($clients as $client)
+                            @if($client->id==$rendez_vous->client_id)
+                            @break
+                            @endif
                             @endforeach
                             <!-- <tr>  -->
                             <tr>
@@ -71,13 +71,13 @@
                                 <td class="text-center" scope="row"> {{$rendez_vous->time}}</td>
                                 <td class="text-center">{{$client->name}}</td>
                                 @if($rendez_vous->active==1)
-                                <td class="text-center text-warning">Pending </td>
+                                <td class="text-center text-warning">En cours </td>
                                 @endif
                                 @if($rendez_vous->active==2)
-                                <td class="text-center text-success">Confirmed </td>
+                                <td class="text-center text-success">Confirmé </td>
                                 @endif
                                 @if($rendez_vous->active==0)
-                                <td class="text-center text-danger">Canceled </td>
+                                <td class="text-center text-danger">Annulé </td>
                                 @endif
                                 <td class="text-right">
                                     <div class="dropdown">
@@ -88,7 +88,7 @@
                                                     <div class="modal-dialog booking-info" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title">Rendez-vous info</h4>
+                                                                <h4 class="modal-title">informations Rendez-vous </h4>
                                                                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
                                                             </div>
                                                             <div class="modal-body">
@@ -121,7 +121,7 @@
                                                                                     <label for=""> {{$rendez_vous->date}}</label>
                                                                                 </div>
                                                                                 <div class="time-interval text-left">
-                                                                                    <label class="text-top">Time : </label>
+                                                                                    <label class="text-top">Temps : </label>
                                                                                     {{$rendez_vous->time}}
                                                                                 </div>
                                                                             </div>
@@ -129,7 +129,7 @@
                                                                                 <div class="history with-icon">
                                                                                     <span class="one-row">
                                                                                         <i class="fa ico color-info fa-file-plus"></i>
-                                                                                        Created by client :
+                                                                                        Créer par le client :
                                                                                     </span>
                                                                                     <span>{{$rendez_vous->created_at}}</span>
                                                                                 </div>
@@ -147,7 +147,7 @@
                                                                                             <i class="fa fa-user"></i>
                                                                                         </div>
                                                                                         <div class="booking-form-title  text-center ">
-                                                                                            Client Info
+                                                                                            Informations Client
                                                                                         </div>
                                                                                         <div class="table-responsive">
                                                                                             <table class="text-left table table-advance table-bordered data-list">
@@ -155,7 +155,7 @@
                                                                                                     <tr>
                                                                                                         <td class="title">
                                                                                                             <i class="fa fa-user text-left"></i>
-                                                                                                            <span class="with-icon"> Name </span>
+                                                                                                            <span class="with-icon"> Nom </span>
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <div class="data main"><span>{{$client->name}} </span></div>
@@ -183,7 +183,7 @@
                                                                                                     <tr>
                                                                                                         <td class="title">
                                                                                                             <i class="fa fa-phone"></i>
-                                                                                                            <span class="with-icon">Phone</span>
+                                                                                                            <span class="with-icon">Téléphone</span>
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <div class="data main"><span><a target="_blank" href="tel:+212665962908">{{$client->phone}}</a></span></div>
@@ -229,7 +229,7 @@
                                                                     <div class="date-from">Date :{{$rendez_vous->date}}</div>
                                                                 </div>
                                                                 <div class="time-interval">
-                                                                    <div class="time-from">Time : {{$rendez_vous->time}}</div>
+                                                                    <div class="time-from">Temps : {{$rendez_vous->time}}</div>
                                                                 </div>
                                                             </div><!-- /.date-time -->
                                                             <!-- <div class="booking-code">15k10nnl</div> -->
@@ -244,8 +244,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
-                                                        <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
+                                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Annuler</button>
+                                                        <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirmé</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -265,20 +265,20 @@
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1">
                                     <i class="fas fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
+                                    <span class="sr-only">Précédant</span>
                                 </a>
                             </li>
                             <li class="page-item active">
                                 <a class="page-link" href="#">1</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                <a class="page-link" href="#">2 <span class="sr-only">(actuel)</span></a>
                             </li>
                             <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                             <li class="page-item">
                                 <a class="page-link" href="#">
                                     <i class="fas fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
+                                    <span class="sr-only">Suivant</span>
                                 </a>
                             </li>
                         </ul>

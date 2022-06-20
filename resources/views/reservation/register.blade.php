@@ -52,7 +52,7 @@
           <li class="nav-item d-none d-lg-block">
             <form role="form" method="get" action="{{ route('client.login') }}">
               @csrf
-              <button type="submit" class="btn btn-link text-white " style="font-size:16px">Login</button>
+              <button type="submit" class="btn btn-link text-white " style="font-size:16px">Se connecter</button>
               <input type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
             </form>
           </li>
@@ -87,7 +87,7 @@
               </div> -->
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                  <small> Sign up</small>
+                  <small> S'inscrire</small>
                 </div>
                 <form role="form" method="POST" action="{{ route('client.create') }}">
                   @csrf
@@ -96,7 +96,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                       </div>
-                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nom') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
                     </div>
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -123,7 +123,7 @@
                       <div class="input-group-prepend">
                         <span class=" input-group-text"><i class="ni ni-mobile-button"></i></span>
                       </div>
-                      <input class=" form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone') }}" type="phone" name="phone" value="{{ old('phone') }}" required>
+                      <input class=" form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Téléphone') }}" type="phone" name="phone" value="{{ old('phone') }}" required>
                     </div>
                     @if ($errors->has('phone'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -189,7 +189,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" type="password" name="password" required>
+                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Mot de passe') }}" type="password" name="password" required>
                     </div>
                     @if ($errors->has('password'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -202,7 +202,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
+                      <input class="form-control" placeholder="{{ __('Confirmer Mot de passe') }}" type="password" name="password_confirmation" required>
                     </div>
                   </div>
                   <!-- <div class="text-muted font-italic">
@@ -213,13 +213,13 @@
                       <div class="custom-control custom-control-alternative custom-checkbox">
                         <input class="custom-control-input" id="customCheckRegister" type="checkbox">
                         <label class="custom-control-label" for="customCheckRegister">
-                          <span class="text-muted">{{ __('I agree with the') }} <a href="#!">{{ __('Privacy Policy') }}</a></span>
+                          <span class="text-muted">{{ __("je suis d'accord avec la") }} <a href="#!">{{ __('politique de confidentialité') }}</a></span>
                         </label>
                       </div>
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-4">{{ __('Create account') }}</button>
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Créer un compte') }}</button>
                   </div>
                 </form>
               </div>

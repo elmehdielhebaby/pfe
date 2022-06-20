@@ -2,7 +2,7 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
         <!-- Brand -->
-        <a class="h2 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('user.home') }}">Dashboard</a>
+        <a class="h2 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('user.home') }}">Tableau de bord</a>
         <!-- Form -->
         <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <div class="form-group mb-0">
@@ -53,15 +53,15 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
+                        <h6 class="text-overflow m-0">{{ __('Bienvenu !') }}</h6>
                     </div>
                     <a href="{{ route('user.profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>{{ __('My profile') }}</span>
+                        <span>{{ __('Mon profil') }}</span>
                     </a>
                     <a href="{{ route('user.client.management') }}" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('Client Management') }}</span>
+                        <span>{{ __('Gestion des clients') }}</span>
                     </a>
                     <a href="{{ route('user.rendez-vous.index') }}" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
@@ -71,7 +71,7 @@
 
                     <a href="{{ route('user.rendez-vous.history') }}" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
-                        <span>{{ __('History des Rendez-Vous') }}</span>
+                        <span>{{ __('Les historique des Rendez-Vous') }}</span>
                     </a>
 
 
@@ -86,7 +86,7 @@
                     <a href="{{ route('user.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span>{{ __('Logout') }}</span>
+                        <span>{{ __('Se déconnecter') }}</span>
                     </a>
                 </div>
             </li>

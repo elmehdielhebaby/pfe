@@ -20,8 +20,8 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-center" scope="col">Name</th>
-                                <th class="text-center" scope="col">Phone </th>
+                                <th class="text-center" scope="col">Nom</th>
+                                <th class="text-center" scope="col">Téléphone </th>
                                 <!-- <th scope="col">age</th> -->
                                 <th class="text-center" scope="col">Email</th>
                                 <th class="text-center" scope="col">Cin</th>
@@ -47,7 +47,7 @@
                                                     <div class="modal-dialog booking-info" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title">Client info</h4>
+                                                                <h4 class="modal-title">Informations Client</h4>
                                                                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
                                                             </div>
                                                             <div class="modal-body">
@@ -59,7 +59,7 @@
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <td class="title">
-                                                                                                <span class="with-icon"><i class="fa fa-user text-right"> </i> Name</span>
+                                                                                                <span class="with-icon"><i class="fa fa-user text-right"> </i> Nom</span>
                                                                                             </td>
                                                                                             <td>
                                                                                                 <div class="data main"><span>{{$client->name}}</span></div>
@@ -76,7 +76,7 @@
                                                                                             </td>
                                                                                         <tr>
                                                                                             <td class="title">
-                                                                                                <span class="with-icon"><i class="fa fa-phone"></i> Phone</span>
+                                                                                                <span class="with-icon"><i class="fa fa-phone"></i> Téléphone</span>
                                                                                             </td>
                                                                                             <td>
                                                                                                 <div class="data main"><span><a target="_blank" href="tel:+212665962908">{{$client->phone}}</a></span></div>
@@ -112,71 +112,71 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Fermer</button>
                                                     <div class="loader" style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                            </div>
+                </div>
+            </div>
+            <div class="modal fade" id="mo{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default1" aria-hidden="true">
+                <!-- <div class="modal fade form-container show"  style="z-index: 1051; display: block; padding-right: 16px;"> -->
+                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="modal-title-default">Confirmation annulation</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
-                        <div class="modal fade" id="mo{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default1" aria-hidden="true">
-                            <!-- <div class="modal fade form-container show"  style="z-index: 1051; display: block; padding-right: 16px;"> -->
-                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title" id="modal-title-default">Confirmation annulation</h3>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                        </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
-                                            <a class="btn btn-danger" href="">Confirm</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                        @endif
-                        </tbody>
-                    </table>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Annuler</button>
+                            <a class="btn btn-danger" href="">Confirmé</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer py-4">
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">
-                                    <i class="fas fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <i class="fas fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="card-footer py-4">
-                    <nav class="d-flex justify-content-end" aria-label="...">
+                </td>
+                </tr>
+                @endforeach
+                @endif
+                </tbody>
+                </table>
+            </div>
+            <div class="card-footer py-4">
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">
+                                <i class="fas fa-angle-left"></i>
+                                <span class="sr-only">Précédant</span>
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2 <span class="sr-only">(actuel)</span></a>
+                        </li>
+                        <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="fas fa-angle-right"></i>
+                                <span class="sr-only">Suivant</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-footer py-4">
+                <nav class="d-flex justify-content-end" aria-label="...">
 
-                    </nav>
-                </div>
+                </nav>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

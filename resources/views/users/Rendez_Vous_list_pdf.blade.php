@@ -19,16 +19,16 @@
         <thead class="thead-light">
             <tr>
                 <th class="text-center" scope="col">Date</th>
-                <th class="text-center" scope="col">Time </th>
+                <th class="text-center" scope="col">Temps </th>
                 <th class="text-center" scope="col">Client</th>
             </tr>
         </thead>
         <tbody>
             @foreach($rendez_vouss as $rendez_vous)
-                @foreach($clients as $client)
-                    @if($client->id==$rendez_vous->client_id)
-                        @break
-                    @endif
+            @foreach($clients as $client)
+            @if($client->id==$rendez_vous->client_id)
+            @break
+            @endif
             @endforeach
             <tr>
                 <th class="text-center">{{$rendez_vous->date}}</th>

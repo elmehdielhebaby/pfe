@@ -46,7 +46,7 @@
                                 <th class="text-center" scope="col">Admin </th>
                                 <th class="text-center" scope="col">Catégorie</th>
                                 <th class="text-center" scope="col">Email</th>
-                                <th class="text-center" scope="col">Creation Date</th>
+                                <th class="text-center" scope="col">Date de creation </th>
                                 <th class="text-center" scope="col"></th>
                             </tr>
                         </thead>
@@ -72,7 +72,7 @@
                                                     <div class="modal-dialog booking-info" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title">Etablissement info</h4>
+                                                                <h4 class="modal-title">information Etablissement </h4>
                                                                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">×</button>
                                                             </div>
                                                             <div class="modal-body ">
@@ -81,7 +81,7 @@
                                                                     <body>
                                                                         <tr>
                                                                             <td>
-                                                                                <label for="" class="">Status</label>
+                                                                                <label for="" class="">état</label>
                                                                             </td>
                                                                             <td>
                                                                                 <form action="{{ url('user/'.$etablissement->id) }}" method="post">
@@ -119,7 +119,7 @@
                                                                                                     <tr>
                                                                                                         <td class="title">
                                                                                                             <i class="fa fa-user text-left"></i>
-                                                                                                            <span class="with-icon"> User name </span>
+                                                                                                            <span class="with-icon"> Nom d'utilisateur </span>
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <div class="data main"><span>{{$user->name}} </span></div>
@@ -165,7 +165,7 @@
                                                                                                     <tr>
                                                                                                         <td class="title">
                                                                                                             <i class="fa fa-phone"></i>
-                                                                                                            <span class="with-icon">Phone</span>
+                                                                                                            <span class="with-icon">Téléphone</span>
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <div class="data main"><span>{{$etablissement->phone}}</span></div>
@@ -213,7 +213,7 @@
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1">
                                     <i class="fas fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
+                                    <span class="sr-only">Précédent</span>
                                 </a>
                             </li>
                             <li class="page-item active">
@@ -226,7 +226,7 @@
                             <li class="page-item">
                                 <a class="page-link" href="#">
                                     <i class="fas fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
+                                    <span class="sr-only">Suivant</span>
                                 </a>
                             </li>
                         </ul>

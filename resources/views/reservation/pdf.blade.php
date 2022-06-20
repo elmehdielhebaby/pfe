@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pdf</title>
     <link rel="stylesheet" type="text/css" href="screen.css" media="screen">
     <link rel="stylesheet" href="impression.css" type="text/css" media="print">
     <style>
@@ -52,7 +52,7 @@
 </head>
 
 <body>
-    
+
 
     <h1 style="color:#0fb000;padding-left: 4%;">Reçu</h1>
 
@@ -61,7 +61,7 @@
     <h3 style="color:#0fb000;text-align:left;padding-left: 2%;">Client</h3>
     <table style="background-color:#f2f5fa;padding: 1px;text-align:left;width:60%;">
         <tr style="margin-right: 150px;">
-            <th style="padding: 3px;">Name :</th>
+            <th style="padding: 3px;">Nom :</th>
             <td style="padding: 3px;">{{auth()->user()->name}}</td>
         </tr>
         <tr>
@@ -95,7 +95,7 @@
             <td style="padding: 3px;">{{$rendez_vous->date}}</td>
         </tr>
         <tr>
-            <th style="padding: 3px;">timee :</th>
+            <th style="padding: 3px;">Temps :</th>
             <td style="padding: 3px;">{{$rendez_vous->time}}</td>
         </tr>
         <tr style="text-align:left;">
@@ -109,11 +109,11 @@
     <h3 style="color:#0fb000;text-align:left;padding-left: 2%;">Etablissement</h3>
     <table style="padding: 1px;text-align:left;width:100%;">
         <tr style="margin-right: 150px;">
-            <th style="padding: 3px;">Name :</th>
+            <th style="padding: 3px;">Nom :</th>
             <td style="padding: 3px;">{{$etablissement->name}}</td>
         </tr>
         <tr>
-            <th style="padding: 3px;">phone :</th>
+            <th style="padding: 3px;">Téléphone :</th>
             <td style="padding: 3px;">{{$etablissement->phone}}</td>
         </tr>
         <tr>

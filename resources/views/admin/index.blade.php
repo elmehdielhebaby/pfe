@@ -71,14 +71,14 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                         <div class=" dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
+                            <h6 class="text-overflow m-0">Bienvenu !</h6>
                         </div>
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
+                        <i class="ni ni-single-02"></i>
+                        <span>Mon Profil</span>
                         </a>
                         <a href="#" class="dropdown-item">
                             <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
+                            <span>Paramètres</span>
                         </a>
                         <!-- <a href="#" class="dropdown-item">
                             <i class="ni ni-calendar-grid-58"></i>
@@ -92,7 +92,7 @@
                         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                             <i class="ni ni-user-run"></i>
-                            <span>Logout</span>
+                            <span>Se déconnecter</span>
                         </a>
                     </div>
                 </li>
@@ -118,7 +118,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link {{ $segment == 'home' ? 'active' : null }} " href="{{ route('admin.home') }}">
-                            <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard Admin') }}
+                            <i class="ni ni-tv-2 text-primary"></i> {{ __('Tableau de bord Admin') }}
                         </a>
                     </li>
                     <li class="nav-item">
@@ -127,13 +127,13 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link {{ $segment == 'profile' ? 'active' : null }} " href="{{ route('admin.profile.edit') }}">
-                                        {{ __('Profile') }}
+                                        {{ __('Profil') }}
                                     </a>
                                     <hr class="my-3">
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ $segment == 'user_management' ? 'active' : null }} " href="{{ route('admin.user_management') }}">
-                                        {{ __('User Management') }}
+                                        {{ __('Gestion des utilisateurs ') }}
                                     </a>
                                 </li>
                             </ul>
@@ -149,7 +149,7 @@
         <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('admin.home') }}">dashboard Admin</a>
+                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('admin.home') }}">Tableau de bord admin </a>
                 <!-- Form -->
                 <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
                     <div class="form-group mb-0">
@@ -176,15 +176,15 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                             <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome!</h6>
+                                <h6 class="text-overflow m-0">Bienvenu !</h6>
                             </div>
                             <a href="{{ route('admin.profile.edit') }}" class="dropdown-item">
                                 <i class="ni ni-single-02"></i>
-                                <span>My Profile</span>
+                                <span>Mon Profil</span>
                             </a>
                             <a href="{{ route('admin.user_management') }}" class="dropdown-item">
                                 <i class="ni ni-settings-gear-65"></i>
-                                <span>User Manegement</span>
+                                <span>Gestion des utilisateurs</span>
                             </a>
                             <!-- <a href="#" class="dropdown-item">
                                 <i class="ni ni-calendar-grid-58"></i>
@@ -198,7 +198,7 @@
                             <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                                 <i class="ni ni-user-run"></i>
-                                <span>Logout</span>
+                                <span>Se déconnecter</span>
                             </a>
                         </div>
                     </li>

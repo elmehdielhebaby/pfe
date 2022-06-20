@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets3/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets3/img/favicon.png">
   <title>
-    Argon Design System by Creative Tim
+    Landing
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -33,17 +33,17 @@
       <div class="navbar-collapse collapse" id="navbar_global">
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
-            <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Mes Rendez-vous') }}</a>
+            <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:13px">{{ __('Mes Rendez-vous') }}</a>
           </li>
           <li class="nav-item">
-            <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Historique Rendez-vous') }}</a>
+            <a type="button" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:13px">{{ __('les historiques des Rendez-vous') }}</a>
           </li>
           <li class="nav-item">
-            <a role="tab" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">Profile</a>
+            <a role="tab" href='#mes_rendez_vous' class="btn btn-link text-white " style="font-size:13px">Profil</a>
           </li>
           <li class="nav-item d-none d-lg-block">
             <form method="get" role="form" action="{{ route('client.logout') }}">
-              <button type="submit" class="btn btn-link text-white" style="font-size:16px"> <i class=" ni ni-user-run"></i> {{ __('Logout') }}</button>
+              <button type="submit" class="btn btn-link text-white" style="font-size:13px"> <i class=" ni ni-user-run"></i> {{ __('Se déconnecter') }}</button>
               <input type="hidden" name="url" value="{{$etablissement->url}}">
             </form>
           </li>
@@ -145,7 +145,7 @@
                     @endif
                     <div class="form-group{{ $errors->has('time') ? ' has-danger' : '' }}">
                       <div class="center col-8">
-                        <label for="" class="text-white">Time</label>
+                        <label for="" class="text-white">Temps</label>
                         <select name="time" class="custom-select custom-select-lg mb-3" required>
                           <option value="08:00:00">08:00</option>
                           <option value="09:00:00">09:00</option>
@@ -227,10 +227,10 @@
                         <thead class="thead-light">
                           <tr>
                             <th class="text-center " scope="col">Date</th>
-                            <th class="text-center" scope="col">Time </th>
+                            <th class="text-center" scope="col">temps </th>
                             <!-- <th scope="col">Service name</th> -->
-                            <th class="text-center" scope="col">Created at</th>
-                            <th class="text-center" scope="col">Status</th>
+                            <th class="text-center" scope="col">Créé le</th>
+                            <th class="text-center" scope="col">état</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>
@@ -241,13 +241,13 @@
                             <td class="text-center" style="vertical-align: middle"> {{$rendez_vous->time}}</td>
                             <td class="text-center" style="vertical-align: middle">{{$rendez_vous->created_at}}</td>
                             @if($rendez_vous->active==1)
-                            <td class="text-center text-warning " style="vertical-align: middle">Pending </td>
+                            <td class="text-center text-warning " style="vertical-align: middle">en cours </td>
                             @endif
                             @if($rendez_vous->active==2)
-                            <td class="text-center text-success" style="vertical-align: middle">Confirmed </td>
+                            <td class="text-center text-success" style="vertical-align: middle">Confirmé </td>
                             @endif
                             @if($rendez_vous->active==0)
-                            <td class="text-center text-danger" style="vertical-align: middle">Canceled</td>
+                            <td class="text-center text-danger" style="vertical-align: middle">annulé</td>
                             @endif
                             <td class="text-center">
                               <!-- <div class="dropdown "> -->
@@ -285,7 +285,7 @@
                                                         <span class="one-row">
                                                           <i class="fa ico color-info fa-file-plus"></i>
                                                         </span>
-                                                        <span>Created at : {{$rendez_vous->date}}</span>
+                                                        <span>Créé le : {{$rendez_vous->date}}</span>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -297,7 +297,7 @@
                                                 </div><!-- /#booking-info -->
                                               </div>
                                               <div class="modal-footer">
-                                                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">annulé</button>
                                                 <a class="btn btn-danger" href="{{ url('client.rendez_vous.annuler/'.$rendez_vous->id) }}">Confirm</a>
                                                 <div class="loader" style="display: none;"></div>
                                               </div>
@@ -326,9 +326,9 @@
                         <thead class="thead-light">
                           <tr>
                             <th class="text-center " scope="col">Date</th>
-                            <th class="text-center" scope="col">Time </th>
-                            <th class="text-center" scope="col">Created at</th>
-                            <th class="text-center" scope="col">Status</th>
+                            <th class="text-center" scope="col">Temps </th>
+                            <th class="text-center" scope="col"> Créé le</th>
+                            <th class="text-center" scope="col">état</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>
@@ -343,10 +343,10 @@
                             <td class="text-center text-warning " style="vertical-align: middle">Pending </td>
                             @endif -->
                             @if($rendez_vous->active==2)
-                            <td class="text-center text-success" style="vertical-align: middle">Confirmed </td>
+                            <td class="text-center text-success" style="vertical-align: middle">Confirmé </td>
                             @endif
                             @if($rendez_vous->active==0)
-                            <td class="text-center text-danger" style="vertical-align: middle">Canceled</td>
+                            <td class="text-center text-danger" style="vertical-align: middle">Annulé</td>
                             @endif
                           </tr>
                           @endif
@@ -359,11 +359,11 @@
                       </nav>
                     </div>
                   </div>
-                  <div class="tab-pane fade " id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                  <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                     <div class="table-responsive">
                       <div class="">
                         <form method="get" role="form" action="{{ route('client.profile') }}">
-                          <button type="submit" class="btn btn-sm btn-link float-right ">{{ __('Edit') }}</button>
+                          <button type="submit" class="btn btn-sm btn-link float-right ">{{ __('Editer') }}</button>
                           <input type="hidden" name="url" value="{{$etablissement->url}}">
                         </form>
                       </div>

@@ -20,15 +20,15 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
+                        <h6 class="text-overflow m-0">{{ __('Bienvnu !') }}</h6>
                     </div>
                     <a href="{{ route('admin.profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>{{ __('My profile') }}</span>
+                        <span>{{ __('Mon profil') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('User management') }}</span>
+                        <span>{{ __('Gestion des utilisateurs') }}</span>
                     </a>
                     <!-- <a href="#" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
@@ -42,7 +42,7 @@
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span>{{ __('Logout') }}</span>
+                        <span>{{ __('Se déconnecter') }}</span>
                     </a>
                 </div>
             </li>
@@ -80,7 +80,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard Admin') }}
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Tableau de bord Admin') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -89,13 +89,13 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item {{ $segment == 'profile' ? 'active' : null }}">
                                 <a class="nav-link" href="{{ route('admin.profile.edit') }}">
-                                    {{ __('Profile') }}
+                                    {{ __('Profil') }}
                                 </a>
                                 <hr class="my-3">
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ $segment == 'user_management' ? 'active' : null }}" href="{{ route('admin.user_management') }}">
-                                    {{ __('User Management') }}
+                                    {{ __('gestion des utilisateurs') }}
                                 </a>
                             </li>
                         </ul>
