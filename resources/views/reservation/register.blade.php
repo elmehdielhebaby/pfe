@@ -110,9 +110,8 @@
                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                       </div>
                       <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required>
-                      <!-- <input class="" type="hidden" name="user" value="client"> -->
-                      <input class="" type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
                     </div>
+                    <input class="" type="hidden" name="etablissement_id" value="{{$etablissement_id}}">
                     @if ($errors->has('email'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
                       <strong>{{ $errors->first('email') }}</strong>
@@ -185,9 +184,6 @@
                     </span>
                     @endif
                   </div>
-
-
-
                   <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">

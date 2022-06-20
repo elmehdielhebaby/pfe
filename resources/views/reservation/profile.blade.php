@@ -23,7 +23,33 @@
 </head>
 
 <body class="profile-page">
-  <!-- Navbar -->
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
+    <div class="container">
+      <a class="navbar-brand mr-lg-5" href="/client/home">
+        <img src="/assets3/img/brand/white.png" width="120" height="200">
+      </a>
+      <div class="navbar-collapse collapse" id="navbar_global">
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          <li class="nav-item">
+            <a type="button" href='/client/home#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Mes Rendez-vous') }}</a>
+          </li>
+          <li class="nav-item">
+            <a type="button" href='/client/home#mes_rendez_vous' class="btn btn-link text-white " style="font-size:16px">{{ __('Historique Rendez-vous') }}</a>
+          </li>
+
+          <li class="nav-item d-none d-lg-block">
+            <form method="get" role="form" action="{{ route('client.logout') }}">
+              <button type="submit" class="btn btn-link text-white" style="font-size:16px"> <i class=" ni ni-user-run"></i> {{ __('Logout') }}</button>
+              <input type="hidden" name="url" value="{{$etablissement->url}}">
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+
+  <!-- Navbar
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
       <a class="navbar-brand mr-lg-5" href="{{route('lop')}}">
@@ -61,7 +87,7 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
   <!-- End Navbar -->
   <div class="wrapper">
     <section class="section-profile-cover section-shaped my-0">
@@ -92,7 +118,7 @@
                     <h6 class="heading-small text-muted mb-4">{{ __('Client information') }}</h6>
                     @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="alert-inner--text"><strong>{{ session('status') }}</strong></span>
+                      <span class="alert-inner--text"><strong>{{ session('status') }}</strong></span>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -162,7 +188,7 @@
                     <input type="hidden" name="clien_id" value="{{$client->id}}">
                   </form>
                   <hr class="my-4" />
-                  <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                  <form method="post" action="{{ route('client.profile.password') }}" autocomplete="off">
                     @csrf
                     @method('put')
 

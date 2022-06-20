@@ -19,6 +19,7 @@
   <link href="/assets3/css/font-awesome.css" rel="stylesheet" />
   <link href="/assets3/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="/assets3/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
 </head>
 
@@ -26,7 +27,7 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="#">
+      <a class="navbar-brand mr-lg-5" href="/client/home">
         <img src="/assets3/img/brand/white.png" width="120" height="200">
       </a>
       <div class="navbar-collapse collapse" id="navbar_global">
@@ -199,20 +200,21 @@
           </button>
         </div>
         @endif
+
         <div class="row justify-content-center">
           <div class="col-lg-11">
             <!-- Tabs with icons -->
             <div class="nav-wrapper">
               <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-calendar-grid-58 mr-2"></i>Mes Rendez-vous</a>
+                  <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-bs-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-calendar-grid-58 mr-2"></i>Mes Rendez-vous</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>L'historique
- des rendez vous</a>
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-bs-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>L'historique
+                    des rendez vous</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="true"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-bs-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
                 </li>
               </ul>
             </div>
@@ -318,7 +320,7 @@
                       </nav>
                     </div>
                   </div>
-                  <div class="tab-pane fade show " id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                  <div class="tab-pane fade " id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                     <div class="table-responsive">
                       <table class="table align-items-center table-flush ">
                         <thead class="thead-light">
@@ -346,7 +348,7 @@
                             @if($rendez_vous->active==0)
                             <td class="text-center text-danger" style="vertical-align: middle">Canceled</td>
                             @endif
-                                                        </tr>
+                          </tr>
                           @endif
                           @endforeach
                         </tbody>
@@ -357,7 +359,7 @@
                       </nav>
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                  <div class="tab-pane fade " id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                     <div class="table-responsive">
                       <div class="">
                         <form method="get" role="form" action="{{ route('client.profile') }}">
@@ -386,7 +388,6 @@
                       <!-- </section> -->
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -397,10 +398,13 @@
   </div>
   </div>
   <br /><br />
+
   <footer class="footer" id="lop">
     @include('layouts.footers.nav')
   </footer>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
   <!--   Core JS Files   -->
   <script src="assets3/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="assets3/js/core/popper.min.js" type="text/javascript"></script>
@@ -425,6 +429,7 @@
         application: "argon-design-system-pro"
       });
   </script> -->
+
 </body>
 
 </html>

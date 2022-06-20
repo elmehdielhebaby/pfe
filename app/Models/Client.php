@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\Client as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
+
 class Client extends Authenticatable
 {
-    use HasFactory,HasFactory,Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        // 'user_id',
         'name',
         'email',
         'password',
@@ -24,5 +26,10 @@ class Client extends Authenticatable
         'cin',
         'age',
         'genre',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 }

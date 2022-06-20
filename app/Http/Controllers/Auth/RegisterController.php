@@ -87,7 +87,6 @@ class RegisterController extends Controller
             ]); 
             return $user;
         }else{
-            // echo Request('etablissement_id');
             $user= User::create([
                 'name' => Request('name'),
                 'email' => Request('email'),

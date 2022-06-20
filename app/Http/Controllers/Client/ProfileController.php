@@ -23,14 +23,11 @@ class ProfileController extends Controller
      */
     public function edit() 
     {
-        if(Auth::user()->role =='client'){
-            $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first(); 
-            $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
-            $etablissement =Etablissement::find($client->user_id);
-            if($client!=null)
-                return view('reservation.profile',['client'=> $client,'etablissement'=> $etablissement]);
-                // return redirect('reservation/'.Request('url'));
-        }
+        $client = DB::table('clients')->where('client_id','like','%'.Auth::user()->id.'%')->first(); 
+        $etablissement = DB::table('etablissements')->where('user_id','like','%'.$client->user_id.'%')->first();
+        $etablissement =Etablissement::find($client->user_id);
+        if($client!=null)
+            return view('reservation.profile',['client'=> $client,'etablissement'=> $etablissement]);
     }
 
 
