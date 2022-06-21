@@ -31,7 +31,7 @@ class RendezVousController extends Controller
         $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
         $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
         $toDate=now();
-        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '>', $toDate)->orderBy('date','asc')->get();
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '>', $toDate)->orderBy('date','asc')->paginate(9);
         $segment="index";
         return view('users.rendez_vous_management',['etablissement'=> $etablissement,'clients'=> $clients,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
@@ -41,7 +41,7 @@ class RendezVousController extends Controller
         $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
         $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
         $toDate=now();
-        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '<', $toDate)->orderBy('date','asc')->get();
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '<', $toDate)->orderBy('date','asc')->paginate(9);
         $segment="history";
         return view('users.rendez_vous_history',['etablissement'=> $etablissement,'clients'=> $clients,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
@@ -51,18 +51,12 @@ class RendezVousController extends Controller
         $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
         $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
         $toDate = date('Y-m-d', time());
-        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '=', $toDate)->orderBy('time','asc')->get();
+        $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '=', $toDate)->orderBy('time','asc')->paginate(9);
         $segment="today_rendez_vous";
         return view('users.today_rendez_vous',['etablissement'=> $etablissement,'clients'=> $clients,'etablissement'=> $etablissement,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
 
-    public function client_management()
-    {
-        $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
-        $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
-        $segment="client_management";
-        return view('users.client_management',['etablissement'=> $etablissement,'clients'=> $clients,'segment'=>$segment]);
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -210,7 +204,6 @@ class RendezVousController extends Controller
 
             $etablissement=DB::table('etablissements')->where('user_id','like','%'.Auth::user()->id.'%')->first();
             $client=Client::find($rendez_vous->client_id);
-            // echo $rendez_vous->id;
             $details = [
                 'name_etablissement'=> $etablissement->name,
                 'name_client'=> $client->name,

@@ -84,7 +84,7 @@
                                                                                 <label for="" class="">état</label>
                                                                             </td>
                                                                             <td>
-                                                                                <form action="{{ url('user/'.$etablissement->id) }}" method="post">
+                                                                                <form action="{{ url('admin/user/'.$etablissement->id) }}" method="post">
                                                                                     @method('put')
                                                                                     @csrf
                                                                                     <label for=""></label>
@@ -208,32 +208,10 @@
                     </table>
                 </div>
                 <div class="card-footer py-4">
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">
-                                    <i class="fas fa-angle-left"></i>
-                                    <span class="sr-only">Précédent</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <i class="fas fa-angle-right"></i>
-                                    <span class="sr-only">Suivant</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="..."></nav>
+                </div>
+                <div class="d-flex justify-content-end">
+                    {!! $etablissements->links() !!}
                 </div>
             </div>
         </div>

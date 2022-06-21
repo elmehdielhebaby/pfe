@@ -47,7 +47,6 @@ Route::get('/rendezvous/search', [App\Http\Controllers\RendezVousController::cla
 
 
 
-Route::put('/user/{id}', [App\Http\Controllers\ClientController::class, 'update']);
  
 
 
@@ -63,9 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
 	// Route::get('/rendez-vous.history', 'App\Http\Controllers\RendezVousController@history')->name('rendez-vous.history');
 	// Route::get('/rendez-vous.today_rendez_vous', 'App\Http\Controllers\RendezVousController@today_rendez_vous')->name('rendez-vous.today_rendez_vous');
-	Route::get('/rendez_vous.annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'user_annuler_rdv'])->name('rendez_vous.annuler');
+	// Route::get('/rendez_vous.annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'user_annuler_rdv'])->name('rendez_vous.annuler');
 	
-	Route::get('/user.rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@confirmer');
+	// Route::get('/user.rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@confirmer');
 	// Route::get('/rendez_vous.list.pdf', 'App\Http\Controllers\RendezVousController@rendez_vous_list_pdf')->name('rendez_vous.list.pdf');
 
 });
@@ -127,21 +126,13 @@ Route::prefix('user')->name('user.')->group(function(){
 		Route::get('/rendez-vous.history',[ App\Http\Controllers\RendezVousController::class ,'history'])->name('rendez-vous.history');
 		Route::get('/rendez-vous.today_rendez_vous', 'App\Http\Controllers\RendezVousController@today_rendez_vous')->name('rendez-vous.today_rendez_vous');
 		Route::get('rendez_vous.list.pdf',[ App\Http\Controllers\RendezVousController::class ,'rendez_vous_list_pdf'])->name('rendez_vous.list.pdf');
-		Route::get('client.management',[ App\Http\Controllers\RendezVousController::class ,'client_management'])->name('client.management');
+		Route::get('client.management',[UserController::class ,'client_management'])->name('client.management');
 		Route::put('profile.update', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
 		Route::put('profile/password', 'App\Http\Controllers\ProfileController@password')->name('profile.password');
-		Route::get('/rendez_vous.annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'annuler'])->name('rendez_vous.annuler');
+		Route::get('rendez_vous/confirmer/{id}',[ App\Http\Controllers\RendezVousController::class ,'confirmer']);		
+		Route::get('rendez_vous/annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'user_annuler_rdv']);
+	
 
-
-		Route::get('rendez_vous.confirmer/{id}',[ App\Http\Controllers\RendezVousController::class ,'confirmer']);
-		Route::get('lol',function(){
-			echo 'loool';
-		})->name('lol');
-	Route::get('rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@confirmer');
-
-	// Route::get('rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@Confirmer');
-
-		
 	});
 
 });
@@ -151,7 +142,7 @@ Route::prefix('user')->name('user.')->group(function(){
 Route::prefix('admin')->name('admin.')->group(function(){
 
 	Route::middleware(['guest:admin','PreventBackHstory'])->group(function(){
-		Route::view('/login','dashboard.admin.login')->name('login');
+		Route::view('/login','admin.login')->name('login');
 		Route::post('/check',[AdminController::class,'check'])->name('check');
 	});
 	
@@ -162,6 +153,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::put('profile/update',[App\Http\Controllers\ProfileController::class, 'admin_update'])->name('profile.update');
 		Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 		Route::get('/user_management',[App\Http\Controllers\EtablissementController::class, 'index'])->name('user_management');
+		Route::put('/user/{id}', [App\Http\Controllers\EtablissementController::class, 'update']);
 		
 	});
 
@@ -175,11 +167,7 @@ Route::get('/reservation/{url}', [App\Http\Controllers\ReservationController::cl
 Route::prefix('client')->name('client.')->group(function(){
 
 	Route::middleware(['guest:client','PreventBackHstory'])->group(function(){
-		Route::get(
-		'/login', [ClientController::class, 'login'])->name('login');
-		// Route::get('/log',function(){
-		// 	echo 'looool';
-		// })->name('login');
+		Route::get('/login', [ClientController::class, 'login'])->name('login');
 		Route::get('/register',[ClientController::class,'register'])->name('register');
 		Route::post('/create',[ClientController::class,'create'])->name('create');
 		Route::post('/check',[ClientController::class,'check'])->name('check');
@@ -194,6 +182,7 @@ Route::prefix('client')->name('client.')->group(function(){
 		Route::get('/rendez_vous.annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'annuler'])->name('rendez_vous.annuler');
 		Route::put('profile/update', [App\Http\Controllers\Client\ProfileController::class, 'update'])->name('profile.update');
 		Route::put('profile/password', ['App\Http\Controllers\ProfileController@password'])->name('profile.password');
+	
 	});
 	
 });

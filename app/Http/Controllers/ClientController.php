@@ -32,8 +32,8 @@ class ClientController extends Controller
         $client = Client::find(Auth::user()->id);
         $etablissement = Etablissement::find($client->etablissement_id);
         $today = now();
-        $rendez_vous = DB::table('rendez_vouses')->where('date', '>=', $today)->where('client_id', Auth::user()->id)->where('etablissement_id', $etablissement->id)->orderBy('date', 'asc')->get();
-        $rendez_vous_history = DB::table('rendez_vouses')->where('date', '<', $today)->where('client_id', Auth::user()->id)->where('etablissement_id', $etablissement->id)->orderBy('date', 'asc')->get();
+        $rendez_vous = DB::table('rendez_vouses')->where('date', '>=', $today)->where('client_id', Auth::user()->id)->where('etablissement_id', $etablissement->id)->orderBy('date', 'asc')->paginate(5, ['*'], 'rendez_vous');
+        $rendez_vous_history = DB::table('rendez_vouses')->where('date', '<', $today)->where('client_id', Auth::user()->id)->where('etablissement_id', $etablissement->id)->orderBy('date', 'asc')->paginate(5,['*'], 'rendez_vous_history');
         if ($client != null)
             return view('reservation.landing', ['client' => $client, 'etablissement' => $etablissement, 'rendez_vouss' => $rendez_vous, 'rendez_vous_history' => $rendez_vous_history]);
         else

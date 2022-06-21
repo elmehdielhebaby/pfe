@@ -315,9 +315,8 @@
                         </tbody>
                       </table>
                     </div>
-                    <div class="card-footer py-4">
-                      <nav class="d-flex justify-content-end" aria-label="...">
-                      </nav>
+                    <div class="d-flex justify-content-end">
+                      {!! $rendez_vouss->links() !!}
                     </div>
                   </div>
                   <div class="tab-pane fade " id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
@@ -339,9 +338,9 @@
                             <th class="text-center " style="vertical-align: middle">{{$rendez_vous->date}}</th>
                             <td class="text-center" style="vertical-align: middle"> {{$rendez_vous->time}}</td>
                             <td class="text-center" style="vertical-align: middle">{{$rendez_vous->created_at}}</td>
-                            <!-- @if($rendez_vous->active==1)
-                            <td class="text-center text-warning " style="vertical-align: middle">Pending </td>
-                            @endif -->
+                            @if($rendez_vous->active==1)
+                            <td class="text-center text-warning " style="vertical-align: middle">Annulé </td>
+                            @endif
                             @if($rendez_vous->active==2)
                             <td class="text-center text-success" style="vertical-align: middle">Confirmé </td>
                             @endif
@@ -354,9 +353,8 @@
                         </tbody>
                       </table>
                     </div>
-                    <div class="card-footer py-4">
-                      <nav class="d-flex justify-content-end" aria-label="...">
-                      </nav>
+                    <div class="d-flex justify-content-end">
+                      {!! $rendez_vous_history->links() !!}
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
@@ -372,20 +370,7 @@
                         <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $client->phone }}</div>
                         <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ $etablissement->email }}</div>
                         <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{ $client->adresse }}</div>
-                        <!-- <div><i class="ni education_hat mr-2"></i>University of Computer Science</div> -->
                       </div>
-                      <!-- <div class="mt-5 py-5 border-top text-center">
-                          <div class="row justify-content-center">
-                            <div class="col-lg-9">
-                              <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                              <a href="javascript:;">Show more</a>
-                            </div>
-                          </div>
-                        </div> -->
-                      <!-- </div>
-                            </div>
-                          </div> -->
-                      <!-- </section> -->
                     </div>
                   </div>
                 </div>

@@ -108,11 +108,14 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="time-interval text-left">
-                                                                                    <label class="text-left">Date : </label>
-                                                                                    <label for=""> {{$rendez_vous->date}}</label>
+                                                                                    <label class="text-left">Date :
+                                                                                    </label>
+                                                                                    <label for="">
+                                                                                        {{$rendez_vous->date}}</label>
                                                                                 </div>
                                                                                 <div class="time-interval text-left">
-                                                                                    <label class="text-top">Temps : </label>
+                                                                                    <label class="text-top">Temps :
+                                                                                    </label>
                                                                                     {{$rendez_vous->time}}
                                                                                 </div>
                                                                             </div>
@@ -146,10 +149,15 @@
                                                                                                     <tr>
                                                                                                         <td class="title">
                                                                                                             <i class="fa fa-user text-left"></i>
-                                                                                                            <span class="with-icon"> Nom </span>
+                                                                                                            <span class="with-icon">
+                                                                                                                Nom
+                                                                                                            </span>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <div class="data main"><span>{{$client->name}} </span></div>
+                                                                                                            <div class="data main">
+                                                                                                                <span>{{$client->name}}
+                                                                                                                </span>
+                                                                                                            </div>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
@@ -158,7 +166,9 @@
                                                                                                             <span class="with-icon">Age</span>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <div class="data main"><span>{{$client->age}}</span></div>
+                                                                                                            <div class="data main">
+                                                                                                                <span>{{$client->age}}</span>
+                                                                                                            </div>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
@@ -177,7 +187,9 @@
                                                                                                             <span class="with-icon">Téléphone</span>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <div class="data main"><span><a target="_blank" href="tel:+212665962908">{{$client->phone}}</a></span></div>
+                                                                                                            <div class="data main">
+                                                                                                                <span><a target="_blank" href="tel:+212665962908">{{$client->phone}}</a></span>
+                                                                                                            </div>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                 </tbody>
@@ -194,11 +206,9 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Fermer</button>
                                                                 <!-- <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Annuler rendez-vous</a> -->
-                                                                <a class="btn btn-success" href="{{ url('user.rendez_vous.Confirmer/'.$rendez_vous->id) }}">Confirmé</a>
-
-                                                                <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#mo{{$rendez_vous->id}}">Annuler rendez-vous</button>
-
-
+                                                                <a class="btn btn-success" href="{{ url('user/rendez_vous/confirmer/'.$rendez_vous->id) }}">Confirmé</a>
+                                                                <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#mo{{$rendez_vous->id}}">Annuler
+                                                                    rendez-vous</button>
                                                                 <div class="loader" style="display: none;"></div>
                                                             </div>
                                                         </div>
@@ -211,7 +221,8 @@
                                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="modal-title-default">Confirmation annulation</h4>
+                                                        <h4 class="modal-title" id="modal-title-default">Confirmation
+                                                            annulation</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">×</span>
                                                         </button>
@@ -221,10 +232,13 @@
                                                             <div class="date-time">
                                                                 <div class="date-interval">
                                                                     <i class="fa fa-calendar-alt"></i>
-                                                                    <div class="date-from">Date :{{$rendez_vous->date}}</div>
+                                                                    <div class="date-from">Date :{{$rendez_vous->date}}
+                                                                    </div>
                                                                 </div>
                                                                 <div class="time-interval">
-                                                                    <div class="time-from">Temps : {{$rendez_vous->time}}</div>
+                                                                    <div class="time-from">Temps :
+                                                                        {{$rendez_vous->time}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="booking-history-block ">
@@ -239,7 +253,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Annulé</button>
-                                                        <a class="btn btn-danger" href="{{ url('rendez_vous.annuler/'.$rendez_vous->id) }}">Confirmé</a>
+                                                        <a class="btn btn-danger" href="{{ url('user/rendez_vous/annuler/'.$rendez_vous->id) }}">Confirmé</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,37 +266,11 @@
                 </tbody>
                 </table>
             </div>
-
-
             <div class="card-footer py-4">
-                <nav aria-label="demo" class="demo" id="demo">
-                    <ul class="pagination justify-content-end mb-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">
-                                <i class="fas fa-angle-left"></i>
-                                <span class="sr-only">Précédant</span>
-                            </a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2 <span class="sr-only">(actuel)</span></a>
-                        </li>
-                        <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="fas fa-angle-right"></i>
-                                <span class="sr-only">Suivant</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <nav class="d-flex justify-content-end" aria-label="..."></nav>
             </div>
-            <div class="card-footer py-4">
-                <nav class="d-flex justify-content-end" aria-label="...">
-
-                </nav>
+            <div class="d-flex justify-content-end">
+                {!! $rendez_vouss->links() !!}
             </div>
         </div>
     </div>

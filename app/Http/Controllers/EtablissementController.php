@@ -21,7 +21,7 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        $etablissements=Etablissement::all();
+        $etablissements=Etablissement::paginate(7);
         $users=User::all();
         // $clients= Client::all();
         $rendez_vous= Rendez_vous::all();
@@ -29,6 +29,21 @@ class EtablissementController extends Controller
         return view('admin.user_management',['etablissements'=> $etablissements,'users'=>$users,'rendez_vouss'=>$rendez_vous,'segment'=>$segment]);
     }
 
+
+    public function update($id)
+    {
+        $etablissement = Etablissement::find($id);
+
+        if ($etablissement->active == 0) {
+            $etablissement->active = 1;
+            $etablissement->update();
+            return back()->with('activete', "L'Etablissement à été Activé");
+        } else {
+            $etablissement->active = 0;
+            $etablissement->update();
+            return back()->with('deactivate', 'Le Etablissement à été Désactivé');
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -68,18 +83,6 @@ class EtablissementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Etablissement $etablissement)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateEtablissementRequest  $request
-     * @param  \App\Models\Etablissement  $etablissement
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateEtablissementRequest $request, Etablissement $etablissement)
     {
         //
     }

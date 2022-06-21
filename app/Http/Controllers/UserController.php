@@ -54,6 +54,14 @@ class UserController extends Controller
     }
 
 
+    public function client_management()
+    {
+        $etablissement = DB::table('etablissements')->where('user_id', 'like', '%' . Auth::user()->id . '%')->first();
+        $clients = DB::table('clients')->where('etablissement_id', 'like', '%' . $etablissement->id . '%')->paginate(7);
+        $segment = "client_management";
+        return view('users.client_management', ['etablissement' => $etablissement, 'clients' => $clients, 'segment' => $segment]);
+    }
+
 
     public function create(Request $request){
 
