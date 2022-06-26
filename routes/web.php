@@ -6,8 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RendezVousController;
 use App\Http\Controllers\Auth\RegisterController;
-
+use App\Http\Controllers\EtablissementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +42,7 @@ Route::get('/reservation_login', [App\Http\Controllers\Client\LoginController::c
 
 
 
-Route::get('/rendezvous/search', [App\Http\Controllers\RendezVousController::class, 'search'])->name('rendezvous.search');
+// Route::get('/rendezvous/search', [App\Http\Controllers\RendezVousController::class, 'search'])->name('rendezvous.search');
 
 
 
@@ -58,7 +59,7 @@ Auth::routes();
 
 
 // -----------------------------------User--------------------------------------------------------------------
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
 	// Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
 	// Route::get('/rendez-vous.history', 'App\Http\Controllers\RendezVousController@history')->name('rendez-vous.history');
 	// Route::get('/rendez-vous.today_rendez_vous', 'App\Http\Controllers\RendezVousController@today_rendez_vous')->name('rendez-vous.today_rendez_vous');
@@ -67,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::get('/user.rendez_vous.Confirmer/{id}', 'App\Http\Controllers\RendezVousController@confirmer');
 	// Route::get('/rendez_vous.list.pdf', 'App\Http\Controllers\RendezVousController@rendez_vous_list_pdf')->name('rendez_vous.list.pdf');
 
-});
+// });
 
 
 
@@ -119,18 +120,19 @@ Route::prefix('user')->name('user.')->group(function(){
 	});
 
 	Route::middleware(['auth:web','PreventBackHstory'])->group(function(){
-		Route::get('/home', [App\Http\Controllers\UserController::class, 'home'])->name('home');
+		Route::get('/home', [UserController::class, 'home'])->name('home');
 		Route::post('/logout',[UserController::class,'logout'])->name('logout');
-		Route::get('/rendez-vous.index', 'App\Http\Controllers\RendezVousController@index')->name('rendez-vous.index');
+		Route::get('/rendez-vous.index', [RendezVousController::class, 'index'])->name('rendez-vous.index');
 		Route::get('profile.edit',[ ProfileController::class ,'edit'])->name('profile.edit');
-		Route::get('/rendez-vous.history',[ App\Http\Controllers\RendezVousController::class ,'history'])->name('rendez-vous.history');
-		Route::get('/rendez-vous.today_rendez_vous', 'App\Http\Controllers\RendezVousController@today_rendez_vous')->name('rendez-vous.today_rendez_vous');
-		Route::get('rendez_vous.list.pdf',[ App\Http\Controllers\RendezVousController::class ,'rendez_vous_list_pdf'])->name('rendez_vous.list.pdf');
+		Route::get('/rendez-vous.history',[ RendezVousController::class ,'history'])->name('rendez-vous.history');
+		Route::get('/rendez-vous.today_rendez_vous', [RendezVousController::class, 'today_rendez_vous'])->name('rendez-vous.today_rendez_vous');
+		Route::get('rendez_vous.list.pdf',[ RendezVousController::class ,'rendez_vous_list_pdf'])->name('rendez_vous.list.pdf');
 		Route::get('client.management',[UserController::class ,'client_management'])->name('client.management');
-		Route::put('profile.update', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
-		Route::put('profile/password', 'App\Http\Controllers\ProfileController@password')->name('profile.password');
-		Route::get('rendez_vous/confirmer/{id}',[ App\Http\Controllers\RendezVousController::class ,'confirmer']);		
-		Route::get('rendez_vous/annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'user_annuler_rdv']);
+		Route::put('profile.update', [ProfileController::class, 'update'])->name('profile.update');
+		Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
+		Route::get('rendez_vous/confirmer/{id}',[ RendezVousController::class ,'confirmer']);		
+		Route::get('rendez_vous/annuler/{id}', [ RendezVousController::class, 'user_annuler_rdv']);
+		Route::get('reservation/{url}', [App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
 	
 
 	});
@@ -147,13 +149,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
 	});
 	
 	Route::middleware(['auth:admin','PreventBackHstory'])->group(function(){
-		Route::get('/home', [App\Http\Controllers\AdminController::class,'home'])->name('home');
-		Route::post('/logout',[App\Http\Controllers\AdminController::class,'logout'])->name('logout');
-		Route::get('profile/edit',[App\Http\Controllers\ProfileController::class, 'admin_edit'])->name('profile.edit');
-		Route::put('profile/update',[App\Http\Controllers\ProfileController::class, 'admin_update'])->name('profile.update');
+		Route::get('/home', [AdminController::class,'home'])->name('home');
+		Route::post('/logout',[AdminController::class,'logout'])->name('logout');
+		Route::get('profile/edit',[ProfileController::class, 'admin_edit'])->name('profile.edit');
+		Route::put('profile/update',[ProfileController::class, 'admin_update'])->name('profile.update');
 		Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-		Route::get('/user_management',[App\Http\Controllers\EtablissementController::class, 'index'])->name('user_management');
-		Route::put('/user/{id}', [App\Http\Controllers\EtablissementController::class, 'update']);
+		Route::get('/user_management',[EtablissementController::class, 'index'])->name('user_management');
+		Route::put('/user/{id}', [EtablissementController::class, 'update']);
 		
 	});
 
@@ -177,11 +179,11 @@ Route::prefix('client')->name('client.')->group(function(){
 		Route::get('/home', [ClientController::class, 'home'])->name('home');
 		Route::get('/logout',[ClientController::class,'logout'])->name('logout');
 		Route::get('/profile', [ClientController::class, 'edit'])->name('profile');
-		Route::get('/rendezvous/create', [App\Http\Controllers\RendezVousController::class, 'store'])->name('rendezvous.create');
-		Route::get('/rendezvous/pdf', [App\Http\Controllers\RendezVousController::class, 'pdf'])->name('rendez_vous.pdf');
-		Route::get('/rendez_vous.annuler/{id}', [App\Http\Controllers\RendezVousController::class, 'annuler'])->name('rendez_vous.annuler');
-		Route::put('profile/update', [App\Http\Controllers\Client\ProfileController::class, 'update'])->name('profile.update');
-		Route::put('profile/password', ['App\Http\Controllers\ProfileController@password'])->name('profile.password');
+		Route::get('/rendezvous/create', [RendezVousController::class, 'store'])->name('rendezvous.create');
+		Route::get('/rendezvous/pdf', [RendezVousController::class, 'pdf'])->name('rendez_vous.pdf');
+		Route::get('/rendez_vous.annuler/{id}', [RendezVousController::class, 'annuler'])->name('rendez_vous.annuler');
+		Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+		Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
 	
 	});
 	
@@ -198,20 +200,21 @@ Route::prefix('client')->name('client.')->group(function(){
 
 // ****************** Tests ***************************************
 
-Route::get('/test', function(){
+// Route::get('/test', function(){
 	
-	return view('reservation.lol');
-})->name('test');
+// 	return view('reservation.lol');
+// })->name('test');
 
 
-Route::get('/lan', function(){
-	return view('reservation.landing');
-})->name('lan');
+// Route::get('/lan', function(){
+// 	return view('reservation.landing');
+// })->name('lan');
 
 
-Route::get('lok',function(){
-	return view('lok');
+
+Route::get('lol',function(){
+	return view('errors.site');
 });
 
 
-Route::get('/lop',[App\Http\Controllers\Client\LoginController::class, 'back'])->name('lop');
+// Route::get('/lop',[App\Http\Controllers\Client\LoginController::class, 'back'])->name('lop');

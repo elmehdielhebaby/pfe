@@ -28,7 +28,7 @@
                 </div>
             </li>
             <li class="nav-item d-none d-lg-block ml-lg-4" id="docs">
-                <a href="/reservation/{{$etablissement->url}}" target="_blank" class="btn btn-neutral btn-documentation text-success btn-icon">
+                <a href="/user/reservation/{{$etablissement->url}}" target="_blank" class="btn btn-neutral btn-documentation text-success btn-icon">
                     <span class="btn-inner--icon">
                         <i class="ni ni-world-2 mr-2"></i>
                     </span>

@@ -245,7 +245,7 @@ class RendezVousController extends Controller
         $clients=DB::table('clients')->where('etablissement_id','like','%'.$etablissement->id.'%')->get();
         $toDate = date('Y-m-d', time());
         $rendez_vous = DB::table('rendez_vouses')->where('etablissement_id','like','%'.$etablissement->id.'%')->where('date', '=', $toDate)->get();
-        $pdf = PDF::loadView('users.Rendez_Vous_list_pdf', ['rendez_vouss'=>$rendez_vous,'etablissement'=>$etablissement,'clients'=>$clients]);
+        $pdf = PDF::loadView('users.Rendez_Vous_list_pdf', ['rendez_vouss'=>$rendez_vous,'etablissement'=>$etablissement,'clients'=>$clients, 'toDate' => $toDate ]);
         return $pdf->download('Rendez_Vous_list.pdf');
     }
 

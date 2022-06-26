@@ -900,74 +900,26 @@
       padding-left: 25px;
     }
   </style>
-
 </head>
 
 <body>
-  <!-- <div class="topnav">
-		<a class="" href="#home">Home</a>
-		<a href="#about" id="m" style="text-align: rigth;">About</a>
-	</div> -->
-
 
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
     <div class="container">
-      <a class="navbar-brand mr-lg-5" href="/">
-        <img src="{{ asset('assets3')}}/img/brand/white.png">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="navbar_global">
-        <div class="navbar-collapse-header">
-          <div class="row">
-            <div class="col-6 collapse-close">
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <ul class="navbar-nav " style="text-align:rigth">
-          <li class="nav-item d-none d-lg-block" style="text-align:rigth">
-            <a href="{{ route('login') }}" class="btn text-white btn-primary btn-wd " style="font-size:16px;text-align:rigth">Se connecter</a>
-          </li>
-        </ul>
+      <div class="pull-lifte">
+
+        <a class="navbar-brand mr-lg-5" href="/">
+          <img src="{{ asset('assets3')}}/img/brand/white.png">
+        </a>
+      </div>
+
+      <div class="pull-right">
+        <a href="{{ route('login') }}" class=" h4 link text-white  btn-wd ">Se connecter</a>
       </div>
     </div>
   </nav>
 
-
   <div class="image-container set-full-height" style="background-image: url({{URL::asset('assets/img/luxury-working-room-in-executive-office.jpg') }} )">
-
-    <!-- Navbar -->
-    <!-- <nav class="">
-			<ul class="navbar-nav align-items-center d-none d-md-flex">
-				<li class="nav-item dropdown">
-					<a href="/">
-						<div class="logo-container">
-							<div class="logo">
-								<img style="" src="/assets3/img/brand/white.png">
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="nav-item dropdown">
-					<div style="text-align: right;padding-left : 30px; margin-rigth:100px">
-						<a class="nav-link nav-link-icon" href="{{ route('client.login') }}">
-							<span class="nav-link-inner--text text-whit h3 btn-wd">{{ __('Login') }}</span>
-						</a>
-					</div>
-				</li>
-			</ul>
-		</nav> -->
-
-
-
-
-
-    <!--   Big container   -->
     <div class="container ">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
@@ -1174,7 +1126,6 @@
 		                            <div class="clearfix"></div>
 		                        </div>
 		                    </form>
-                            <a href="{{route('user.login')}}">j'ai déja un compte</a>
 		                </div>
 		            </div> <!-- wizard container -->
 		        </div>
